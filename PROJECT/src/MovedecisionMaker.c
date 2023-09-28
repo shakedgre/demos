@@ -87,16 +87,13 @@ void MoveFollowerDrone(State state, float currPos[2], float endPos[3], int16_t f
             shortWallFollower();
         }
     }
-    if(state == hover){
+    else if(state == hover){
         setHoverSetpoint(&setpoint, 0.0f, 0.0f, HEIGHT, 0.0f,false);
         commanderSetSetpoint(&setpoint, 3);
         DEBUG_PRINT("Hovering!\n");
 
     }else if(state == end){
         DEBUG_PRINT("landing\n");
-        setHoverSetpoint(&setpoint, 0.0f, 0.0f, HEIGHT/2, 0.0f, false);
-        commanderSetSetpoint(&setpoint, 3);
-        vTaskDelay(M2T(200));
         memset(&setpoint, 0, sizeof(setpoint_t));
         commanderSetSetpoint(&setpoint, 5);
         vTaskDelay(M2T(1000));
@@ -114,8 +111,7 @@ void MoveMainDrone(State state, float currPos[2], float checkPoints[MAX_NUM_OF_W
         setHoverSetpoint(&setpoint, 0.0f, 0.0f, HEIGHT, 0.0f,false);
         commanderSetSetpoint(&setpoint, 3);
         DEBUG_PRINT("Hovering!, now moving to first waypoint\n");
-    }
-    if(state == moving){
+    }else if(state == moving){
         float velX, velY;
         calculateVelToGoal(currPos[0], currPos[1], checkPoints[currentWayPoint][0], checkPoints[currentWayPoint][1], &velX, &velY);
         setHoverSetpoint(&setpoint, velX, velY, HEIGHT, 0.0f, false);
@@ -123,9 +119,6 @@ void MoveMainDrone(State state, float currPos[2], float checkPoints[MAX_NUM_OF_W
 
     }else if(state == end){
         DEBUG_PRINT("landing\n");
-        setHoverSetpoint(&setpoint, 0.0f, 0.0f, HEIGHT/2, 0.0f, false);
-        commanderSetSetpoint(&setpoint, 3);
-        vTaskDelay(M2T(200));
         memset(&setpoint, 0, sizeof(setpoint_t));
         commanderSetSetpoint(&setpoint, 5);
         vTaskDelay(M2T(1000));

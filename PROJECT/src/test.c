@@ -64,6 +64,7 @@
 #define ACCEPTABLE_RADIUS_FROM_WAYPOINT 0.1f
 #define MAX_TIME_BEFORE_OUT_OF_RANGE 1.5f
 
+#define MAXRSSI 65
 
 static P2PPacket p_reply;
 static const uint16_t unlockLow = 100;
@@ -71,10 +72,10 @@ static const uint16_t unlockHigh = 300;
 uint8_t currentWayPoint = 0;
 uint8_t currentRecievedWayPoint = 0;
 
-
-#define MAX_DISTORTED_MSGS 5
-uint8_t numOfDistortedMsg = 0;
-
+bool HighRSSI = false;
+bool startedTheProg = false;
+bool lostContact = false;
+float timeOfLastMsg = 0.0f;
 
 float initialPos[3] = {0,0,0};
 
@@ -92,9 +93,6 @@ void setInitPos(float* initialPos){
     }
 }
 
-//bool lostConnection = false;
-bool lostConnectionBefore = 0;
-bool FIRSTMsg = false;
 
 float wayPoints[MAX_NUM_OF_WAY_POINTS][3] = {{0,0,HEIGHT},
                                         {0.4f,0.4f,HEIGHT},
@@ -107,16 +105,12 @@ float recievedWayPoints[3];
 typedef enum {
   ERROR,
   starting,
+  blank,
   sayingPos
 } HighLevelMsg;
 
 
-uint8_t countDistortedMsg(float lastKnownPos[3], float posMsg[3], uint8_t numOfDistMsgs){
-  if (DIST(lastKnownPos[0]-posMsg[0], lastKnownPos[1]-posMsg[1]) > 1.0f){
-    return numOfDistortedMsg+1;
-  }
-  return 0;
-}
+
 
 void p2pcallbackHandler(P2PPacket *p)
 {
@@ -127,39 +121,34 @@ void p2pcallbackHandler(P2PPacket *p)
   float timeNow = usecTimestamp() / 1e6;
   DEBUG_PRINT("\ntime: %f, the id: %x\nthe rssi: %d\nthe port: %d\n data[0]: %x\n",(double)timeNow,id,rssi,port,data0);
 
+  if(lostContact == false){
+    if(rssi > MAXRSSI){
+      HighRSSI = true;
+    }
 
+    if(data0 == (uint8_t)starting){
+      DEBUG_PRINT("Other Drone Started Flying\n");
+      startedTheProg = true;
+    }
 
-  if(data0 == (uint8_t)starting){
-    DEBUG_PRINT("Other Drone Started Flying\n");
-    FIRSTMsg = true;
-  }
-
-  else if(data0 == (uint8_t)sayingPos){
-    DEBUG_PRINT("I got the pos!\n");
-    if(lostConnectionBefore == true) return;
-    
-    float x;
-    float y;
-    float Height;
-    memcpy(&x, &(p->data[2]), sizeof(float));
-    memcpy(&y, &(p->data[6]), sizeof(float));
-    memcpy(&Height, &(p->data[10]), sizeof(float));
-    DEBUG_PRINT("X: %f, Y:%f, Z:%f\n",(double)x,(double)y,(double)Height);
-    float posMsg[] = {x,y,Height};
-    numOfDistortedMsg = countDistortedMsg(recievedWayPoints,posMsg,numOfDistortedMsg);
-    if (numOfDistortedMsg == 0){
+    else if(data0 == (uint8_t)sayingPos){
+      DEBUG_PRINT("\nI got the pos!\n");
+      float x;
+      float y;
+      float Height;
+      memcpy(&x, &(p->data[2]), sizeof(float));
+      memcpy(&y, &(p->data[6]), sizeof(float));
+      memcpy(&Height, &(p->data[10]), sizeof(float));
+      DEBUG_PRINT("X: %f, Y:%f, Z:%f\n",(double)x,(double)y,(double)Height);
       recievedWayPoints[0] = x;
       recievedWayPoints[1] = y;
       recievedWayPoints[2] = Height;
+    }else if (data0 == (uint8_t)blank){
+      DEBUG_PRINT("a blank\n");
+    }else{
+      DEBUG_PRINT("non recognized packet!\n");
     }
-  }
-  else{
-    numOfDistortedMsg++;
-    DEBUG_PRINT("non recognized packet!\n");
-  }
-
-  if(numOfDistortedMsg >= MAX_DISTORTED_MSGS){
-    lostConnectionBefore = true;
+    timeOfLastMsg = timeNow;
   }
 
 }
@@ -178,7 +167,7 @@ float calculateYaw(float goalX, float goalY, float currX, float currY){
 
 
 void sendPacket(HighLevelMsg msg){
-    
+    DEBUG_PRINT("sending packet!, %c",(char)msg);
     p_reply.port=0x00;
     p_reply.size=2*sizeof(uint8_t)+1*sizeof(uint8_t);
     uint64_t address = configblockGetRadioAddress();
@@ -186,7 +175,6 @@ void sendPacket(HighLevelMsg msg){
     uint8_t msg_temp = (uint8_t)msg;
     memcpy(&(p_reply.data[0]), &my_id, sizeof(uint8_t));
     memcpy(&(p_reply.data[1]), &msg_temp, sizeof(uint8_t));
-    memcpy(&(p_reply.data[2]), &msg_temp, sizeof(uint8_t));
     radiolinkSendP2PPacketBroadcast(&p_reply);
 }
 void sendLocPacket(float x, float y, float height){
@@ -231,7 +219,7 @@ void appMain()
   paramSetInt(idHighLevelComm, 1);
   
 
-  DEBUG_PRINT("starting the testing!\n");
+  DEBUG_PRINT("starting the project!\n");
   float XEstimate = initialPos[0];
   float YEstimate = initialPos[1];
 
@@ -239,13 +227,13 @@ void appMain()
 
   while(1) {
 
+    
     vTaskDelay(M2T(100));
-
     uint8_t positioningInit = paramGetUint(idPositioningDeck);
     uint8_t multirangerInit = paramGetUint(idMultiranger);
     uint16_t my_up = logGetUint(idUp);
     uint16_t my_front = logGetUint(idFront);
-    //float timeNow = usecTimestamp() / 1e6;
+    float timeNow = usecTimestamp() / 1e6;
     /*float YawEstimate = logGetFloat(idYaw);*/
     XEstimate = logGetFloat(idX) + initialPos[0];
     YEstimate = logGetFloat(idY) + initialPos[1];
@@ -267,14 +255,17 @@ void appMain()
         state = lowUnlock;
 
       }
-      if(lostConnectionBefore == true && FIRSTMsg == true && recievedWayPoints[0] != 0.0f){
+      if((HighRSSI || timeNow-timeOfLastMsg > 2.0f )&& startedTheProg){
         state = unlockedFollower;
+        lostContact = true;
       }
+
     }else if(state == lowUnlock){
       if(my_up >= unlockHigh){
         DEBUG_PRINT("starting to fly!\n");
         state = unlocked;
       }
+
     }else if (state == unlocked){
       MoveMainDrone(state, currPos, wayPoints, currentWayPoint);
       //vTaskDelay(M2T(500));
@@ -297,16 +288,18 @@ void appMain()
       sendLocPacket(XEstimate, YEstimate, HEIGHT);
       //yaw = calculateYaw(wayPoints[currentWayPoint][0], wayPoints[currentWayPoint][1], XEstimate, YEstimate);
 
-      if (DIST((XEstimate-wayPoints[currentWayPoint][0]),(YEstimate-wayPoints[currentWayPoint][1])) > ACCEPTABLE_RADIUS_FROM_WAYPOINT){ continue;}
-      currentWayPoint++;
-     
-      if(currentWayPoint >= NUM_OF_WAYPOINTS){
+      if (DIST((XEstimate-wayPoints[currentWayPoint][0]),(YEstimate-wayPoints[currentWayPoint][1])) < ACCEPTABLE_RADIUS_FROM_WAYPOINT){
+        currentWayPoint++;
+        
+      }
+      if(currentWayPoint > NUM_OF_WAYPOINTS){
         state = end;
       }
 
     }else if(state == end){
       MoveMainDrone(state, currPos, wayPoints, currentWayPoint);
       sendLocPacket(XEstimate,YEstimate,0.0f);
+      break;
 
     }else if(state == following){
       if (my_up <= unlockLow){
