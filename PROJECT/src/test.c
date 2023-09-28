@@ -64,7 +64,7 @@
 #define ACCEPTABLE_RADIUS_FROM_WAYPOINT 0.1f
 #define MAX_TIME_BEFORE_OUT_OF_RANGE 1.5f
 
-#define MAXRSSI 65
+#define MAXRSSI 69
 
 static P2PPacket p_reply;
 static const uint16_t unlockLow = 100;
@@ -132,6 +132,7 @@ void p2pcallbackHandler(P2PPacket *p)
     }
 
     else if(data0 == (uint8_t)sayingPos){
+      startedTheProg = true;
       DEBUG_PRINT("\nI got the pos!\n");
       float x;
       float y;
@@ -247,7 +248,6 @@ void appMain()
       DEBUG_PRINT("\nmultiranger deck not connected\n");
       break;
     }
-
     //state machine
     if (state == idle){
       if (my_up <= unlockLow){
