@@ -1,0 +1,1 @@
+cmd_/home/bitcraze/crazyflie-firmware/examples/demos/test/built-in.o :=  arm-none-eabi-gcc --specs=nosys.specs --specs=nano.specs -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -nostdlib   -r -o /home/bitcraze/crazyflie-firmware/examples/demos/test/built-in.o /home/bitcraze/crazyflie-firmware/examples/demos/test/src/built-in.o
