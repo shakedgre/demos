@@ -205,7 +205,7 @@ void sendLocPacket(float x, float y, float height){
 }
 
 
-static State state = idle;
+//static State state = idle;
 
 void appMain()
 {
@@ -216,10 +216,10 @@ void appMain()
   setInitPos(initialPos);
 
   paramVarId_t idHighLevelComm = paramGetVarId("commander", "enHighLevel");
-  logVarId_t idUp = logGetVarId("range", "up");
+  //logVarId_t idUp = logGetVarId("range", "up");
   //logVarId_t idLeft = logGetVarId("range", "left");
   //logVarId_t idRight = logGetVarId("range", "right");
-  logVarId_t idFront = logGetVarId("range", "front");
+  //logVarId_t idFront = logGetVarId("range", "front");
   //logVarId_t idBack = logGetVarId("range", "back");
   logVarId_t idX = logGetVarId("stateEstimate", "x");
   logVarId_t idY = logGetVarId("stateEstimate", "y");
@@ -236,15 +236,15 @@ void appMain()
   float YEstimate = initialPos[1];
 
   //float yaw = 0;
-
+  int iteration = 0;
   while(1) {
-
-    vTaskDelay(M2T(100));
+    iteration++;
+    vTaskDelay(M2T(500));
 
     uint8_t positioningInit = paramGetUint(idPositioningDeck);
     uint8_t multirangerInit = paramGetUint(idMultiranger);
-    uint16_t my_up = logGetUint(idUp);
-    uint16_t my_front = logGetUint(idFront);
+    //uint16_t my_up = logGetUint(idUp);
+    //uint16_t my_front = logGetUint(idFront);
     //float timeNow = usecTimestamp() / 1e6;
     /*float YawEstimate = logGetFloat(idYaw);*/
     XEstimate = logGetFloat(idX) + initialPos[0];
@@ -253,6 +253,7 @@ void appMain()
 
     if(!positioningInit){
       DEBUG_PRINT("\nFlow deck not connected\n");
+      DEBUG_PRINT("\n%f",(double)currPos[0]);
       break;
     }
     if(!multirangerInit){
@@ -261,73 +262,7 @@ void appMain()
     }
 
     //state machine
-    if (state == idle){
-      if (my_up <= unlockLow){
-        DEBUG_PRINT("unlocking...\n");
-        state = lowUnlock;
+    sendPacket(iteration);
 
-      }
-      if(lostConnectionBefore == true && FIRSTMsg == true && recievedWayPoints[0] != 0.0f){
-        state = unlockedFollower;
-      }
-    }else if(state == lowUnlock){
-      if(my_up >= unlockHigh){
-        DEBUG_PRINT("starting to fly!\n");
-        state = unlocked;
-      }
-    }else if (state == unlocked){
-      MoveMainDrone(state, currPos, wayPoints, currentWayPoint);
-      //vTaskDelay(M2T(500));
-      sendPacket(starting);
-      DEBUG_PRINT("Hovering!, now moving to first waypoint\n");
-      state = moving;
-
-    }else if (state == unlockedFollower){
-      MoveFollowerDrone(state, currPos, recievedWayPoints,my_front);
-      DEBUG_PRINT("Hovering!, now moving to first waypoint\n");
-      state = following;
-
-    }else if(state == moving){
-      if (my_up <= unlockLow){
-        DEBUG_PRINT("ending...\n");
-        state = end;
-        continue;
-      }
-      MoveMainDrone(state, currPos, wayPoints, currentWayPoint);
-      sendLocPacket(XEstimate, YEstimate, HEIGHT);
-      //yaw = calculateYaw(wayPoints[currentWayPoint][0], wayPoints[currentWayPoint][1], XEstimate, YEstimate);
-
-      if (DIST((XEstimate-wayPoints[currentWayPoint][0]),(YEstimate-wayPoints[currentWayPoint][1])) > ACCEPTABLE_RADIUS_FROM_WAYPOINT){ continue;}
-      currentWayPoint++;
-     
-      if(currentWayPoint >= NUM_OF_WAYPOINTS){
-        state = end;
-      }
-
-    }else if(state == end){
-      MoveMainDrone(state, currPos, wayPoints, currentWayPoint);
-      sendLocPacket(XEstimate,YEstimate,0.0f);
-
-    }else if(state == following){
-      if (my_up <= unlockLow){
-        DEBUG_PRINT("ending...\n");
-        state = end;
-        continue;
-      }
-      MoveFollowerDrone(state, currPos, recievedWayPoints, my_front);
-
-      if (DIST((XEstimate-recievedWayPoints[0]),(YEstimate-recievedWayPoints[1])) > ACCEPTABLE_RADIUS_FROM_WAYPOINT){ continue;}
-      state = hover;
-      
-
-    }else if(state == hover){
-      DEBUG_PRINT("hovering\n");
-      if (my_up <= unlockLow){
-        state = end;
-      }
-      MoveFollowerDrone(state, currPos, recievedWayPoints, my_front);
     }
-
-  }
-  DEBUG_PRINT("ending the program\n");
 }
