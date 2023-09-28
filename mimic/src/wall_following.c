@@ -100,7 +100,7 @@ static const uint16_t radius = 300;
 bool goLeft = false;
 float distanceToWall = 0.5f;
 float maxForwardSpeed = 0.5f;
-
+//test
 float cmdVelX = 0.0f;
 float cmdVelY = 0.0f;
 float cmdAngWRad = 0.0f;
