@@ -7,5 +7,6 @@
         "string_view": "c",
         "sstream": "c",
         "random": "c"
-    }
+    },
+    "ros.distro": "galactic"
 }

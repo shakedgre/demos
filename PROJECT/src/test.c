@@ -64,7 +64,7 @@
 #define ACCEPTABLE_RADIUS_FROM_WAYPOINT 0.1f
 #define MAX_TIME_BEFORE_OUT_OF_RANGE 1.5f
 
-#define MAXRSSI 69
+#define MAXRSSI 89
 
 static P2PPacket p_reply;
 static const uint16_t unlockLow = 100;
@@ -88,17 +88,17 @@ void setInitPos(float* initialPos){
       initialPos[2] = 0.0f;
     }else if(my_id == 0xE6){
       initialPos[0] = 0.0f;
-      initialPos[1] = 0.4f;
+      initialPos[1] = 0.2f;
       initialPos[2] = 0.0f;
     }
 }
 
 
 float wayPoints[MAX_NUM_OF_WAY_POINTS][3] = {{0,0,HEIGHT},
-                                        {0.4f,0.4f,HEIGHT},
-                                        {0.4f,0.0f,HEIGHT},
-                                        {0.8f,0,HEIGHT},
-                                        {0.8f,0.4f,HEIGHT}};//global [x,y,z]
+                                        {2.0f,0.0f,HEIGHT},
+                                        {2.0f,-1.0f,HEIGHT},
+                                        {2.0f,-2.0f,HEIGHT},
+                                        {2.0f,-2.5f,HEIGHT}};//global [x,y,z]
 
 float recievedWayPoints[3];
 
@@ -114,13 +114,12 @@ typedef enum {
 
 void p2pcallbackHandler(P2PPacket *p)
 {
-  uint8_t id = p->data[0];
+  //uint8_t id = p->data[0];
   uint8_t rssi = p->rssi;
-  uint8_t port = p->port;
+  //uint8_t port = p->port;
   uint8_t data0 = p->data[1];
   float timeNow = usecTimestamp() / 1e6;
-  DEBUG_PRINT("\ntime: %f, the id: %x\nthe rssi: %d\nthe port: %d\n data[0]: %x\n",(double)timeNow,id,rssi,port,data0);
-
+  DEBUG_PRINT("\nrssi: %d\n", rssi);
   if(lostContact == false){
     if(rssi > MAXRSSI){
       HighRSSI = true;
@@ -133,21 +132,21 @@ void p2pcallbackHandler(P2PPacket *p)
 
     else if(data0 == (uint8_t)sayingPos){
       startedTheProg = true;
-      DEBUG_PRINT("\nI got the pos!\n");
+      //DEBUG_PRINT("\nI got the pos!\n");
       float x;
       float y;
       float Height;
       memcpy(&x, &(p->data[2]), sizeof(float));
       memcpy(&y, &(p->data[6]), sizeof(float));
       memcpy(&Height, &(p->data[10]), sizeof(float));
-      DEBUG_PRINT("X: %f, Y:%f, Z:%f\n",(double)x,(double)y,(double)Height);
+      //DEBUG_PRINT("X: %f, Y:%f, Z:%f\n",(double)x,(double)y,(double)Height);
       recievedWayPoints[0] = x;
       recievedWayPoints[1] = y;
       recievedWayPoints[2] = Height;
     }else if (data0 == (uint8_t)blank){
-      DEBUG_PRINT("a blank\n");
+      //DEBUG_PRINT("a blank\n");
     }else{
-      DEBUG_PRINT("non recognized packet!\n");
+      //DEBUG_PRINT("non recognized packet!\n");
     }
     timeOfLastMsg = timeNow;
   }
@@ -168,7 +167,7 @@ float calculateYaw(float goalX, float goalY, float currX, float currY){
 
 
 void sendPacket(HighLevelMsg msg){
-    DEBUG_PRINT("sending packet!, %c",(char)msg);
+    //DEBUG_PRINT("sending packet!, %c",(char)msg);
     p_reply.port=0x00;
     p_reply.size=2*sizeof(uint8_t)+1*sizeof(uint8_t);
     uint64_t address = configblockGetRadioAddress();
@@ -179,7 +178,7 @@ void sendPacket(HighLevelMsg msg){
     radiolinkSendP2PPacketBroadcast(&p_reply);
 }
 void sendLocPacket(float x, float y, float height){
-    DEBUG_PRINT("sending packet!, X:%f, Y:%f, Z:%f\n",(double)x, (double)y, (double)height);
+    //DEBUG_PRINT("sending packet!, X:%f, Y:%f, Z:%f\n",(double)x, (double)y, (double)height);
     p_reply.port=0x00;
     p_reply.size= 3*sizeof(float)+2*sizeof(uint8_t);
     uint64_t address = configblockGetRadioAddress();
@@ -229,7 +228,7 @@ void appMain()
   while(1) {
 
     
-    vTaskDelay(M2T(100));
+    vTaskDelay(M2T(200));
     uint8_t positioningInit = paramGetUint(idPositioningDeck);
     uint8_t multirangerInit = paramGetUint(idMultiranger);
     uint16_t my_up = logGetUint(idUp);
@@ -292,7 +291,7 @@ void appMain()
         currentWayPoint++;
         
       }
-      if(currentWayPoint > NUM_OF_WAYPOINTS){
+      if(currentWayPoint >= NUM_OF_WAYPOINTS){ // >= ?
         state = end;
       }
 

@@ -34,7 +34,7 @@
 
 
 #define MAX_DIST_FROM_WALL 50
-#define HEIGHT 0.2f
+//#define HEIGHT 0.5f
 
 
 static setpoint_t setpoint;
@@ -73,9 +73,9 @@ void MoveFollowerDrone(State state, float currPos[2], float endPos[3], int16_t f
     if(state == unlockedFollower){
         setHoverSetpoint(&setpoint, 0.0f, 0.0f, HEIGHT, 0.0f,false);
         commanderSetSetpoint(&setpoint, 3);
-        DEBUG_PRINT("Hovering!, now moving to first waypoint\n");
+        //DEBUG_PRINT("Hovering!, now moving to first waypoint\n");
     }
-    if(state == following){
+    else if(state == following){
         if (frontDist > MAX_DIST_FROM_WALL){
             float velX, velY;
             calculateVelToGoal(currPos[0], currPos[1], endPos[0], endPos[1], &velX, &velY);
@@ -90,7 +90,7 @@ void MoveFollowerDrone(State state, float currPos[2], float endPos[3], int16_t f
     else if(state == hover){
         setHoverSetpoint(&setpoint, 0.0f, 0.0f, HEIGHT, 0.0f,false);
         commanderSetSetpoint(&setpoint, 3);
-        DEBUG_PRINT("Hovering!\n");
+        //DEBUG_PRINT("Hovering!\n");
 
     }else if(state == end){
         DEBUG_PRINT("landing\n");
@@ -110,7 +110,7 @@ void MoveMainDrone(State state, float currPos[2], float checkPoints[MAX_NUM_OF_W
     if(state == unlocked){
         setHoverSetpoint(&setpoint, 0.0f, 0.0f, HEIGHT, 0.0f,false);
         commanderSetSetpoint(&setpoint, 3);
-        DEBUG_PRINT("Hovering!, now moving to first waypoint\n");
+        //DEBUG_PRINT("Hovering!, now moving to first waypoint\n");
     }else if(state == moving){
         float velX, velY;
         calculateVelToGoal(currPos[0], currPos[1], checkPoints[currentWayPoint][0], checkPoints[currentWayPoint][1], &velX, &velY);

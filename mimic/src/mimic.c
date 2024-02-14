@@ -68,6 +68,7 @@ void p2pcallbackHandler(P2PPacket *p)
 
   // Parse the data from the other crazyflie and print it
   uint8_t other_id = p->data[0];
+  uint8_t rssi = p->rssi;
   memcpy(&other_up, &p->data[1], sizeof(uint16_t));
   memcpy(&other_front, &p->data[3], sizeof(uint16_t));
   memcpy(&other_back, &p->data[5], sizeof(uint16_t));
@@ -79,8 +80,8 @@ void p2pcallbackHandler(P2PPacket *p)
   other_back = p->data[5];
   other_left = p->data[7];
   other_right = p->data[9];*/
-
-  DEBUG_PRINT("Got a Message from CF num. %d, the up distance is: %d\n", other_id, other_up);
+  DEBUG_PRINT("\nrssi: %d ", rssi);
+  DEBUG_PRINT("CF num. %d, the up dist is: %d\n", other_id, other_up);
 }
 
 
@@ -162,7 +163,7 @@ void appMain()
     uint16_t my_right = logGetUint(idRight);
     uint16_t my_front = logGetUint(idFront);
     uint16_t my_back = logGetUint(idBack);
-    DEBUG_PRINT("\nmy up dist is: %d",my_up);
+    //DEBUG_PRINT("\nmy up dist is: %d",my_up);
     //sending packets:
     static P2PPacket p_reply;
     p_reply.port=0x00;

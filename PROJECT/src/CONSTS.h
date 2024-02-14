@@ -3,7 +3,7 @@
 
 #define NUM_OF_WAYPOINTS 5
 #define MAX_NUM_OF_WAY_POINTS 10
-#define HEIGHT 0.2f
+#define HEIGHT 0.3f
 
 typedef enum {
     idle,
