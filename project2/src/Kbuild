@@ -1,0 +1,1 @@
+obj-y += daisy_chain.o
