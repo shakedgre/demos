@@ -4561,6 +4561,7 @@ Discarded input sections
  .debug_macro   0x0000000000000000       0x18 vendor/built-in.o
  .debug_macro   0x0000000000000000      0x5ce vendor/built-in.o
  .debug_macro   0x0000000000000000       0x12 vendor/built-in.o
+<<<<<<< HEAD
  .group         0x0000000000000000        0xc /home/bitcraze/crazyflie-firmware/examples/demos/mimic/built-in.o
  .group         0x0000000000000000        0xc /home/bitcraze/crazyflie-firmware/examples/demos/mimic/built-in.o
  .group         0x0000000000000000        0xc /home/bitcraze/crazyflie-firmware/examples/demos/mimic/built-in.o
@@ -4677,6 +4678,124 @@ Discarded input sections
  .debug_macro   0x0000000000000000       0x94 /home/bitcraze/crazyflie-firmware/examples/demos/mimic/built-in.o
  .debug_macro   0x0000000000000000       0x1c /home/bitcraze/crazyflie-firmware/examples/demos/mimic/built-in.o
  .debug_macro   0x0000000000000000      0x121 /home/bitcraze/crazyflie-firmware/examples/demos/mimic/built-in.o
+=======
+ .group         0x0000000000000000        0xc /home/bitcraze/crazyflie-firmware/examples/demos/demos/project2/built-in.o
+ .group         0x0000000000000000        0xc /home/bitcraze/crazyflie-firmware/examples/demos/demos/project2/built-in.o
+ .group         0x0000000000000000        0xc /home/bitcraze/crazyflie-firmware/examples/demos/demos/project2/built-in.o
+ .group         0x0000000000000000        0xc /home/bitcraze/crazyflie-firmware/examples/demos/demos/project2/built-in.o
+ .group         0x0000000000000000        0xc /home/bitcraze/crazyflie-firmware/examples/demos/demos/project2/built-in.o
+ .group         0x0000000000000000        0xc /home/bitcraze/crazyflie-firmware/examples/demos/demos/project2/built-in.o
+ .group         0x0000000000000000        0xc /home/bitcraze/crazyflie-firmware/examples/demos/demos/project2/built-in.o
+ .group         0x0000000000000000        0xc /home/bitcraze/crazyflie-firmware/examples/demos/demos/project2/built-in.o
+ .group         0x0000000000000000        0xc /home/bitcraze/crazyflie-firmware/examples/demos/demos/project2/built-in.o
+ .group         0x0000000000000000        0xc /home/bitcraze/crazyflie-firmware/examples/demos/demos/project2/built-in.o
+ .group         0x0000000000000000        0xc /home/bitcraze/crazyflie-firmware/examples/demos/demos/project2/built-in.o
+ .group         0x0000000000000000        0xc /home/bitcraze/crazyflie-firmware/examples/demos/demos/project2/built-in.o
+ .group         0x0000000000000000        0xc /home/bitcraze/crazyflie-firmware/examples/demos/demos/project2/built-in.o
+ .group         0x0000000000000000        0xc /home/bitcraze/crazyflie-firmware/examples/demos/demos/project2/built-in.o
+ .group         0x0000000000000000        0xc /home/bitcraze/crazyflie-firmware/examples/demos/demos/project2/built-in.o
+ .group         0x0000000000000000        0xc /home/bitcraze/crazyflie-firmware/examples/demos/demos/project2/built-in.o
+ .group         0x0000000000000000        0xc /home/bitcraze/crazyflie-firmware/examples/demos/demos/project2/built-in.o
+ .group         0x0000000000000000        0xc /home/bitcraze/crazyflie-firmware/examples/demos/demos/project2/built-in.o
+ .group         0x0000000000000000        0xc /home/bitcraze/crazyflie-firmware/examples/demos/demos/project2/built-in.o
+ .group         0x0000000000000000        0xc /home/bitcraze/crazyflie-firmware/examples/demos/demos/project2/built-in.o
+ .group         0x0000000000000000        0xc /home/bitcraze/crazyflie-firmware/examples/demos/demos/project2/built-in.o
+ .group         0x0000000000000000        0xc /home/bitcraze/crazyflie-firmware/examples/demos/demos/project2/built-in.o
+ .group         0x0000000000000000        0xc /home/bitcraze/crazyflie-firmware/examples/demos/demos/project2/built-in.o
+ .group         0x0000000000000000        0xc /home/bitcraze/crazyflie-firmware/examples/demos/demos/project2/built-in.o
+ .group         0x0000000000000000        0xc /home/bitcraze/crazyflie-firmware/examples/demos/demos/project2/built-in.o
+ .group         0x0000000000000000        0xc /home/bitcraze/crazyflie-firmware/examples/demos/demos/project2/built-in.o
+ .group         0x0000000000000000        0xc /home/bitcraze/crazyflie-firmware/examples/demos/demos/project2/built-in.o
+ .group         0x0000000000000000        0xc /home/bitcraze/crazyflie-firmware/examples/demos/demos/project2/built-in.o
+ .group         0x0000000000000000        0xc /home/bitcraze/crazyflie-firmware/examples/demos/demos/project2/built-in.o
+ .group         0x0000000000000000        0xc /home/bitcraze/crazyflie-firmware/examples/demos/demos/project2/built-in.o
+ .group         0x0000000000000000        0xc /home/bitcraze/crazyflie-firmware/examples/demos/demos/project2/built-in.o
+ .group         0x0000000000000000        0xc /home/bitcraze/crazyflie-firmware/examples/demos/demos/project2/built-in.o
+ .group         0x0000000000000000        0xc /home/bitcraze/crazyflie-firmware/examples/demos/demos/project2/built-in.o
+ .group         0x0000000000000000        0xc /home/bitcraze/crazyflie-firmware/examples/demos/demos/project2/built-in.o
+ .group         0x0000000000000000        0xc /home/bitcraze/crazyflie-firmware/examples/demos/demos/project2/built-in.o
+ .group         0x0000000000000000        0xc /home/bitcraze/crazyflie-firmware/examples/demos/demos/project2/built-in.o
+ .group         0x0000000000000000        0xc /home/bitcraze/crazyflie-firmware/examples/demos/demos/project2/built-in.o
+ .group         0x0000000000000000        0xc /home/bitcraze/crazyflie-firmware/examples/demos/demos/project2/built-in.o
+ .group         0x0000000000000000        0xc /home/bitcraze/crazyflie-firmware/examples/demos/demos/project2/built-in.o
+ .group         0x0000000000000000        0xc /home/bitcraze/crazyflie-firmware/examples/demos/demos/project2/built-in.o
+ .group         0x0000000000000000        0xc /home/bitcraze/crazyflie-firmware/examples/demos/demos/project2/built-in.o
+ .group         0x0000000000000000        0xc /home/bitcraze/crazyflie-firmware/examples/demos/demos/project2/built-in.o
+ .group         0x0000000000000000        0xc /home/bitcraze/crazyflie-firmware/examples/demos/demos/project2/built-in.o
+ .group         0x0000000000000000        0xc /home/bitcraze/crazyflie-firmware/examples/demos/demos/project2/built-in.o
+ .group         0x0000000000000000        0xc /home/bitcraze/crazyflie-firmware/examples/demos/demos/project2/built-in.o
+ .group         0x0000000000000000        0xc /home/bitcraze/crazyflie-firmware/examples/demos/demos/project2/built-in.o
+ .group         0x0000000000000000        0xc /home/bitcraze/crazyflie-firmware/examples/demos/demos/project2/built-in.o
+ .group         0x0000000000000000        0xc /home/bitcraze/crazyflie-firmware/examples/demos/demos/project2/built-in.o
+ .group         0x0000000000000000        0xc /home/bitcraze/crazyflie-firmware/examples/demos/demos/project2/built-in.o
+ .group         0x0000000000000000        0xc /home/bitcraze/crazyflie-firmware/examples/demos/demos/project2/built-in.o
+ .group         0x0000000000000000        0xc /home/bitcraze/crazyflie-firmware/examples/demos/demos/project2/built-in.o
+ .group         0x0000000000000000        0xc /home/bitcraze/crazyflie-firmware/examples/demos/demos/project2/built-in.o
+ .group         0x0000000000000000        0xc /home/bitcraze/crazyflie-firmware/examples/demos/demos/project2/built-in.o
+ .group         0x0000000000000000        0xc /home/bitcraze/crazyflie-firmware/examples/demos/demos/project2/built-in.o
+ .group         0x0000000000000000        0xc /home/bitcraze/crazyflie-firmware/examples/demos/demos/project2/built-in.o
+ .group         0x0000000000000000        0xc /home/bitcraze/crazyflie-firmware/examples/demos/demos/project2/built-in.o
+ .text          0x0000000000000000        0x0 /home/bitcraze/crazyflie-firmware/examples/demos/demos/project2/built-in.o
+ .data          0x0000000000000000        0x0 /home/bitcraze/crazyflie-firmware/examples/demos/demos/project2/built-in.o
+ .bss           0x0000000000000000        0x0 /home/bitcraze/crazyflie-firmware/examples/demos/demos/project2/built-in.o
+ .noinit        0x0000000000000000        0x3 /home/bitcraze/crazyflie-firmware/examples/demos/demos/project2/built-in.o
+ .debug_macro   0x0000000000000000      0xb2c /home/bitcraze/crazyflie-firmware/examples/demos/demos/project2/built-in.o
+ .debug_macro   0x0000000000000000       0x22 /home/bitcraze/crazyflie-firmware/examples/demos/demos/project2/built-in.o
+ .debug_macro   0x0000000000000000       0x52 /home/bitcraze/crazyflie-firmware/examples/demos/demos/project2/built-in.o
+ .debug_macro   0x0000000000000000       0x18 /home/bitcraze/crazyflie-firmware/examples/demos/demos/project2/built-in.o
+ .debug_macro   0x0000000000000000       0x94 /home/bitcraze/crazyflie-firmware/examples/demos/demos/project2/built-in.o
+ .debug_macro   0x0000000000000000       0x35 /home/bitcraze/crazyflie-firmware/examples/demos/demos/project2/built-in.o
+ .debug_macro   0x0000000000000000       0x34 /home/bitcraze/crazyflie-firmware/examples/demos/demos/project2/built-in.o
+ .debug_macro   0x0000000000000000      0x174 /home/bitcraze/crazyflie-firmware/examples/demos/demos/project2/built-in.o
+ .debug_macro   0x0000000000000000       0x16 /home/bitcraze/crazyflie-firmware/examples/demos/demos/project2/built-in.o
+ .debug_macro   0x0000000000000000       0x43 /home/bitcraze/crazyflie-firmware/examples/demos/demos/project2/built-in.o
+ .debug_macro   0x0000000000000000       0x57 /home/bitcraze/crazyflie-firmware/examples/demos/demos/project2/built-in.o
+ .debug_macro   0x0000000000000000       0x34 /home/bitcraze/crazyflie-firmware/examples/demos/demos/project2/built-in.o
+ .debug_macro   0x0000000000000000       0x10 /home/bitcraze/crazyflie-firmware/examples/demos/demos/project2/built-in.o
+ .debug_macro   0x0000000000000000       0x52 /home/bitcraze/crazyflie-firmware/examples/demos/demos/project2/built-in.o
+ .debug_macro   0x0000000000000000      0x182 /home/bitcraze/crazyflie-firmware/examples/demos/demos/project2/built-in.o
+ .debug_macro   0x0000000000000000      0x339 /home/bitcraze/crazyflie-firmware/examples/demos/demos/project2/built-in.o
+ .debug_macro   0x0000000000000000       0x10 /home/bitcraze/crazyflie-firmware/examples/demos/demos/project2/built-in.o
+ .debug_macro   0x0000000000000000       0x35 /home/bitcraze/crazyflie-firmware/examples/demos/demos/project2/built-in.o
+ .debug_macro   0x0000000000000000      0x34e /home/bitcraze/crazyflie-firmware/examples/demos/demos/project2/built-in.o
+ .debug_macro   0x0000000000000000       0x22 /home/bitcraze/crazyflie-firmware/examples/demos/demos/project2/built-in.o
+ .debug_macro   0x0000000000000000       0x1c /home/bitcraze/crazyflie-firmware/examples/demos/demos/project2/built-in.o
+ .debug_macro   0x0000000000000000       0x10 /home/bitcraze/crazyflie-firmware/examples/demos/demos/project2/built-in.o
+ .debug_macro   0x0000000000000000       0x10 /home/bitcraze/crazyflie-firmware/examples/demos/demos/project2/built-in.o
+ .debug_macro   0x0000000000000000       0x6a /home/bitcraze/crazyflie-firmware/examples/demos/demos/project2/built-in.o
+ .debug_macro   0x0000000000000000       0x1c /home/bitcraze/crazyflie-firmware/examples/demos/demos/project2/built-in.o
+ .debug_macro   0x0000000000000000       0x52 /home/bitcraze/crazyflie-firmware/examples/demos/demos/project2/built-in.o
+ .debug_macro   0x0000000000000000       0x22 /home/bitcraze/crazyflie-firmware/examples/demos/demos/project2/built-in.o
+ .debug_macro   0x0000000000000000       0x10 /home/bitcraze/crazyflie-firmware/examples/demos/demos/project2/built-in.o
+ .debug_macro   0x0000000000000000       0x40 /home/bitcraze/crazyflie-firmware/examples/demos/demos/project2/built-in.o
+ .debug_macro   0x0000000000000000       0xd5 /home/bitcraze/crazyflie-firmware/examples/demos/demos/project2/built-in.o
+ .debug_macro   0x0000000000000000       0x1c /home/bitcraze/crazyflie-firmware/examples/demos/demos/project2/built-in.o
+ .debug_macro   0x0000000000000000       0x3d /home/bitcraze/crazyflie-firmware/examples/demos/demos/project2/built-in.o
+ .debug_macro   0x0000000000000000       0x16 /home/bitcraze/crazyflie-firmware/examples/demos/demos/project2/built-in.o
+ .debug_macro   0x0000000000000000      0x16f /home/bitcraze/crazyflie-firmware/examples/demos/demos/project2/built-in.o
+ .debug_macro   0x0000000000000000       0xca /home/bitcraze/crazyflie-firmware/examples/demos/demos/project2/built-in.o
+ .debug_macro   0x0000000000000000       0x16 /home/bitcraze/crazyflie-firmware/examples/demos/demos/project2/built-in.o
+ .debug_macro   0x0000000000000000       0x52 /home/bitcraze/crazyflie-firmware/examples/demos/demos/project2/built-in.o
+ .debug_macro   0x0000000000000000      0x3ca /home/bitcraze/crazyflie-firmware/examples/demos/demos/project2/built-in.o
+ .debug_macro   0x0000000000000000       0x5e /home/bitcraze/crazyflie-firmware/examples/demos/demos/project2/built-in.o
+ .debug_macro   0x0000000000000000       0x34 /home/bitcraze/crazyflie-firmware/examples/demos/demos/project2/built-in.o
+ .debug_macro   0x0000000000000000       0x22 /home/bitcraze/crazyflie-firmware/examples/demos/demos/project2/built-in.o
+ .debug_macro   0x0000000000000000      0x148 /home/bitcraze/crazyflie-firmware/examples/demos/demos/project2/built-in.o
+ .debug_macro   0x0000000000000000      0x15a /home/bitcraze/crazyflie-firmware/examples/demos/demos/project2/built-in.o
+ .debug_macro   0x0000000000000000       0xea /home/bitcraze/crazyflie-firmware/examples/demos/demos/project2/built-in.o
+ .debug_macro   0x0000000000000000       0x1c /home/bitcraze/crazyflie-firmware/examples/demos/demos/project2/built-in.o
+ .debug_macro   0x0000000000000000       0x26 /home/bitcraze/crazyflie-firmware/examples/demos/demos/project2/built-in.o
+ .debug_macro   0x0000000000000000      0x4b0 /home/bitcraze/crazyflie-firmware/examples/demos/demos/project2/built-in.o
+ .debug_macro   0x0000000000000000       0xb5 /home/bitcraze/crazyflie-firmware/examples/demos/demos/project2/built-in.o
+ .debug_macro   0x0000000000000000      0x119 /home/bitcraze/crazyflie-firmware/examples/demos/demos/project2/built-in.o
+ .debug_macro   0x0000000000000000       0xe2 /home/bitcraze/crazyflie-firmware/examples/demos/demos/project2/built-in.o
+ .debug_macro   0x0000000000000000       0x4c /home/bitcraze/crazyflie-firmware/examples/demos/demos/project2/built-in.o
+ .debug_macro   0x0000000000000000       0xfa /home/bitcraze/crazyflie-firmware/examples/demos/demos/project2/built-in.o
+ .debug_macro   0x0000000000000000       0x2e /home/bitcraze/crazyflie-firmware/examples/demos/demos/project2/built-in.o
+ .debug_macro   0x0000000000000000       0x94 /home/bitcraze/crazyflie-firmware/examples/demos/demos/project2/built-in.o
+ .debug_macro   0x0000000000000000       0x1c /home/bitcraze/crazyflie-firmware/examples/demos/demos/project2/built-in.o
+ .debug_macro   0x0000000000000000      0x121 /home/bitcraze/crazyflie-firmware/examples/demos/demos/project2/built-in.o
+>>>>>>> 5d1a0e7afc737775b6423432f852c62c5dde081e
  .data          0x0000000000000000        0x0 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-s_fmax.o)
  .bss           0x0000000000000000        0x0 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-s_fmax.o)
  .text          0x0000000000000000       0x58 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-s_fmin.o)
@@ -5189,7 +5308,11 @@ Linker script and memory map
 LOAD src/built-in.o
 LOAD vendor/built-in.o
 LOAD app_api/built-in.o
+<<<<<<< HEAD
 LOAD /home/bitcraze/crazyflie-firmware/examples/demos/mimic/built-in.o
+=======
+LOAD /home/bitcraze/crazyflie-firmware/examples/demos/demos/project2/built-in.o
+>>>>>>> 5d1a0e7afc737775b6423432f852c62c5dde081e
 LOAD /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a
                 0x0000000000000400                __Stack_Size = 0x400
                 [!provide]                        PROVIDE (_Stack_Size = __Stack_Size)
@@ -5354,7 +5477,11 @@ LOAD /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/
  *(.flashtext)
                 0x0000000008004188                . = ALIGN (0x4)
 
+<<<<<<< HEAD
 .text           0x00000000080041c0    0x3f51c
+=======
+.text           0x00000000080041c0    0x3f54c
+>>>>>>> 5d1a0e7afc737775b6423432f852c62c5dde081e
                 0x00000000080041c0                . = ALIGN (0x4)
                 0x00000000080041c0                _stext = .
  *(.text)
@@ -10413,9 +10540,15 @@ LOAD /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/
                 0x0000000008036b26                dwSpiWrite32
  *fill*         0x0000000008036b3a        0x2 
  .text.p2pcallbackHandler
+<<<<<<< HEAD
                 0x0000000008036b3c       0x60 /home/bitcraze/crazyflie-firmware/examples/demos/mimic/built-in.o
                 0x0000000008036b3c                p2pcallbackHandler
  .text.appMain  0x0000000008036b9c      0x360 /home/bitcraze/crazyflie-firmware/examples/demos/mimic/built-in.o
+=======
+                0x0000000008036b3c       0x60 /home/bitcraze/crazyflie-firmware/examples/demos/demos/project2/built-in.o
+                0x0000000008036b3c                p2pcallbackHandler
+ .text.appMain  0x0000000008036b9c      0x360 /home/bitcraze/crazyflie-firmware/examples/demos/demos/project2/built-in.o
+>>>>>>> 5d1a0e7afc737775b6423432f852c62c5dde081e
                 0x0000000008036b9c                appMain
  *(.rodata)
  .rodata        0x0000000008036efc      0x158 src/built-in.o
@@ -11239,6 +11372,7 @@ LOAD /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/
                 0x000000000803f98e        0x3 vendor/built-in.o
                 0x000000000803f98e                MODE_SHORTDATA_FAST_ACCURACY
  .rodata.p2pcallbackHandler.str1.1
+<<<<<<< HEAD
                 0x000000000803f991       0x2b /home/bitcraze/crazyflie-firmware/examples/demos/mimic/built-in.o
  .rodata.appMain.str1.1
                 0x000000000803f9bc       0x4e /home/bitcraze/crazyflie-firmware/examples/demos/mimic/built-in.o
@@ -11509,6 +11643,281 @@ LOAD /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/
 
 .rel.dyn        0x00000000080436e4        0x0
  .rel.iplt      0x00000000080436e4        0x0 src/built-in.o
+=======
+                0x000000000803f991       0x2b /home/bitcraze/crazyflie-firmware/examples/demos/demos/project2/built-in.o
+ .rodata.appMain.str1.1
+                0x000000000803f9bc       0x4e /home/bitcraze/crazyflie-firmware/examples/demos/demos/project2/built-in.o
+                                         0x8b (size before relaxing)
+ .rodata.str1.1
+                0x000000000803fa0a        0xe /home/bitcraze/crazyflie-firmware/examples/demos/demos/project2/built-in.o
+                                         0x17 (size before relaxing)
+ .rodata.str1.4
+                0x000000000803fa18        0x1 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-wf_acos.o)
+ .rodata.str1.4
+                0x000000000803fa19        0x1 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-wf_asin.o)
+ .rodata.str1.4
+                0x000000000803fa19        0x1 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-wf_log10.o)
+ .rodata.str1.4
+                0x000000000803fa19        0x1 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-ef_pow.o)
+ *(.glue_7)
+ .glue_7        0x000000000803fa19        0x0 linker stubs
+ *(.glue_7t)
+ .glue_7t       0x000000000803fa19        0x0 linker stubs
+ *(.init)
+ *(.fini)
+ *(.eh_frame)
+                0x000000000803fa1c                . = ALIGN (0x4)
+ *fill*         0x000000000803fa19        0x3 
+                0x000000000803fa1c                _param_start = .
+ *(.param)
+ *(.param.*)
+ .param.activeMarker
+                0x000000000803fa1c       0xa0 src/built-in.o
+ .param.deck    0x000000000803fabc      0x2f8 src/built-in.o
+ .param.motion  0x000000000803fdb4       0x64 src/built-in.o
+ .param.ring    0x000000000803fe18       0xf0 src/built-in.o
+ .param.system  0x000000000803ff08      0x140 src/built-in.o
+ .param.loco    0x0000000008040048       0x3c src/built-in.o
+ .param.tdoa2   0x0000000008040084       0x3c src/built-in.o
+ .param.tdoa3   0x00000000080400c0       0x3c src/built-in.o
+ .param.multiranger
+                0x00000000080400fc       0x3c src/built-in.o
+ .param.usd     0x0000000008040138       0x50 src/built-in.o
+ .param.led     0x0000000008040188       0x3c src/built-in.o
+ .param.motorPowerSet
+                0x00000000080401c4       0x8c src/built-in.o
+ .param.pm      0x0000000008040250       0x50 src/built-in.o
+ .param.imu_sensors
+                0x00000000080402a0       0xc8 src/built-in.o
+ .param.imu_tests
+                0x0000000008040368       0xa0 src/built-in.o
+ .param.syslink
+                0x0000000008040408       0x3c src/built-in.o
+ .param.usec    0x0000000008040444       0x3c src/built-in.o
+ .param.colAv   0x0000000008040480      0x168 src/built-in.o
+ .param.commander
+                0x00000000080405e8       0x3c src/built-in.o
+ .param.cppm    0x0000000008040624       0x8c src/built-in.o
+ .param.hlCommander
+                0x00000000080406b0       0x50 src/built-in.o
+ .param.flightmode
+                0x0000000008040700       0xb4 src/built-in.o
+ .param.locSrv  0x00000000080407b4       0x78 src/built-in.o
+ .param.crtpsrv
+                0x000000000804082c       0x3c src/built-in.o
+ .param.health  0x0000000008040868       0x78 src/built-in.o
+ .param.kalman  0x00000000080408e0      0x1a4 src/built-in.o
+ .param.memTst  0x0000000008040a84       0x3c src/built-in.o
+ .param.powerDist
+                0x0000000008040ac0       0x3c src/built-in.o
+ .param.quadSysId
+                0x0000000008040afc       0x78 src/built-in.o
+ .param.sensfusion6
+                0x0000000008040b74       0x64 src/built-in.o
+ .param.sound   0x0000000008040bd8       0x64 src/built-in.o
+ .param.stabilizer
+                0x0000000008040c3c       0x64 src/built-in.o
+ .param.cpu     0x0000000008040ca0       0x78 src/built-in.o
+ .param.tdoaEngine
+                0x0000000008040d18       0x64 src/built-in.o
+ .param.lighthouse
+                0x0000000008040d7c      0x140 src/built-in.o
+ .param.pid_attitude
+                0x0000000008040ebc      0x154 src/built-in.o
+ .param.pid_rate
+                0x0000000008041010      0x168 src/built-in.o
+ .param.ctrlINDI
+                0x0000000008041178      0x190 src/built-in.o
+ .param.ctrlMel
+                0x0000000008041308      0x1a4 src/built-in.o
+ .param.ctrlAtt
+                0x00000000080414ac       0xb4 src/built-in.o
+ .param.posCtrlIndi
+                0x0000000008041560       0xb4 src/built-in.o
+ .param.posCtlPid
+                0x0000000008041614      0x1a4 src/built-in.o
+ .param.velCtlPid
+                0x00000000080417b8      0x118 src/built-in.o
+ .param.posEstAlt
+                0x00000000080418d0       0x8c src/built-in.o
+ .param.firmware
+                0x000000000804195c       0x64 src/built-in.o
+                0x00000000080419c0                _param_stop = .
+                0x00000000080419c0                . = ALIGN (0x4)
+                0x00000000080419c0                _log_start = .
+ *(.log)
+ *(.log.*)
+ .log.activeMarker
+                0x00000000080419c0       0x30 src/built-in.o
+ .log.motion    0x00000000080419f0       0x90 src/built-in.o
+ .log.ring      0x0000000008041a80       0x24 src/built-in.o
+ .log.loco      0x0000000008041aa4       0x3c src/built-in.o
+ .log.ranging   0x0000000008041ae0       0xfc src/built-in.o
+ .log.tdoa2     0x0000000008041bdc      0x138 src/built-in.o
+ .log.twr       0x0000000008041d14       0xa8 src/built-in.o
+ .log.oa        0x0000000008041dbc       0x54 src/built-in.o
+ .log.usd       0x0000000008041e10       0x3c src/built-in.o
+ .log.motor     0x0000000008041e4c       0x90 src/built-in.o
+ .log.pm        0x0000000008041edc       0x78 src/built-in.o
+ .log.radio     0x0000000008041f54       0x30 src/built-in.o
+ .log.gyro      0x0000000008041f84       0x9c src/built-in.o
+ .log.colAv     0x0000000008042020       0x24 src/built-in.o
+ .log.ext_pos   0x0000000008042044       0x3c src/built-in.o
+ .log.locSrv    0x0000000008042080       0x6c src/built-in.o
+ .log.locSrvZ   0x00000000080420ec       0x24 src/built-in.o
+ .log.crtp      0x0000000008042110       0x30 src/built-in.o
+ .log.extrx     0x0000000008042140       0x84 src/built-in.o
+ .log.extrx_raw
+                0x00000000080421c4       0x78 src/built-in.o
+ .log.health    0x000000000804223c       0xa8 src/built-in.o
+ .log.memTst    0x00000000080422e4       0x24 src/built-in.o
+ .log.range     0x0000000008042308       0x60 src/built-in.o
+ .log.sensfusion6
+                0x0000000008042368       0x90 src/built-in.o
+ .log.acc       0x00000000080423f8       0x3c src/built-in.o
+ .log.baro      0x0000000008042434       0x3c src/built-in.o
+ .log.controller
+                0x0000000008042470       0xf0 src/built-in.o
+ .log.ctrltarget
+                0x0000000008042560       0xa8 src/built-in.o
+ .log.ctrltargetZ
+                0x0000000008042608       0x84 src/built-in.o
+ .log.mag       0x000000000804268c       0x3c src/built-in.o
+ .log.stabilizer
+                0x00000000080426c8       0x60 src/built-in.o
+ .log.stateEstimate
+                0x0000000008042728       0xd8 src/built-in.o
+ .log.stateEstimateZ
+                0x0000000008042800       0xb4 src/built-in.o
+ .log.sys       0x00000000080428b4       0x6c src/built-in.o
+ .log.tdoaEngine
+                0x0000000008042920       0x90 src/built-in.o
+ .log.kalman_pred
+                0x00000000080429b0       0x48 src/built-in.o
+ .log.lighthouse
+                0x00000000080429f8      0x2a0 src/built-in.o
+ .log.pid_attitude
+                0x0000000008042c98       0xa8 src/built-in.o
+ .log.pid_rate  0x0000000008042d40       0xa8 src/built-in.o
+ .log.ctrlINDI  0x0000000008042de8      0x168 src/built-in.o
+ .log.ctrlMel   0x0000000008042f50       0xc0 src/built-in.o
+ .log.posCtrlIndi
+                0x0000000008043010      0x1e0 src/built-in.o
+ .log.posCtl    0x00000000080431f0      0x1b0 src/built-in.o
+ .log.kalman    0x00000000080433a0      0x144 src/built-in.o
+ .log.outlierf  0x00000000080434e4       0x24 src/built-in.o
+ .log.estimator
+                0x0000000008043508       0x30 src/built-in.o
+ .log.posEstAlt
+                0x0000000008043538       0x3c src/built-in.o
+ .log.DTR_P2P   0x0000000008043574       0x30 src/built-in.o
+ .log.other_cf  0x00000000080435a4       0x24 /home/bitcraze/crazyflie-firmware/examples/demos/demos/project2/built-in.o
+                0x00000000080435c8                _log_stop = .
+                0x00000000080435c8                . = ALIGN (0x4)
+                0x00000000080435c8                _deckDriver_start = .
+ *(.deckDriver)
+ *(.deckDriver.*)
+ .deckDriver.exptest_deck
+                0x00000000080435c8        0x4 src/built-in.o
+                0x00000000080435c8                driver_exptest_deck
+ .deckDriver.exptestRR_deck
+                0x00000000080435cc        0x4 src/built-in.o
+                0x00000000080435cc                driver_exptestRR_deck
+ .deckDriver.exptestbolt_deck
+                0x00000000080435d0        0x4 src/built-in.o
+                0x00000000080435d0                driver_exptestbolt_deck
+ .deckDriver.deck_info
+                0x00000000080435d4        0x4 src/built-in.o
+                0x00000000080435d4                driver_deck_info
+ .deckDriver.aideck_deck
+                0x00000000080435d8        0x4 src/built-in.o
+                0x00000000080435d8                driver_aideck_deck
+ .deckDriver.buzzer_deck
+                0x00000000080435dc        0x4 src/built-in.o
+                0x00000000080435dc                driver_buzzer_deck
+ .deckDriver.flowdeck1_deck
+                0x00000000080435e0        0x4 src/built-in.o
+                0x00000000080435e0                driver_flowdeck1_deck
+ .deckDriver.flowdeck2_deck
+                0x00000000080435e4        0x4 src/built-in.o
+                0x00000000080435e4                driver_flowdeck2_deck
+ .deckDriver.ledring12_deck
+                0x00000000080435e8        0x4 src/built-in.o
+                0x00000000080435e8                driver_ledring12_deck
+ .deckDriver.lighthouse_deck
+                0x00000000080435ec        0x4 src/built-in.o
+                0x00000000080435ec                driver_lighthouse_deck
+ .deckDriver.dwm1000_deck
+                0x00000000080435f0        0x4 src/built-in.o
+                0x00000000080435f0                driver_dwm1000_deck
+ .deckDriver.multiranger_deck
+                0x00000000080435f4        0x4 src/built-in.o
+                0x00000000080435f4                driver_multiranger_deck
+ .deckDriver.oa_deck
+                0x00000000080435f8        0x4 src/built-in.o
+                0x00000000080435f8                driver_oa_deck
+ .deckDriver.usd_deck
+                0x00000000080435fc        0x4 src/built-in.o
+                0x00000000080435fc                driver_usd_deck
+ .deckDriver.zranger_deck
+                0x0000000008043600        0x4 src/built-in.o
+                0x0000000008043600                driver_zranger_deck
+ .deckDriver.zranger2_deck
+                0x0000000008043604        0x4 src/built-in.o
+                0x0000000008043604                driver_zranger2_deck
+                0x0000000008043608                _deckDriver_stop = .
+                0x0000000008043608                . = ALIGN (0x4)
+                0x0000000008043608                _eventtrigger_start = .
+ *(.eventtrigger)
+ *(.eventtrigger.*)
+ .eventtrigger.activeMarkerModeChanged
+                0x0000000008043608       0x14 src/built-in.o
+ .eventtrigger.estAbsoluteHeight
+                0x000000000804361c       0x14 src/built-in.o
+ .eventtrigger.estAcceleration
+                0x0000000008043630       0x14 src/built-in.o
+ .eventtrigger.estBarometer
+                0x0000000008043644       0x14 src/built-in.o
+ .eventtrigger.estDistance
+                0x0000000008043658       0x14 src/built-in.o
+ .eventtrigger.estFlow
+                0x000000000804366c       0x14 src/built-in.o
+ .eventtrigger.estGyroscope
+                0x0000000008043680       0x14 src/built-in.o
+ .eventtrigger.estPose
+                0x0000000008043694       0x14 src/built-in.o
+ .eventtrigger.estPosition
+                0x00000000080436a8       0x14 src/built-in.o
+ .eventtrigger.estSweepAngle
+                0x00000000080436bc       0x14 src/built-in.o
+ .eventtrigger.estTDOA
+                0x00000000080436d0       0x14 src/built-in.o
+ .eventtrigger.estTOF
+                0x00000000080436e4       0x14 src/built-in.o
+ .eventtrigger.estYawError
+                0x00000000080436f8       0x14 src/built-in.o
+                0x000000000804370c                _eventtrigger_stop = .
+                0x000000000804370c                _etext = .
+
+.vfp11_veneer   0x000000000804370c        0x0
+ .vfp11_veneer  0x000000000804370c        0x0 linker stubs
+
+.v4_bx          0x000000000804370c        0x0
+ .v4_bx         0x000000000804370c        0x0 linker stubs
+
+.iplt           0x000000000804370c        0x0
+ .iplt          0x000000000804370c        0x0 src/built-in.o
+
+.libc           0x000000000804370c        0x8
+                0x000000000804370c                . = ALIGN (0x4)
+ *(.ARM.exidx*)
+ .ARM.exidx     0x000000000804370c        0x8 /usr/lib/gcc/arm-none-eabi/9.2.1/thumb/v7e-m+fp/hard/libgcc.a(_udivmoddi4.o)
+                0x0000000008043714                . = ALIGN (0x4)
+                0x0000000008043714                _elibc = .
+
+.rel.dyn        0x0000000008043714        0x0
+ .rel.iplt      0x0000000008043714        0x0 src/built-in.o
+>>>>>>> 5d1a0e7afc737775b6423432f852c62c5dde081e
 
 .flashpatch     0x0000000000000000        0x0
                 0x0000000000000000                . = ALIGN (0x4)
@@ -11520,7 +11929,11 @@ LOAD /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/
  *(.endflash)
                 0x0000000000000000                . = ALIGN (0x4)
 
+<<<<<<< HEAD
 .data           0x0000000020000000     0x1cdc load address 0x00000000080436e4
+=======
+.data           0x0000000020000000     0x1cdc load address 0x0000000008043714
+>>>>>>> 5d1a0e7afc737775b6423432f852c62c5dde081e
                 0x0000000020000000                . = ALIGN (0x4)
                 0x0000000020000000                _sdata = .
  *(.data)
@@ -12027,6 +12440,7 @@ LOAD /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/
  .data.uxCriticalNesting
                 0x0000000020001cc8        0x4 vendor/built-in.o
  .data.height_sp
+<<<<<<< HEAD
                 0x0000000020001ccc        0x4 /home/bitcraze/crazyflie-firmware/examples/demos/mimic/built-in.o
  .data.other_back
                 0x0000000020001cd0        0x2 /home/bitcraze/crazyflie-firmware/examples/demos/mimic/built-in.o
@@ -12042,17 +12456,43 @@ LOAD /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/
                 0x0000000020001cd6                other_right
  .data.other_up
                 0x0000000020001cd8        0x2 /home/bitcraze/crazyflie-firmware/examples/demos/mimic/built-in.o
+=======
+                0x0000000020001ccc        0x4 /home/bitcraze/crazyflie-firmware/examples/demos/demos/project2/built-in.o
+ .data.other_back
+                0x0000000020001cd0        0x2 /home/bitcraze/crazyflie-firmware/examples/demos/demos/project2/built-in.o
+                0x0000000020001cd0                other_back
+ .data.other_front
+                0x0000000020001cd2        0x2 /home/bitcraze/crazyflie-firmware/examples/demos/demos/project2/built-in.o
+                0x0000000020001cd2                other_front
+ .data.other_left
+                0x0000000020001cd4        0x2 /home/bitcraze/crazyflie-firmware/examples/demos/demos/project2/built-in.o
+                0x0000000020001cd4                other_left
+ .data.other_right
+                0x0000000020001cd6        0x2 /home/bitcraze/crazyflie-firmware/examples/demos/demos/project2/built-in.o
+                0x0000000020001cd6                other_right
+ .data.other_up
+                0x0000000020001cd8        0x2 /home/bitcraze/crazyflie-firmware/examples/demos/demos/project2/built-in.o
+>>>>>>> 5d1a0e7afc737775b6423432f852c62c5dde081e
                 0x0000000020001cd8                other_up
  *(.RAMtext)
                 0x0000000020001cdc                . = ALIGN (0x4)
  *fill*         0x0000000020001cda        0x2 
                 0x0000000020001cdc                _edata = .
+<<<<<<< HEAD
                 0x00000000080436e4                _sidata = LOADADDR (.data)
 
 .igot.plt       0x0000000020001cdc        0x0 load address 0x00000000080453c0
  .igot.plt      0x0000000020001cdc        0x0 src/built-in.o
 
 .bss            0x0000000020001ce0    0x1308c load address 0x00000000080453c0
+=======
+                0x0000000008043714                _sidata = LOADADDR (.data)
+
+.igot.plt       0x0000000020001cdc        0x0 load address 0x00000000080453f0
+ .igot.plt      0x0000000020001cdc        0x0 src/built-in.o
+
+.bss            0x0000000020001ce0    0x1308c load address 0x00000000080453f0
+>>>>>>> 5d1a0e7afc737775b6423432f852c62c5dde081e
                 0x0000000020001ce0                . = ALIGN (0x4)
                 0x0000000020001ce0                _sbss = .
  *(.bss)
@@ -13379,11 +13819,19 @@ LOAD /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/
  .bss.xTimerTaskHandle
                 0x0000000020012cec        0x4 vendor/built-in.o
  .bss.p_reply.7942
+<<<<<<< HEAD
                 0x0000000020012cf0       0x3f /home/bitcraze/crazyflie-firmware/examples/demos/mimic/built-in.o
  *fill*         0x0000000020012d2f        0x1 
  .bss.setpoint.7926
                 0x0000000020012d30       0x70 /home/bitcraze/crazyflie-firmware/examples/demos/mimic/built-in.o
  .bss.state     0x0000000020012da0        0x1 /home/bitcraze/crazyflie-firmware/examples/demos/mimic/built-in.o
+=======
+                0x0000000020012cf0       0x3f /home/bitcraze/crazyflie-firmware/examples/demos/demos/project2/built-in.o
+ *fill*         0x0000000020012d2f        0x1 
+ .bss.setpoint.7926
+                0x0000000020012d30       0x70 /home/bitcraze/crazyflie-firmware/examples/demos/demos/project2/built-in.o
+ .bss.state     0x0000000020012da0        0x1 /home/bitcraze/crazyflie-firmware/examples/demos/demos/project2/built-in.o
+>>>>>>> 5d1a0e7afc737775b6423432f852c62c5dde081e
  *(COMMON)
  *fill*         0x0000000020012da1        0x7 
  COMMON         0x0000000020012da8     0x1f74 src/built-in.o
@@ -13424,14 +13872,22 @@ LOAD /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/
                 0x000000001000f2a8                . = ALIGN (0x4)
                 0x000000001000f2a8                _eccmbss = .
 
+<<<<<<< HEAD
 .ccmdata        0x000000001000f2a8        0x0 load address 0x00000000080453c0
+=======
+.ccmdata        0x000000001000f2a8        0x0 load address 0x00000000080453f0
+>>>>>>> 5d1a0e7afc737775b6423432f852c62c5dde081e
                 0x000000001000f2a8                . = ALIGN (0x4)
                 0x000000001000f2a8                _sccmdata = .
  *(.ccmdata)
  *(.ccmdata*)
                 0x000000001000f2a8                . = ALIGN (0x4)
                 0x000000001000f2a8                _eccmdata = .
+<<<<<<< HEAD
                 0x00000000080453c0                _siccmdata = LOADADDR (.ccmdata)
+=======
+                0x00000000080453f0                _siccmdata = LOADADDR (.ccmdata)
+>>>>>>> 5d1a0e7afc737775b6423432f852c62c5dde081e
 
 .nzds           0x0000000020014d6c       0x28
                 0x0000000020014d6c                . = ALIGN (0x4)
@@ -13509,7 +13965,11 @@ LOAD /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/
  .comment       0x0000000000000000       0x59 src/built-in.o
                                        0x5622 (size before relaxing)
  .comment       0x0000000000000059     0x6324 vendor/built-in.o
+<<<<<<< HEAD
  .comment       0x0000000000000059       0x5a /home/bitcraze/crazyflie-firmware/examples/demos/mimic/built-in.o
+=======
+ .comment       0x0000000000000059       0x5a /home/bitcraze/crazyflie-firmware/examples/demos/demos/project2/built-in.o
+>>>>>>> 5d1a0e7afc737775b6423432f852c62c5dde081e
  .comment       0x0000000000000059       0x4e /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-s_fmax.o)
                                          0x4f (size before relaxing)
  .comment       0x00000000000000a7       0x4f /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-s_fpclassify.o)
@@ -13556,7 +14016,11 @@ LOAD /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/
  .ARM.attributes
                 0x0000000000000034       0x36 vendor/built-in.o
  .ARM.attributes
+<<<<<<< HEAD
                 0x000000000000006a       0x36 /home/bitcraze/crazyflie-firmware/examples/demos/mimic/built-in.o
+=======
+                0x000000000000006a       0x36 /home/bitcraze/crazyflie-firmware/examples/demos/demos/project2/built-in.o
+>>>>>>> 5d1a0e7afc737775b6423432f852c62c5dde081e
  .ARM.attributes
                 0x00000000000000a0       0x34 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-s_fmax.o)
  .ARM.attributes
@@ -13654,7 +14118,11 @@ LOAD /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/
  .debug_aranges
                 0x0000000000006fa0     0x2ce0 vendor/built-in.o
  .debug_aranges
+<<<<<<< HEAD
                 0x0000000000009c80       0x28 /home/bitcraze/crazyflie-firmware/examples/demos/mimic/built-in.o
+=======
+                0x0000000000009c80       0x28 /home/bitcraze/crazyflie-firmware/examples/demos/demos/project2/built-in.o
+>>>>>>> 5d1a0e7afc737775b6423432f852c62c5dde081e
  .debug_aranges
                 0x0000000000009ca8       0x20 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-s_fmax.o)
  .debug_aranges
@@ -13733,6 +14201,7 @@ LOAD /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/
 .debug_pubnames
  *(.debug_pubnames)
 
+<<<<<<< HEAD
 .debug_info     0x0000000000000000   0x24cef7
  *(.debug_info .gnu.linkonce.wi.*)
  .debug_info    0x0000000000000000   0x1460ba src/built-in.o
@@ -13861,12 +14330,146 @@ LOAD /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/
  .debug_line    0x0000000000107ea7      0x2d4 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-sf_rint.o)
  .debug_line    0x000000000010817b      0x2b9 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-sf_scalbn.o)
  .debug_line    0x0000000000108434      0x429 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-ef_log.o)
+=======
+.debug_info     0x0000000000000000   0x24cf59
+ *(.debug_info .gnu.linkonce.wi.*)
+ .debug_info    0x0000000000000000   0x1460ba src/built-in.o
+ .debug_info    0x00000000001460ba    0xecab8 vendor/built-in.o
+ .debug_info    0x0000000000232b72     0x1302 /home/bitcraze/crazyflie-firmware/examples/demos/demos/project2/built-in.o
+ .debug_info    0x0000000000233e74      0x9c5 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-s_fmax.o)
+ .debug_info    0x0000000000234839      0xa09 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-s_fpclassify.o)
+ .debug_info    0x0000000000235242      0xb11 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-sf_atan.o)
+ .debug_info    0x0000000000235d53      0xaac /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-sf_cos.o)
+ .debug_info    0x00000000002367ff      0xa00 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-sf_fabs.o)
+ .debug_info    0x00000000002371ff      0xa4a /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-sf_floor.o)
+ .debug_info    0x0000000000237c49      0x9b9 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-sf_fmax.o)
+ .debug_info    0x0000000000238602      0x9b9 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-sf_fmin.o)
+ .debug_info    0x0000000000238fbb      0x9d7 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-sf_fpclassify.o)
+ .debug_info    0x0000000000239992      0xab7 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-sf_sin.o)
+ .debug_info    0x000000000023a449      0xa7c /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-sf_tan.o)
+ .debug_info    0x000000000023aec5      0xa2c /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-wf_acos.o)
+ .debug_info    0x000000000023b8f1      0xa2c /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-wf_asin.o)
+ .debug_info    0x000000000023c31d      0x9dc /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-wf_atan2.o)
+ .debug_info    0x000000000023ccf9      0xa3b /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-wf_exp.o)
+ .debug_info    0x000000000023d734      0xa03 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-wf_fmod.o)
+ .debug_info    0x000000000023e137      0xa12 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-wf_log10.o)
+ .debug_info    0x000000000023eb49      0xac4 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-wf_pow.o)
+ .debug_info    0x000000000023f60d      0xc13 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-ef_acos.o)
+ .debug_info    0x0000000000240220      0xc0f /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-ef_asin.o)
+ .debug_info    0x0000000000240e2f      0xba1 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-ef_atan2.o)
+ .debug_info    0x00000000002419d0      0xbe8 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-ef_exp.o)
+ .debug_info    0x00000000002425b8      0xb0c /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-ef_fmod.o)
+ .debug_info    0x00000000002430c4      0xadc /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-ef_log10.o)
+ .debug_info    0x0000000000243ba0     0x1111 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-ef_pow.o)
+ .debug_info    0x0000000000244cb1      0xcbb /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-ef_rem_pio2.o)
+ .debug_info    0x000000000024596c      0x982 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-ef_sqrt.o)
+ .debug_info    0x00000000002462ee      0xaef /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-kf_cos.o)
+ .debug_info    0x0000000000246ddd      0xcb6 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-kf_rem_pio2.o)
+ .debug_info    0x0000000000247a93      0xab4 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-kf_sin.o)
+ .debug_info    0x0000000000248547      0xbe5 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-kf_tan.o)
+ .debug_info    0x000000000024912c      0x94b /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-s_lib_ver.o)
+ .debug_info    0x0000000000249a77      0x9e4 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-sf_finite.o)
+ .debug_info    0x000000000024a45b      0x97a /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-sf_nan.o)
+ .debug_info    0x000000000024add5      0xb0c /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-sf_rint.o)
+ .debug_info    0x000000000024b8e1      0xabe /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-sf_scalbn.o)
+ .debug_info    0x000000000024c39f      0xbba /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-ef_log.o)
+
+.debug_abbrev   0x0000000000000000    0x6357c
+ *(.debug_abbrev)
+ .debug_abbrev  0x0000000000000000    0x31d92 src/built-in.o
+ .debug_abbrev  0x0000000000031d92    0x2bb66 vendor/built-in.o
+ .debug_abbrev  0x000000000005d8f8      0x3a1 /home/bitcraze/crazyflie-firmware/examples/demos/demos/project2/built-in.o
+ .debug_abbrev  0x000000000005dc99      0x232 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-s_fmax.o)
+ .debug_abbrev  0x000000000005decb      0x232 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-s_fpclassify.o)
+ .debug_abbrev  0x000000000005e0fd      0x28c /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-sf_atan.o)
+ .debug_abbrev  0x000000000005e389      0x285 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-sf_cos.o)
+ .debug_abbrev  0x000000000005e60e      0x235 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-sf_fabs.o)
+ .debug_abbrev  0x000000000005e843      0x251 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-sf_floor.o)
+ .debug_abbrev  0x000000000005ea94      0x232 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-sf_fmax.o)
+ .debug_abbrev  0x000000000005ecc6      0x232 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-sf_fmin.o)
+ .debug_abbrev  0x000000000005eef8      0x227 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-sf_fpclassify.o)
+ .debug_abbrev  0x000000000005f11f      0x290 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-sf_sin.o)
+ .debug_abbrev  0x000000000005f3af      0x290 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-sf_tan.o)
+ .debug_abbrev  0x000000000005f63f      0x27f /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-wf_acos.o)
+ .debug_abbrev  0x000000000005f8be      0x27f /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-wf_asin.o)
+ .debug_abbrev  0x000000000005fb3d      0x240 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-wf_atan2.o)
+ .debug_abbrev  0x000000000005fd7d      0x26f /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-wf_exp.o)
+ .debug_abbrev  0x000000000005ffec      0x25e /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-wf_fmod.o)
+ .debug_abbrev  0x000000000006024a      0x27f /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-wf_log10.o)
+ .debug_abbrev  0x00000000000604c9      0x271 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-wf_pow.o)
+ .debug_abbrev  0x000000000006073a      0x292 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-ef_acos.o)
+ .debug_abbrev  0x00000000000609cc      0x2b9 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-ef_asin.o)
+ .debug_abbrev  0x0000000000060c85      0x2a7 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-ef_atan2.o)
+ .debug_abbrev  0x0000000000060f2c      0x29d /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-ef_exp.o)
+ .debug_abbrev  0x00000000000611c9      0x264 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-ef_fmod.o)
+ .debug_abbrev  0x000000000006142d      0x275 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-ef_log10.o)
+ .debug_abbrev  0x00000000000616a2      0x2ed /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-ef_pow.o)
+ .debug_abbrev  0x000000000006198f      0x2bd /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-ef_rem_pio2.o)
+ .debug_abbrev  0x0000000000061c4c      0x20d /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-ef_sqrt.o)
+ .debug_abbrev  0x0000000000061e59      0x246 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-kf_cos.o)
+ .debug_abbrev  0x000000000006209f      0x2c1 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-kf_rem_pio2.o)
+ .debug_abbrev  0x0000000000062360      0x25d /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-kf_sin.o)
+ .debug_abbrev  0x00000000000625bd      0x280 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-kf_tan.o)
+ .debug_abbrev  0x000000000006283d      0x1d4 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-s_lib_ver.o)
+ .debug_abbrev  0x0000000000062a11      0x227 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-sf_finite.o)
+ .debug_abbrev  0x0000000000062c38      0x207 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-sf_nan.o)
+ .debug_abbrev  0x0000000000062e3f      0x272 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-sf_rint.o)
+ .debug_abbrev  0x00000000000630b1      0x25e /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-sf_scalbn.o)
+ .debug_abbrev  0x000000000006330f      0x26d /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-ef_log.o)
+
+.debug_line     0x0000000000000000   0x108d22
+ *(.debug_line)
+ .debug_line    0x0000000000000000    0xac300 src/built-in.o
+ .debug_line    0x00000000000ac300    0x5586b vendor/built-in.o
+ .debug_line    0x0000000000101b6b      0xa02 /home/bitcraze/crazyflie-firmware/examples/demos/demos/project2/built-in.o
+ .debug_line    0x000000000010256d      0x170 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-s_fmax.o)
+ .debug_line    0x00000000001026dd      0x233 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-s_fpclassify.o)
+ .debug_line    0x0000000000102910      0x33a /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-sf_atan.o)
+ .debug_line    0x0000000000102c4a      0x262 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-sf_cos.o)
+ .debug_line    0x0000000000102eac      0x1e1 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-sf_fabs.o)
+ .debug_line    0x000000000010308d      0x2aa /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-sf_floor.o)
+ .debug_line    0x0000000000103337      0x171 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-sf_fmax.o)
+ .debug_line    0x00000000001034a8      0x171 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-sf_fmin.o)
+ .debug_line    0x0000000000103619      0x1df /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-sf_fpclassify.o)
+ .debug_line    0x00000000001037f8      0x262 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-sf_sin.o)
+ .debug_line    0x0000000000103a5a      0x23e /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-sf_tan.o)
+ .debug_line    0x0000000000103c98      0x1cb /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-wf_acos.o)
+ .debug_line    0x0000000000103e63      0x1cb /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-wf_asin.o)
+ .debug_line    0x000000000010402e      0x185 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-wf_atan2.o)
+ .debug_line    0x00000000001041b3      0x1e3 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-wf_exp.o)
+ .debug_line    0x0000000000104396      0x1c6 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-wf_fmod.o)
+ .debug_line    0x000000000010455c      0x1e3 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-wf_log10.o)
+ .debug_line    0x000000000010473f      0x2a7 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-wf_pow.o)
+ .debug_line    0x00000000001049e6      0x3a6 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-ef_acos.o)
+ .debug_line    0x0000000000104d8c      0x36d /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-ef_asin.o)
+ .debug_line    0x00000000001050f9      0x369 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-ef_atan2.o)
+ .debug_line    0x0000000000105462      0x3a0 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-ef_exp.o)
+ .debug_line    0x0000000000105802      0x3ad /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-ef_fmod.o)
+ .debug_line    0x0000000000105baf      0x2ec /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-ef_log10.o)
+ .debug_line    0x0000000000105e9b      0x85c /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-ef_pow.o)
+ .debug_line    0x00000000001066f7      0x53b /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-ef_rem_pio2.o)
+ .debug_line    0x0000000000106c32      0x147 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-ef_sqrt.o)
+ .debug_line    0x0000000000106d79      0x2a9 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-kf_cos.o)
+ .debug_line    0x0000000000107022      0x95f /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-kf_rem_pio2.o)
+ .debug_line    0x0000000000107981      0x24d /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-kf_sin.o)
+ .debug_line    0x0000000000107bce      0x392 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-kf_tan.o)
+ .debug_line    0x0000000000107f60      0x127 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-s_lib_ver.o)
+ .debug_line    0x0000000000108087      0x1a9 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-sf_finite.o)
+ .debug_line    0x0000000000108230      0x13c /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-sf_nan.o)
+ .debug_line    0x000000000010836c      0x2d4 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-sf_rint.o)
+ .debug_line    0x0000000000108640      0x2b9 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-sf_scalbn.o)
+ .debug_line    0x00000000001088f9      0x429 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-ef_log.o)
+>>>>>>> 5d1a0e7afc737775b6423432f852c62c5dde081e
 
 .debug_frame    0x0000000000000000    0x197cc
  *(.debug_frame)
  .debug_frame   0x0000000000000000    0x1373c src/built-in.o
  .debug_frame   0x000000000001373c     0x5768 vendor/built-in.o
+<<<<<<< HEAD
  .debug_frame   0x0000000000018ea4       0x74 /home/bitcraze/crazyflie-firmware/examples/demos/mimic/built-in.o
+=======
+ .debug_frame   0x0000000000018ea4       0x74 /home/bitcraze/crazyflie-firmware/examples/demos/demos/project2/built-in.o
+>>>>>>> 5d1a0e7afc737775b6423432f852c62c5dde081e
  .debug_frame   0x0000000000018f18       0x50 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-s_fmax.o)
  .debug_frame   0x0000000000018f68       0x40 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-s_fpclassify.o)
  .debug_frame   0x0000000000018fa8       0x2c /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-sf_atan.o)
@@ -13904,6 +14507,7 @@ LOAD /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/
  .debug_frame   0x0000000000019748       0x3c /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-sf_scalbn.o)
  .debug_frame   0x0000000000019784       0x48 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-ef_log.o)
 
+<<<<<<< HEAD
 .debug_str      0x0000000000000000    0xf28e7
  *(.debug_str)
  .debug_str     0x0000000000000000    0xe2a94 src/built-in.o
@@ -13985,13 +14589,100 @@ LOAD /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/
  .debug_str     0x00000000000f2864       0x3e /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-sf_scalbn.o)
                                         0x650 (size before relaxing)
  .debug_str     0x00000000000f28a2       0x45 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-ef_log.o)
+=======
+.debug_str      0x0000000000000000    0xf2969
+ *(.debug_str)
+ .debug_str     0x0000000000000000    0xe2a9d src/built-in.o
+                                    0x3ae3eaf (size before relaxing)
+ .debug_str     0x00000000000e2a9d     0xef4b vendor/built-in.o
+                                     0xa291af (size before relaxing)
+ .debug_str     0x00000000000f19e8      0x2ae /home/bitcraze/crazyflie-firmware/examples/demos/demos/project2/built-in.o
+                                      0x10107 (size before relaxing)
+ .debug_str     0x00000000000f1c96      0x13d /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-s_fmax.o)
+                                        0x601 (size before relaxing)
+ .debug_str     0x00000000000f1dd3       0x5c /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-s_fpclassify.o)
+                                        0x635 (size before relaxing)
+ .debug_str     0x00000000000f1e2f      0x153 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-sf_atan.o)
+                                        0x638 (size before relaxing)
+ .debug_str     0x00000000000f1f82       0x62 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-sf_cos.o)
+                                        0x64d (size before relaxing)
+ .debug_str     0x00000000000f1fe4       0x38 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-sf_fabs.o)
+                                        0x61a (size before relaxing)
+ .debug_str     0x00000000000f201c       0xa0 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-sf_floor.o)
+                                        0x63c (size before relaxing)
+ .debug_str     0x00000000000f20bc       0x43 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-sf_fmax.o)
+                                        0x603 (size before relaxing)
+ .debug_str     0x00000000000f20ff       0x35 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-sf_fmin.o)
+                                        0x603 (size before relaxing)
+ .debug_str     0x00000000000f2134       0x3b /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-sf_fpclassify.o)
+                                        0x634 (size before relaxing)
+ .debug_str     0x00000000000f216f       0x32 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-sf_sin.o)
+                                        0x64d (size before relaxing)
+ .debug_str     0x00000000000f21a1       0x40 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-sf_tan.o)
+                                        0x63f (size before relaxing)
+ .debug_str     0x00000000000f21e1       0x50 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-wf_acos.o)
+                                        0x61e (size before relaxing)
+ .debug_str     0x00000000000f2231       0x43 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-wf_asin.o)
+                                        0x61e (size before relaxing)
+ .debug_str     0x00000000000f2274       0x45 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-wf_atan2.o)
+                                        0x60e (size before relaxing)
+ .debug_str     0x00000000000f22b9       0x61 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-wf_exp.o)
+                                        0x630 (size before relaxing)
+ .debug_str     0x00000000000f231a       0x43 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-wf_fmod.o)
+                                        0x613 (size before relaxing)
+ .debug_str     0x00000000000f235d       0x45 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-wf_log10.o)
+                                        0x61b (size before relaxing)
+ .debug_str     0x00000000000f23a2       0x41 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-wf_pow.o)
+                                        0x61e (size before relaxing)
+ .debug_str     0x00000000000f23e3       0x53 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-ef_acos.o)
+                                        0x64e (size before relaxing)
+ .debug_str     0x00000000000f2436       0x3b /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-ef_asin.o)
+                                        0x661 (size before relaxing)
+ .debug_str     0x00000000000f2471       0x4d /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-ef_atan2.o)
+                                        0x65a (size before relaxing)
+ .debug_str     0x00000000000f24be       0x52 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-ef_exp.o)
+                                        0x651 (size before relaxing)
+ .debug_str     0x00000000000f2510       0x33 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-ef_fmod.o)
+                                        0x633 (size before relaxing)
+ .debug_str     0x00000000000f2543       0x64 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-ef_log10.o)
+                                        0x665 (size before relaxing)
+ .debug_str     0x00000000000f25a7       0x7d /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-ef_pow.o)
+                                        0x6a1 (size before relaxing)
+ .debug_str     0x00000000000f2624       0x99 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-ef_rem_pio2.o)
+                                        0x6ad (size before relaxing)
+ .debug_str     0x00000000000f26bd       0x3d /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-ef_sqrt.o)
+                                        0x606 (size before relaxing)
+ .debug_str     0x00000000000f26fa       0x32 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-kf_cos.o)
+                                        0x62b (size before relaxing)
+ .debug_str     0x00000000000f272c       0x65 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-kf_rem_pio2.o)
+                                        0x646 (size before relaxing)
+ .debug_str     0x00000000000f2791       0x32 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-kf_sin.o)
+                                        0x62b (size before relaxing)
+ .debug_str     0x00000000000f27c3       0x3e /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-kf_tan.o)
+                                        0x63d (size before relaxing)
+ .debug_str     0x00000000000f2801       0x37 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-s_lib_ver.o)
+                                        0x5f1 (size before relaxing)
+ .debug_str     0x00000000000f2838       0x37 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-sf_finite.o)
+                                        0x634 (size before relaxing)
+ .debug_str     0x00000000000f286f       0x34 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-sf_nan.o)
+                                        0x5fa (size before relaxing)
+ .debug_str     0x00000000000f28a3       0x43 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-sf_rint.o)
+                                        0x63b (size before relaxing)
+ .debug_str     0x00000000000f28e6       0x3e /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-sf_scalbn.o)
+                                        0x650 (size before relaxing)
+ .debug_str     0x00000000000f2924       0x45 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-ef_log.o)
+>>>>>>> 5d1a0e7afc737775b6423432f852c62c5dde081e
                                         0x64a (size before relaxing)
 
 .debug_loc      0x0000000000000000    0x4dead
  *(.debug_loc)
  .debug_loc     0x0000000000000000    0x30265 src/built-in.o
  .debug_loc     0x0000000000030265    0x17c4d vendor/built-in.o
+<<<<<<< HEAD
  .debug_loc     0x0000000000047eb2      0x214 /home/bitcraze/crazyflie-firmware/examples/demos/mimic/built-in.o
+=======
+ .debug_loc     0x0000000000047eb2      0x214 /home/bitcraze/crazyflie-firmware/examples/demos/demos/project2/built-in.o
+>>>>>>> 5d1a0e7afc737775b6423432f852c62c5dde081e
  .debug_loc     0x00000000000480c6       0xd4 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-s_fmax.o)
  .debug_loc     0x000000000004819a      0x21b /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-s_fpclassify.o)
  .debug_loc     0x00000000000483b5      0x211 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-sf_atan.o)
@@ -14051,7 +14742,11 @@ LOAD /usr/lib/gcc/arm-none-eabi/9.2.1/thumb/v7e-m+fp/hard/libgcc.a
 .debug_ranges   0x0000000000000000    0x12d18
  .debug_ranges  0x0000000000000000     0xef38 src/built-in.o
  .debug_ranges  0x000000000000ef38     0x3888 vendor/built-in.o
+<<<<<<< HEAD
  .debug_ranges  0x00000000000127c0       0x68 /home/bitcraze/crazyflie-firmware/examples/demos/mimic/built-in.o
+=======
+ .debug_ranges  0x00000000000127c0       0x68 /home/bitcraze/crazyflie-firmware/examples/demos/demos/project2/built-in.o
+>>>>>>> 5d1a0e7afc737775b6423432f852c62c5dde081e
  .debug_ranges  0x0000000000012828       0x20 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-sf_atan.o)
  .debug_ranges  0x0000000000012848       0x18 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-sf_cos.o)
  .debug_ranges  0x0000000000012860       0x10 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-sf_fabs.o)
@@ -14073,7 +14768,11 @@ LOAD /usr/lib/gcc/arm-none-eabi/9.2.1/thumb/v7e-m+fp/hard/libgcc.a
  .debug_ranges  0x0000000000012c88       0x48 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-sf_scalbn.o)
  .debug_ranges  0x0000000000012cd0       0x48 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-ef_log.o)
 
+<<<<<<< HEAD
 .debug_macro    0x0000000000000000    0x603d6
+=======
+.debug_macro    0x0000000000000000    0x603e9
+>>>>>>> 5d1a0e7afc737775b6423432f852c62c5dde081e
  .debug_macro   0x0000000000000000    0x282bc src/built-in.o
  .debug_macro   0x00000000000282bc      0xb2c src/built-in.o
  .debug_macro   0x0000000000028de8      0x34e src/built-in.o
@@ -14352,7 +15051,11 @@ LOAD /usr/lib/gcc/arm-none-eabi/9.2.1/thumb/v7e-m+fp/hard/libgcc.a
  .debug_macro   0x000000000005fef6       0xc7 vendor/built-in.o
  .debug_macro   0x000000000005ffbd       0xcd vendor/built-in.o
  .debug_macro   0x000000000006008a       0x10 vendor/built-in.o
+<<<<<<< HEAD
  .debug_macro   0x000000000006009a      0x33c /home/bitcraze/crazyflie-firmware/examples/demos/mimic/built-in.o
+=======
+ .debug_macro   0x000000000006009a      0x34f /home/bitcraze/crazyflie-firmware/examples/demos/demos/project2/built-in.o
+>>>>>>> 5d1a0e7afc737775b6423432f852c62c5dde081e
 
 Cross Reference Table
 
@@ -15494,7 +16197,11 @@ analogReadVoltage                                 src/built-in.o
 analogReference                                   src/built-in.o
 anglesMask                                        src/built-in.o
 appInit                                           src/built-in.o
+<<<<<<< HEAD
 appMain                                           /home/bitcraze/crazyflie-firmware/examples/demos/mimic/built-in.o
+=======
+appMain                                           /home/bitcraze/crazyflie-firmware/examples/demos/demos/project2/built-in.o
+>>>>>>> 5d1a0e7afc737775b6423432f852c62c5dde081e
                                                   src/built-in.o
 appchannelHasOverflowOccured                      src/built-in.o
 appchannelHasOverflowOccurred                     src/built-in.o
@@ -16102,12 +16809,20 @@ commanderGetSetpoint                              src/built-in.o
 commanderInit                                     src/built-in.o
 commanderRelaxPriority                            src/built-in.o
 commanderSetSetpoint                              src/built-in.o
+<<<<<<< HEAD
                                                   /home/bitcraze/crazyflie-firmware/examples/demos/mimic/built-in.o
+=======
+                                                  /home/bitcraze/crazyflie-firmware/examples/demos/demos/project2/built-in.o
+>>>>>>> 5d1a0e7afc737775b6423432f852c62c5dde081e
 commanderTest                                     src/built-in.o
 configblockGetCalibPitch                          src/built-in.o
 configblockGetCalibRoll                           src/built-in.o
 configblockGetRadioAddress                        src/built-in.o
+<<<<<<< HEAD
                                                   /home/bitcraze/crazyflie-firmware/examples/demos/mimic/built-in.o
+=======
+                                                  /home/bitcraze/crazyflie-firmware/examples/demos/demos/project2/built-in.o
+>>>>>>> 5d1a0e7afc737775b6423432f852c62c5dde081e
 configblockGetRadioChannel                        src/built-in.o
 configblockGetRadioSpeed                          src/built-in.o
 configblockInit                                   src/built-in.o
@@ -16115,7 +16830,11 @@ configblockTest                                   src/built-in.o
 consoleFlush                                      src/built-in.o
 consoleInit                                       src/built-in.o
 consolePutchar                                    src/built-in.o
+<<<<<<< HEAD
                                                   /home/bitcraze/crazyflie-firmware/examples/demos/mimic/built-in.o
+=======
+                                                  /home/bitcraze/crazyflie-firmware/examples/demos/demos/project2/built-in.o
+>>>>>>> 5d1a0e7afc737775b6423432f852c62c5dde081e
 consolePutcharFromISR                             src/built-in.o
 consolePuts                                       src/built-in.o
 consoleTest                                       src/built-in.o
@@ -16446,7 +17165,11 @@ effectsFct                                        src/built-in.o
 enableInterrupt                                   src/built-in.o
 enter_bootloader                                  src/built-in.o
 eprintf                                           src/built-in.o
+<<<<<<< HEAD
                                                   /home/bitcraze/crazyflie-firmware/examples/demos/mimic/built-in.o
+=======
+                                                  /home/bitcraze/crazyflie-firmware/examples/demos/demos/project2/built-in.o
+>>>>>>> 5d1a0e7afc737775b6423432f852c62c5dde081e
 esc4wayInit                                       src/built-in.o
 esc4wayProcess                                    src/built-in.o
 esc4wayRelease                                    src/built-in.o
@@ -16718,9 +17441,15 @@ logGetGroupAndName                                src/built-in.o
 logGetInt                                         src/built-in.o
 logGetType                                        src/built-in.o
 logGetUint                                        src/built-in.o
+<<<<<<< HEAD
                                                   /home/bitcraze/crazyflie-firmware/examples/demos/mimic/built-in.o
 logGetVarId                                       src/built-in.o
                                                   /home/bitcraze/crazyflie-firmware/examples/demos/mimic/built-in.o
+=======
+                                                  /home/bitcraze/crazyflie-firmware/examples/demos/demos/project2/built-in.o
+logGetVarId                                       src/built-in.o
+                                                  /home/bitcraze/crazyflie-firmware/examples/demos/demos/project2/built-in.o
+>>>>>>> 5d1a0e7afc737775b6423432f852c62c5dde081e
 logInit                                           src/built-in.o
 logRunBlock                                       src/built-in.o
 logTest                                           src/built-in.o
@@ -16767,7 +17496,11 @@ memcpy                                            /usr/lib/gcc/arm-none-eabi/9.2
 memoryRegisterHandler                             src/built-in.o
 memoryRegisterOwHandler                           src/built-in.o
 memset                                            /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc.a(lib_a-memset.o)
+<<<<<<< HEAD
                                                   /home/bitcraze/crazyflie-firmware/examples/demos/mimic/built-in.o
+=======
+                                                  /home/bitcraze/crazyflie-firmware/examples/demos/demos/project2/built-in.o
+>>>>>>> 5d1a0e7afc737775b6423432f852c62c5dde081e
                                                   vendor/built-in.o
                                                   src/built-in.o
 merge_rfft_f32                                    vendor/built-in.o
@@ -17327,11 +18060,19 @@ notifySetpointsStopDecoder                        src/built-in.o
 number_of_txd_bytes                               src/built-in.o
 nvicInit                                          src/built-in.o
 ootxDecoderProcessBit                             src/built-in.o
+<<<<<<< HEAD
 other_back                                        /home/bitcraze/crazyflie-firmware/examples/demos/mimic/built-in.o
 other_front                                       /home/bitcraze/crazyflie-firmware/examples/demos/mimic/built-in.o
 other_left                                        /home/bitcraze/crazyflie-firmware/examples/demos/mimic/built-in.o
 other_right                                       /home/bitcraze/crazyflie-firmware/examples/demos/mimic/built-in.o
 other_up                                          /home/bitcraze/crazyflie-firmware/examples/demos/mimic/built-in.o
+=======
+other_back                                        /home/bitcraze/crazyflie-firmware/examples/demos/demos/project2/built-in.o
+other_front                                       /home/bitcraze/crazyflie-firmware/examples/demos/demos/project2/built-in.o
+other_left                                        /home/bitcraze/crazyflie-firmware/examples/demos/demos/project2/built-in.o
+other_right                                       /home/bitcraze/crazyflie-firmware/examples/demos/demos/project2/built-in.o
+other_up                                          /home/bitcraze/crazyflie-firmware/examples/demos/demos/project2/built-in.o
+>>>>>>> 5d1a0e7afc737775b6423432f852c62c5dde081e
 outlierFilterLighthouseReset                      src/built-in.o
 outlierFilterLighthouseValidateSweep              src/built-in.o
 outlierFilterTdoaReset                            src/built-in.o
@@ -17346,8 +18087,13 @@ owSyslinkReceive                                  src/built-in.o
 owTest                                            src/built-in.o
 owWrite                                           src/built-in.o
 p2pRegisterCB                                     src/built-in.o
+<<<<<<< HEAD
                                                   /home/bitcraze/crazyflie-firmware/examples/demos/mimic/built-in.o
 p2pcallbackHandler                                /home/bitcraze/crazyflie-firmware/examples/demos/mimic/built-in.o
+=======
+                                                  /home/bitcraze/crazyflie-firmware/examples/demos/demos/project2/built-in.o
+p2pcallbackHandler                                /home/bitcraze/crazyflie-firmware/examples/demos/demos/project2/built-in.o
+>>>>>>> 5d1a0e7afc737775b6423432f852c62c5dde081e
 paramGetDefaultValue                              src/built-in.o
 paramGetExtendedType                              src/built-in.o
 paramGetFloat                                     src/built-in.o
@@ -17355,9 +18101,15 @@ paramGetGroupAndName                              src/built-in.o
 paramGetInt                                       src/built-in.o
 paramGetType                                      src/built-in.o
 paramGetUint                                      src/built-in.o
+<<<<<<< HEAD
                                                   /home/bitcraze/crazyflie-firmware/examples/demos/mimic/built-in.o
 paramGetVarId                                     src/built-in.o
                                                   /home/bitcraze/crazyflie-firmware/examples/demos/mimic/built-in.o
+=======
+                                                  /home/bitcraze/crazyflie-firmware/examples/demos/demos/project2/built-in.o
+paramGetVarId                                     src/built-in.o
+                                                  /home/bitcraze/crazyflie-firmware/examples/demos/demos/project2/built-in.o
+>>>>>>> 5d1a0e7afc737775b6423432f852c62c5dde081e
 paramGetVarIdFromComplete                         src/built-in.o
 paramInit                                         src/built-in.o
 paramLogicInit                                    src/built-in.o
@@ -17562,7 +18314,11 @@ qz                                                src/built-in.o
 radiolinkGetLink                                  src/built-in.o
 radiolinkInit                                     src/built-in.o
 radiolinkSendP2PPacketBroadcast                   src/built-in.o
+<<<<<<< HEAD
                                                   /home/bitcraze/crazyflie-firmware/examples/demos/mimic/built-in.o
+=======
+                                                  /home/bitcraze/crazyflie-firmware/examples/demos/demos/project2/built-in.o
+>>>>>>> 5d1a0e7afc737775b6423432f852c62c5dde081e
 radiolinkSetAddress                               src/built-in.o
 radiolinkSetChannel                               src/built-in.o
 radiolinkSetDatarate                              src/built-in.o
@@ -17986,7 +18742,11 @@ vQueueWaitForMessageRestricted                    vendor/built-in.o
 vStreamBufferDelete                               vendor/built-in.o
 vStreamBufferSetStreamBufferNumber                vendor/built-in.o
 vTaskDelay                                        vendor/built-in.o
+<<<<<<< HEAD
                                                   /home/bitcraze/crazyflie-firmware/examples/demos/mimic/built-in.o
+=======
+                                                  /home/bitcraze/crazyflie-firmware/examples/demos/demos/project2/built-in.o
+>>>>>>> 5d1a0e7afc737775b6423432f852c62c5dde081e
                                                   src/built-in.o
 vTaskDelayUntil                                   vendor/built-in.o
                                                   src/built-in.o

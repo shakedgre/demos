@@ -78,7 +78,11 @@ void p2pcallbackHandler(P2PPacket *p)
   memcpy(&other_front, &p->data[3], sizeof(uint16_t));
   memcpy(&other_back, &p->data[5], sizeof(uint16_t));
   memcpy(&other_left, &p->data[7], sizeof(uint16_t));
+<<<<<<< HEAD
   memcpy(&other_right, &p->data[9], sizeof(uint16_t));
+=======
+  memcpy(&other_right, &p->data[9], sizeof(uint16_t)); //11 bytes in total
+>>>>>>> 5d1a0e7afc737775b6423432f852c62c5dde081e
 
   /*other_up = p->data[1];
   other_front = p->data[3];
@@ -138,7 +142,11 @@ void appMain()
 
   p2pRegisterCB(p2pcallbackHandler);
 
+<<<<<<< HEAD
   vTaskDelay(M2T(3000));
+=======
+  vTaskDelay(M2T(1000));
+>>>>>>> 5d1a0e7afc737775b6423432f852c62c5dde081e
 
   logVarId_t idUp = logGetVarId("range", "up");
   logVarId_t idLeft = logGetVarId("range", "left");
@@ -157,7 +165,11 @@ void appMain()
   DEBUG_PRINT("Waiting for activation ...\n");
 
   while(1) {
+<<<<<<< HEAD
     vTaskDelay(M2T(50));
+=======
+    vTaskDelay(M2T(DELAY_MS));
+>>>>>>> 5d1a0e7afc737775b6423432f852c62c5dde081e
     //DEBUG_PRINT(".");
 
     uint8_t positioningInit = paramGetUint(idPositioningDeck);
@@ -263,3 +275,14 @@ void appMain()
     }
   }
 }
+<<<<<<< HEAD
+=======
+
+
+LOG_GROUP_START(other_cf)
+  LOG_ADD(LOG_UINT16, up, &other_up)
+LOG_GROUP_STOP(other_cf)
+
+
+
+>>>>>>> 5d1a0e7afc737775b6423432f852c62c5dde081e
