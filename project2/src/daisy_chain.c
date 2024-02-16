@@ -48,6 +48,11 @@
 
 #define DEBUG_MODULE "PUSH"
 
+#define BYTES_PER_SEC 1000
+#define BYTES_PER_PACKET 11
+#define DELAY_MS int(1000*BYTES_PER_PACKET/BYTES_PER_SEC)
+
+
 uint16_t other_left = (uint16_t)1000;
 uint16_t other_right = (uint16_t)1000;
 uint16_t other_front = (uint16_t)1000;
