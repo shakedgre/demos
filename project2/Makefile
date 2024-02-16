@@ -12,7 +12,11 @@
 # We want to execute the main Makefile for the firmware project,
 # it will handle the build for us.
 
+<<<<<<< HEAD
+CRAZYFLIE_BASE := ../../..
+=======
 CRAZYFLIE_BASE := ../../../..
+>>>>>>> 5d1a0e7afc737775b6423432f852c62c5dde081e
 
 #
 # We override the default OOT_CONFIG here, we could also name our config
