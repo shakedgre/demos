@@ -267,6 +267,10 @@ void appMain()
 
 LOG_GROUP_START(other_cf)
   LOG_ADD(LOG_UINT16, up, &other_up)
+  LOG_ADD(LOG_UINT16, front, &other_front)
+  LOG_ADD(LOG_UINT16, back, &other_back)
+  LOG_ADD(LOG_UINT16, left, &other_left)
+  LOG_ADD(LOG_UINT16, right, &other_right)
 LOG_GROUP_STOP(other_cf)
 
 
