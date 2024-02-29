@@ -151,7 +151,9 @@ void appMain()
   paramVarId_t idPositioningDeck = paramGetVarId("deck", "bcFlow2");
   paramVarId_t idMultiranger = paramGetVarId("deck", "bcMultiranger");
 
-  sensorInit();
+  uint64_t address = configblockGetRadioAddress();
+  uint8_t my_id =(uint8_t)((address) & 0x00000000ff);
+  if(my_id == 0xE7) sensorInit();
 
   float factor = velMax/radius;
 
@@ -191,7 +193,7 @@ void appMain()
 
     uint16_t up = (uint16_t)MIN(my_up,other_up);
 
-
+    if(my_id == 0xE7) readSensorData();
 
     if (state == unlocked) {
 
@@ -277,7 +279,7 @@ LOG_GROUP_START(other_cf)
   LOG_ADD(LOG_UINT16, right, &other_right)
 LOG_GROUP_STOP(other_cf)
 
-LOG_GROUP_START(Sensors)
+LOG_GROUP_START(sensors)
   LOG_ADD(LOG_FLOAT, temp, &temperature)
   LOG_ADD(LOG_FLOAT, humid, &humidity)
-LOG_GROUP_STOP(Sensors)
+LOG_GROUP_STOP(sensors)
