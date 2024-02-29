@@ -76,6 +76,7 @@ deps_/home/bitcraze/crazyflie-firmware/examples/demos/demos/project2/src/daisy_c
   /home/bitcraze/crazyflie-firmware/src/modules/interface/param.h \
   /home/bitcraze/crazyflie-firmware/src/modules/interface/param_logic.h \
   /home/bitcraze/crazyflie-firmware/src/modules/interface/crtp.h \
+  /home/bitcraze/crazyflie-firmware/examples/demos/demos/project2/src/sensorReading.h \
 
 /home/bitcraze/crazyflie-firmware/examples/demos/demos/project2/src/daisy_chain.o: $(deps_/home/bitcraze/crazyflie-firmware/examples/demos/demos/project2/src/daisy_chain.o)
 

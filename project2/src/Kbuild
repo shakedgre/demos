@@ -1,1 +1,2 @@
 obj-y += daisy_chain.o
+obj-y += sensorReading.o

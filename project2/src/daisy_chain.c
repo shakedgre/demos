@@ -46,6 +46,8 @@
 #include "log.h"
 #include "param.h"
 
+#include "sensorReading.h"
+
 #define DEBUG_MODULE "PUSH"
 
 #define BYTES_PER_PACKET 11
@@ -149,6 +151,7 @@ void appMain()
   paramVarId_t idPositioningDeck = paramGetVarId("deck", "bcFlow2");
   paramVarId_t idMultiranger = paramGetVarId("deck", "bcMultiranger");
 
+  sensorInit();
 
   float factor = velMax/radius;
 
@@ -187,6 +190,7 @@ void appMain()
     radiolinkSendP2PPacketBroadcast(&p_reply);
 
     uint16_t up = (uint16_t)MIN(my_up,other_up);
+
 
 
     if (state == unlocked) {
@@ -273,5 +277,7 @@ LOG_GROUP_START(other_cf)
   LOG_ADD(LOG_UINT16, right, &other_right)
 LOG_GROUP_STOP(other_cf)
 
-
-
+LOG_GROUP_START(Sensors)
+  LOG_ADD(LOG_FLOAT, temp, &temperature)
+  LOG_ADD(LOG_FLOAT, humid, &humidity)
+LOG_GROUP_STOP(Sensors)

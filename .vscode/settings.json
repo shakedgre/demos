@@ -6,7 +6,10 @@
         "vector": "c",
         "string_view": "c",
         "sstream": "c",
-        "random": "c"
+        "random": "c",
+        "i2cdev.h": "c",
+        "sensorreading.h": "c",
+        "kbuild": "cpp"
     },
     "ros.distro": "galactic"
 }
