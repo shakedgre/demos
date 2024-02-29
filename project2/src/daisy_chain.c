@@ -51,7 +51,7 @@
 #define DEBUG_MODULE "PUSH"
 
 #define BYTES_PER_PACKET 11
-#define BYTES_PER_SECOND 1000
+#define BYTES_PER_SECOND 100
 #define DELAY_MS 1000*BYTES_PER_PACKET/BYTES_PER_SECOND
 
 
@@ -147,7 +147,7 @@ void appMain()
   logVarId_t idRight = logGetVarId("range", "right");
   logVarId_t idFront = logGetVarId("range", "front");
   logVarId_t idBack = logGetVarId("range", "back");
-  
+
   paramVarId_t idPositioningDeck = paramGetVarId("deck", "bcFlow2");
   paramVarId_t idMultiranger = paramGetVarId("deck", "bcMultiranger");
 
