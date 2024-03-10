@@ -28,7 +28,7 @@ void sensorInit(){
     DEBUG_PRINT("Initializing AHT20 2A...\n");
     i2cdevInit(I2C1_DEV);
     vTaskDelay(110);
-    i2cdevWriteByte(I2C1_DEV, (uint8_t)AHT20I2CAddrWrite, I2CDEV_NO_MEM_ADDR, (uint8_t)AHT20I2CAddrWrite);
+    //i2cdevWriteByte(I2C1_DEV, (uint8_t)AHT20I2CAddrWrite, I2CDEV_NO_MEM_ADDR, (uint8_t)AHT20I2CAddrWrite);
     i2cdevWriteByte(I2C1_DEV, (uint8_t)AHT20I2CAddrWrite, I2CDEV_NO_MEM_ADDR, (uint8_t)initCommand);
     //xTaskCreate(readSensorData, 'AHT20', (2 * configMINIMAL_STACK_SIZE), NULL, 3, NULL);
     
@@ -37,7 +37,7 @@ void sensorInit(){
 void readSensorData(){
     vTaskDelay(120);
     //uint64_t msg = (measCommand<<16)+0x3300;
-    i2cdevWriteByte(I2C1_DEV, (uint8_t)AHT20I2CAddrWrite, I2CDEV_NO_MEM_ADDR, ((uint8_t)AHT20I2CAddrWrite));
+    //i2cdevWriteByte(I2C1_DEV, (uint8_t)AHT20I2CAddrWrite, I2CDEV_NO_MEM_ADDR, ((uint8_t)AHT20I2CAddrWrite));
     i2cdevWriteByte(I2C1_DEV, (uint8_t)AHT20I2CAddrWrite, I2CDEV_NO_MEM_ADDR, ((uint8_t)measCommand));
     i2cdevWriteByte(I2C1_DEV, (uint8_t)AHT20I2CAddrWrite, I2CDEV_NO_MEM_ADDR, ((uint8_t)0x33));
     i2cdevWriteByte(I2C1_DEV, (uint8_t)AHT20I2CAddrWrite, I2CDEV_NO_MEM_ADDR, ((uint8_t)0x00));
@@ -45,10 +45,10 @@ void readSensorData(){
     vTaskDelay(80);
     uint64_t data = 0;
     uint8_t dataSection = 0;
-    int err = 0;
+    int err = 8;
     for(int i = 0; i < 8; i++){
         vTaskDelay(40);
-        err += i2cdevRead(I2C1_DEV, (uint8_t)AHT20I2CAddrRead, 8, &dataSection);
+        err -= i2cdevRead(I2C1_DEV, (uint8_t)AHT20I2CAddrRead, 8, &dataSection);
         data = (data<<8) + dataSection;
     }
     uint32_t temperatureBytes = (uint32_t)(data>>8)&0x00000000000FFFFF;
@@ -56,7 +56,7 @@ void readSensorData(){
 
     temperature = ((float)temperatureBytes / 1048576) * 200 - 50;
     humidity = ((float)humidityBytes / 1048576) * 100;
-    DEBUG_PRINT("temp: %f, bytes: %lx, data: %lx, err: %d\n",(double)temperature, temperatureBytes, (unsigned long)data, err);
+    DEBUG_PRINT("temp: %f, bytes: %lx, data: %llx, err: %d\n",(double)temperature, temperatureBytes, data, err);
 }
 
 
