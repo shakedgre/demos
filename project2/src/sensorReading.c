@@ -32,7 +32,7 @@ bool WRequestFrom8(uint8_t deviceAddr, uint16_t size,uint8_t* data) {
     return (status == true);
 }
 
-bool WRequestFrom64(uint8_t deviceAddr, uint16_t size,uint64_t* data) {
+/*bool WRequestFrom64(uint8_t deviceAddr, uint16_t size,uint64_t* data) {
     // Initialize I2C device
     bool status;
 
@@ -40,10 +40,10 @@ bool WRequestFrom64(uint8_t deviceAddr, uint16_t size,uint64_t* data) {
     status = i2cdevRead(I2C1_DEV, deviceAddr, size, data);
 
     return (status == true);
-}
+}*/
 
-bool begin(){
-    if(IsConnected() == false) return false;
+bool Sensorbegin(){
+    if(isConnected() == false) return false;
 
     vTaskDelay(40);
 
@@ -95,46 +95,64 @@ bool isBusy(){
 }
 
 bool initialize(){
-    i2cdevWriteByte(I2C1_DEV, (uint8_t)AHT20I2CAddr_def, I2CDEV_NO_MEM_ADDR, ((uint8_t)initCommand));
+    /*i2cdevWriteByte(I2C1_DEV, (uint8_t)AHT20I2CAddr_def, I2CDEV_NO_MEM_ADDR, ((uint8_t)initCommand));
     i2cdevWriteByte(I2C1_DEV, (uint8_t)AHT20I2CAddr_def, I2CDEV_NO_MEM_ADDR, ((uint8_t)0x08));
     i2cdevWriteByte(I2C1_DEV, (uint8_t)AHT20I2CAddr_def, I2CDEV_NO_MEM_ADDR, ((uint8_t)0x00));
     if (i2cdevWriteBit(I2C1_DEV,(uint8_t)AHT20I2CAddr_def,I2CDEV_NO_MEM_ADDR,1,true)) return true;
-    return false;
+    return false;*/
+    uint8_t txBuffer[3] = {initCommand, 0x08, 0x00};
+
+    // Perform a write operation to the device
+    bool success = i2cdevWrite(I2C1_DEV, AHT20I2CAddr_def, sizeof(txBuffer),txBuffer);
+    return success;
 }
 
 bool triggerMeasurement(){
-    i2cdevWriteByte(I2C1_DEV, (uint8_t)AHT20I2CAddr_def, I2CDEV_NO_MEM_ADDR, ((uint8_t)measCommand));
+    /*i2cdevWriteByte(I2C1_DEV, (uint8_t)AHT20I2CAddr_def, I2CDEV_NO_MEM_ADDR, ((uint8_t)measCommand));
     i2cdevWriteByte(I2C1_DEV, (uint8_t)AHT20I2CAddr_def, I2CDEV_NO_MEM_ADDR, ((uint8_t)0x33));
     i2cdevWriteByte(I2C1_DEV, (uint8_t)AHT20I2CAddr_def, I2CDEV_NO_MEM_ADDR, ((uint8_t)0x00));
     if (i2cdevWriteBit(I2C1_DEV,(uint8_t)AHT20I2CAddr_def,I2CDEV_NO_MEM_ADDR,1,true)) return true;
-    return false;
+    return false;*/
+    uint8_t txBuffer[3] = {measCommand, 0x33, 0x00};
+
+    // Perform a write operation to the device
+    bool success = i2cdevWrite(I2C1_DEV, AHT20I2CAddr_def, sizeof(txBuffer),txBuffer);
+    return success;
 }
 
 void readData(){
     temperature = 0;
     humidity = 0;
-    uint64_t data = 0;
-    if (WRequestFrom64(AHT20I2CAddr_def,(uint16_t)6,&data)){
-        uint32_t incoming = 0;
-        uint8_t dataParts[7];
-        for (int i = 6; i >= 0; i--){
-            dataParts[i] = (data & (0x00000000000000FF << 8*(6-i))) >> 8*(6-i);
-        }
-        incoming |= (uint32_t)dataParts[1] << (8*2);
-        incoming |= (uint32_t)dataParts[2] << (8*1);
-        uint8_t midByte = dataParts[3];
-        incoming |= (uint32_t)midByte;
-        humidity = incoming >> 4;
+    uint8_t data[7];
+    uint8_t dataParts[7];
 
-        temperature = (uint32_t)midByte << (8*2);
-        temperature |= (uint32_t)dataParts[4] << (8*1);
-        temperature |= (uint32_t)dataParts[5] << (8*0);
-
-        temperature = temperature & ~(0xFFF00000);
-
-        sensorQueriedHumidity = false;
-        sensorQueriedTemperature = false;
+    if(WRequestFrom8(AHT20I2CAddr_def,(uint16_t)7,data) == false){
+        DEBUG_PRINT("breaking early\n");
+        return;
     }
+    for (int i = 6; i >= 0; i--){
+        dataParts[6-i] = data[6-i];
+        DEBUG_PRINT("%x",dataParts[6-i]);
+    }
+    DEBUG_PRINT("\n");
+    
+    uint32_t incoming = 0;
+    
+    incoming |= (uint32_t)dataParts[1] << (8*2);
+    incoming |= (uint32_t)dataParts[2] << (8*1);
+    uint8_t midByte = dataParts[3];
+    incoming |= (uint32_t)midByte;
+    humidity = incoming >> 4;
+
+    temperature = (uint32_t)midByte << (8*2);
+    temperature |= (uint32_t)dataParts[4] << (8*1);
+    temperature |= (uint32_t)dataParts[5] << (8*0);
+
+    temperature = temperature & ~(0xFFF00000);
+
+    sensorQueriedHumidity = false;
+    sensorQueriedTemperature = false;
+    
 
 }
 

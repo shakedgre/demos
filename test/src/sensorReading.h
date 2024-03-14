@@ -26,7 +26,5 @@ bool Sensorbegin();
 float getTemperature();
 float getHumidity();
 
-void sensorInit();
-void readSensorData();
 
 #endif

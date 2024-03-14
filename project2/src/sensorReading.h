@@ -13,16 +13,18 @@
 uint32_t humidity;
 uint32_t temperature;
 
-bool sensorQueriedTemperature = true;
-bool sensorQueriedHumidity = true;
+bool sensorQueriedTemperature;
+bool sensorQueriedHumidity;
 
 bool isConnected();
 bool isCalibrated();
 bool initialize();
-void triggerMeasurement();
+bool triggerMeasurement();
 bool isBusy();
+bool Sensorbegin();
 
-
+float getTemperature();
+float getHumidity();
 
 void sensorInit();
 void readSensorData();

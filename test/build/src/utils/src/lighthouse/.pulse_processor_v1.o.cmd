@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 cmd_src/utils/src/lighthouse/pulse_processor_v1.o := arm-none-eabi-gcc -Wp,-MD,src/utils/src/lighthouse/.pulse_processor_v1.o.d    -I/home/bitcraze/crazyflie-firmware/src/utils/src/lighthouse -Isrc/utils/src/lighthouse -D__firmware__ -fno-exceptions -Wall -Wmissing-braces -fno-strict-aliasing -ffunction-sections -fdata-sections -Wdouble-promotion -std=gnu11 -DCRAZYFLIE_FW   -I/home/bitcraze/crazyflie-firmware/vendor/CMSIS/CMSIS/Core/Include   -I/home/bitcraze/crazyflie-firmware/vendor/CMSIS/CMSIS/DSP/Include   -I/home/bitcraze/crazyflie-firmware/vendor/libdw1000/inc   -I/home/bitcraze/crazyflie-firmware/vendor/FreeRTOS/include   -I/home/bitcraze/crazyflie-firmware/vendor/FreeRTOS/portable/GCC/ARM_CM4F   -I/home/bitcraze/crazyflie-firmware/src/config   -I/home/bitcraze/crazyflie-firmware/src/platform/interface   -I/home/bitcraze/crazyflie-firmware/src/deck/interface   -I/home/bitcraze/crazyflie-firmware/src/deck/drivers/interface   -I/home/bitcraze/crazyflie-firmware/src/drivers/interface   -I/home/bitcraze/crazyflie-firmware/src/drivers/bosch/interface   -I/home/bitcraze/crazyflie-firmware/src/drivers/esp32/interface   -I/home/bitcraze/crazyflie-firmware/src/hal/interface   -I/home/bitcraze/crazyflie-firmware/src/modules/interface   -I/home/bitcraze/crazyflie-firmware/src/modules/interface/kalman_core   -I/home/bitcraze/crazyflie-firmware/src/modules/interface/lighthouse   -I/home/bitcraze/crazyflie-firmware/src/modules/interface/outlierfilter   -I/home/bitcraze/crazyflie-firmware/src/modules/interface/cpx   -I/home/bitcraze/crazyflie-firmware/src/modules/interface/p2pDTR   -I/home/bitcraze/crazyflie-firmware/src/modules/interface/controller   -I/home/bitcraze/crazyflie-firmware/src/modules/interface/estimator   -I/home/bitcraze/crazyflie-firmware/src/utils/interface   -I/home/bitcraze/crazyflie-firmware/src/utils/interface/kve   -I/home/bitcraze/crazyflie-firmware/src/utils/interface/lighthouse   -I/home/bitcraze/crazyflie-firmware/src/utils/interface/tdoa   -I/home/bitcraze/crazyflie-firmware/src/lib/FatFS   -I/home/bitcraze/crazyflie-firmware/src/lib/CMSIS/STM32F4xx/Include   -I/home/bitcraze/crazyflie-firmware/src/lib/STM32_USB_Device_Library/Core/inc   -I/home/bitcraze/crazyflie-firmware/src/lib/STM32_USB_OTG_Driver/inc   -I/home/bitcraze/crazyflie-firmware/src/lib/STM32F4xx_StdPeriph_Driver/inc   -I/home/bitcraze/crazyflie-firmware/src/lib/vl53l1   -I/home/bitcraze/crazyflie-firmware/src/lib/vl53l1/core/inc   -I/home/bitcraze/crazyflie-firmware/examples/demos/demos/test/build/include/generated -fno-delete-null-pointer-checks --param=allow-store-data-races=0 -Wno-unused-but-set-variable -Wno-unused-const-variable -fomit-frame-pointer -fno-var-tracking-assignments -Wno-pointer-sign -fno-strict-overflow -fconserve-stack -Werror=implicit-int -Werror=date-time -DCC_HAVE_ASM_GOTO -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -g3 -fno-math-errno -DARM_MATH_CM4 -D__FPU_PRESENT=1 -mfp16-format=ieee -Wno-array-bounds -Wno-stringop-overread -Wno-stringop-overflow -DSTM32F4XX -DSTM32F40_41xxx -DHSE_VALUE=8000000 -DUSE_STDPERIPH_DRIVER -Os -Werror   -c -o src/utils/src/lighthouse/pulse_processor_v1.o /home/bitcraze/crazyflie-firmware/src/utils/src/lighthouse/pulse_processor_v1.c
 
 source_src/utils/src/lighthouse/pulse_processor_v1.o := /home/bitcraze/crazyflie-firmware/src/utils/src/lighthouse/pulse_processor_v1.c
@@ -6,14 +5,6 @@ source_src/utils/src/lighthouse/pulse_processor_v1.o := /home/bitcraze/crazyflie
 deps_src/utils/src/lighthouse/pulse_processor_v1.o := \
     $(wildcard include/config/deck/lighthouse/max/n/bs.h) \
   /home/bitcraze/crazyflie-firmware/src/utils/interface/lighthouse/pulse_processor_v1.h \
-=======
-cmd_src/utils/src/lighthouse/pulse_processor_v1.o := arm-none-eabi-gcc -Wp,-MD,src/utils/src/lighthouse/.pulse_processor_v1.o.d    -I/home/bitcraze/projects/crazyflie-firmware/src/utils/src -Isrc/utils/src -D__firmware__ -fno-exceptions -Wall -Wmissing-braces -fno-strict-aliasing -ffunction-sections -fdata-sections -Wdouble-promotion -std=gnu11 -DCRAZYFLIE_FW   -I/home/bitcraze/projects/crazyflie-firmware/vendor/CMSIS/CMSIS/Core/Include   -I/home/bitcraze/projects/crazyflie-firmware/vendor/CMSIS/CMSIS/DSP/Include   -I/home/bitcraze/projects/crazyflie-firmware/vendor/libdw1000/inc   -I/home/bitcraze/projects/crazyflie-firmware/vendor/FreeRTOS/include   -I/home/bitcraze/projects/crazyflie-firmware/vendor/FreeRTOS/portable/GCC/ARM_CM4F   -I/home/bitcraze/projects/crazyflie-firmware/src/config   -I/home/bitcraze/projects/crazyflie-firmware/src/platform/interface   -I/home/bitcraze/projects/crazyflie-firmware/src/deck/interface   -I/home/bitcraze/projects/crazyflie-firmware/src/deck/drivers/interface   -I/home/bitcraze/projects/crazyflie-firmware/src/drivers/interface   -I/home/bitcraze/projects/crazyflie-firmware/src/drivers/bosch/interface   -I/home/bitcraze/projects/crazyflie-firmware/src/drivers/esp32/interface   -I/home/bitcraze/projects/crazyflie-firmware/src/hal/interface   -I/home/bitcraze/projects/crazyflie-firmware/src/modules/interface   -I/home/bitcraze/projects/crazyflie-firmware/src/modules/interface/kalman_core   -I/home/bitcraze/projects/crazyflie-firmware/src/modules/interface/lighthouse   -I/home/bitcraze/projects/crazyflie-firmware/src/utils/interface   -I/home/bitcraze/projects/crazyflie-firmware/src/utils/interface/kve   -I/home/bitcraze/projects/crazyflie-firmware/src/utils/interface/lighthouse   -I/home/bitcraze/projects/crazyflie-firmware/src/utils/interface/tdoa   -I/home/bitcraze/projects/crazyflie-firmware/src/lib/FatFS   -I/home/bitcraze/projects/crazyflie-firmware/src/lib/CMSIS/STM32F4xx/Include   -I/home/bitcraze/projects/crazyflie-firmware/src/lib/STM32_USB_Device_Library/Core/inc   -I/home/bitcraze/projects/crazyflie-firmware/src/lib/STM32_USB_OTG_Driver/inc   -I/home/bitcraze/projects/crazyflie-firmware/src/lib/STM32F4xx_StdPeriph_Driver/inc   -I/home/bitcraze/projects/crazyflie-firmware/src/lib/vl53l1   -I/home/bitcraze/projects/crazyflie-firmware/src/lib/vl53l1/core/inc   -I/home/bitcraze/projects/crazyflie-firmware/examples/demos/demos/test/build/include/generated -fno-delete-null-pointer-checks --param=allow-store-data-races=0 -Wno-unused-but-set-variable -Wno-unused-const-variable -fomit-frame-pointer -fno-var-tracking-assignments -Wno-pointer-sign -fno-strict-overflow -fconserve-stack -Werror=implicit-int -Werror=date-time -DCC_HAVE_ASM_GOTO -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -g3 -fno-math-errno -DARM_MATH_CM4 -D__FPU_PRESENT=1 -mfp16-format=ieee -Wno-array-bounds -Wno-stringop-overread -Wno-stringop-overflow -DSTM32F4XX -DSTM32F40_41xxx -DHSE_VALUE=8000000 -DUSE_STDPERIPH_DRIVER -Os -Werror   -c -o src/utils/src/lighthouse/pulse_processor_v1.o /home/bitcraze/projects/crazyflie-firmware/src/utils/src/lighthouse/pulse_processor_v1.c
-
-source_src/utils/src/lighthouse/pulse_processor_v1.o := /home/bitcraze/projects/crazyflie-firmware/src/utils/src/lighthouse/pulse_processor_v1.c
-
-deps_src/utils/src/lighthouse/pulse_processor_v1.o := \
-  /home/bitcraze/projects/crazyflie-firmware/src/utils/interface/lighthouse/pulse_processor_v1.h \
->>>>>>> 32db97c373700d5e22354129ad0a8dfa381f7baf
   /usr/lib/gcc/arm-none-eabi/9.2.1/include/stdbool.h \
   /usr/lib/gcc/arm-none-eabi/9.2.1/include/stdint.h \
   /usr/include/newlib/stdlib.h \
@@ -34,7 +25,6 @@ deps_src/utils/src/lighthouse/pulse_processor_v1.o := \
   /usr/include/newlib/sys/cdefs.h \
   /usr/include/newlib/machine/stdlib.h \
   /usr/include/newlib/alloca.h \
-<<<<<<< HEAD
   /home/bitcraze/crazyflie-firmware/src/utils/interface/lighthouse/pulse_processor.h \
   /home/bitcraze/crazyflie-firmware/src/utils/interface/lighthouse/ootx_decoder.h \
   /home/bitcraze/crazyflie-firmware/src/utils/interface/lighthouse/lighthouse_calibration.h \
@@ -44,16 +34,6 @@ deps_src/utils/src/lighthouse/pulse_processor_v1.o := \
   /home/bitcraze/crazyflie-firmware/vendor/CMSIS/CMSIS/DSP/Include/arm_math.h \
   /home/bitcraze/crazyflie-firmware/vendor/CMSIS/CMSIS/Core/Include/cmsis_compiler.h \
   /home/bitcraze/crazyflie-firmware/vendor/CMSIS/CMSIS/Core/Include/cmsis_gcc.h \
-=======
-  /home/bitcraze/projects/crazyflie-firmware/src/utils/interface/lighthouse/pulse_processor.h \
-  /home/bitcraze/projects/crazyflie-firmware/src/utils/interface/lighthouse/ootx_decoder.h \
-  /home/bitcraze/projects/crazyflie-firmware/src/utils/interface/lighthouse/lighthouse_calibration.h \
-  /home/bitcraze/projects/crazyflie-firmware/src/utils/interface/lighthouse/lighthouse_types.h \
-  /home/bitcraze/projects/crazyflie-firmware/src/utils/interface/lighthouse/lighthouse_geometry.h \
-  /home/bitcraze/projects/crazyflie-firmware/vendor/CMSIS/CMSIS/DSP/Include/arm_math.h \
-  /home/bitcraze/projects/crazyflie-firmware/vendor/CMSIS/CMSIS/Core/Include/cmsis_compiler.h \
-  /home/bitcraze/projects/crazyflie-firmware/vendor/CMSIS/CMSIS/Core/Include/cmsis_gcc.h \
->>>>>>> 32db97c373700d5e22354129ad0a8dfa381f7baf
   /usr/include/newlib/string.h \
   /usr/include/newlib/sys/_locale.h \
   /usr/include/newlib/strings.h \
@@ -61,30 +41,11 @@ deps_src/utils/src/lighthouse/pulse_processor_v1.o := \
   /usr/include/newlib/math.h \
   /usr/lib/gcc/arm-none-eabi/9.2.1/include/float.h \
   /usr/lib/gcc/arm-none-eabi/9.2.1/include-fixed/limits.h \
-<<<<<<< HEAD
   /home/bitcraze/crazyflie-firmware/src/utils/interface/cfassert.h \
   /home/bitcraze/crazyflie-firmware/src/modules/interface/stabilizer_types.h \
   /home/bitcraze/crazyflie-firmware/src/hal/interface/imu_types.h \
   /home/bitcraze/crazyflie-firmware/src/utils/interface/test_support.h \
   /home/bitcraze/crazyflie-firmware/src/utils/interface/physicalConstants.h \
-=======
-  /home/bitcraze/projects/crazyflie-firmware/src/modules/interface/stabilizer_types.h \
-  /home/bitcraze/projects/crazyflie-firmware/src/hal/interface/imu_types.h \
-  /home/bitcraze/projects/crazyflie-firmware/src/utils/interface/test_support.h \
-  /home/bitcraze/projects/crazyflie-firmware/src/utils/interface/physicalConstants.h \
-  /home/bitcraze/projects/crazyflie-firmware/src/utils/interface/debug.h \
-    $(wildcard include/config/debug/print/on/uart1.h) \
-  /home/bitcraze/projects/crazyflie-firmware/src/config/config.h \
-    $(wildcard include/config/h/.h) \
-    $(wildcard include/config/block/address.h) \
-  /home/bitcraze/projects/crazyflie-firmware/src/drivers/interface/nrf24l01.h \
-  /home/bitcraze/projects/crazyflie-firmware/src/drivers/interface/nRF24L01reg.h \
-  /home/bitcraze/projects/crazyflie-firmware/src/config/trace.h \
-  /home/bitcraze/projects/crazyflie-firmware/src/hal/interface/usec_time.h \
-  /home/bitcraze/projects/crazyflie-firmware/src/modules/interface/console.h \
-  /home/bitcraze/projects/crazyflie-firmware/src/utils/interface/eprintf.h \
-  /usr/lib/gcc/arm-none-eabi/9.2.1/include/stdarg.h \
->>>>>>> 32db97c373700d5e22354129ad0a8dfa381f7baf
 
 src/utils/src/lighthouse/pulse_processor_v1.o: $(deps_src/utils/src/lighthouse/pulse_processor_v1.o)
 
