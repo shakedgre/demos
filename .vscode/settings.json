@@ -9,7 +9,9 @@
         "random": "c",
         "i2cdev.h": "c",
         "sensorreading.h": "c",
-        "kbuild": "cpp"
+        "kbuild": "cpp",
+        "stdint.h": "c",
+        "freertos.h": "c"
     },
     "ros.distro": "galactic"
 }

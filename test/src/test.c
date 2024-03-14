@@ -7,15 +7,21 @@
 #include "FreeRTOS.h"
 #include "task.h"
 
-#define DEBUG_MODULE "HELLOWORLD"
 #include "debug.h"
-
+#include "sensorReading.h"
 
 void appMain() {
-  DEBUG_PRINT("Waiting for activation ...\n");
+  DEBUG_PRINT("testing the sensor code...\n");
 
-  while(1) {
-    vTaskDelay(M2T(2000));
-    DEBUG_PRINT("Hello World!\n");
+  if(Sensorbegin() == false) DEBUG_PRINT("AHT NOT DETECTED!\n");
+
+  while (true){
+    vTaskDelay(1000);
+    float temp = getTemperature();
+    vTaskDelay(100);
+    float hum = getHumidity();
+    DEBUG_PRINT("temp: %f, humidity: %f\n", (double)temp, (double)hum);
   }
+  
+
 }

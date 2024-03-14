@@ -50,6 +50,7 @@ deps_/home/bitcraze/crazyflie-firmware/examples/demos/demos/test/src/test.o := \
   /home/bitcraze/crazyflie-firmware/src/modules/interface/console.h \
   /home/bitcraze/crazyflie-firmware/src/utils/interface/eprintf.h \
   /usr/lib/gcc/arm-none-eabi/9.2.1/include/stdarg.h \
+  /home/bitcraze/crazyflie-firmware/examples/demos/demos/test/src/sensorReading.h \
 
 /home/bitcraze/crazyflie-firmware/examples/demos/demos/test/src/test.o: $(deps_/home/bitcraze/crazyflie-firmware/examples/demos/demos/test/src/test.o)
 
