@@ -1,8 +1,12 @@
 #include <string.h>
 #include <stdint.h>
 #include <stdbool.h>
+#include <stdio.h>
+#include <stdlib.h>
 
 #include "app.h"
+
+#include "commander.h"
 
 #include "FreeRTOS.h"
 #include "task.h"
