@@ -39,6 +39,7 @@
 
 static setpoint_t setpoint;
 
+float velX, velY;
 
 
 static void setHoverSetpoint(setpoint_t *setpoint, float vx, float vy, float z, float yawrate, bool relative)
@@ -69,16 +70,26 @@ void calculateVelToGoal(float currentX, float currentY, float goalX, float goalY
   (*velY) = maxSpeed*dy/dist;
 }
 
-void MoveFollowerDrone(State state, float currPos[2], float endPos[3], int16_t frontDist){
+void updateVel(float velYother, float velXother, int NULL_MSG){
+    velX = velX_param;
+    velY = velY_param;
+    if (velXother != NULL_MSG){
+        velX = velXother;
+    }
+    if (velYother != NULL_MSG){
+        velY = velYother;
+    }
+}
+
+void MoveFollowerDrone(State state, float currPos[2], int16_t frontDist){
     if(state == unlockedFollower){
         setHoverSetpoint(&setpoint, 0.0f, 0.0f, HEIGHT, 0.0f,false);
         commanderSetSetpoint(&setpoint, 3);
         //DEBUG_PRINT("Hovering!, now moving to first waypoint\n");
     }
     else if(state == following){
-        if (frontDist > MAX_DIST_FROM_WALL){
-            float velX, velY;
-            calculateVelToGoal(currPos[0], currPos[1], endPos[0], endPos[1], &velX, &velY);
+        if (frontDist > 5){
+            //calculateVelToGoal(currPos[0], currPos[1], endPos[0], endPos[1], &velX, &velY);
 
             setHoverSetpoint(&setpoint, velX, velY, HEIGHT, 0.0f, false);
             commanderSetSetpoint(&setpoint, 3);
@@ -106,14 +117,13 @@ void MoveFollowerDrone(State state, float currPos[2], float endPos[3], int16_t f
     }
 }
 
-void MoveMainDrone(State state, float currPos[2], float checkPoints[MAX_NUM_OF_WAY_POINTS][3], uint8_t currentWayPoint){
+void MoveMainDrone(State state, float currPos[2]){
     if(state == unlocked){
         setHoverSetpoint(&setpoint, 0.0f, 0.0f, HEIGHT, 0.0f,false);
         commanderSetSetpoint(&setpoint, 3);
         //DEBUG_PRINT("Hovering!, now moving to first waypoint\n");
     }else if(state == moving){
-        float velX, velY;
-        calculateVelToGoal(currPos[0], currPos[1], checkPoints[currentWayPoint][0], checkPoints[currentWayPoint][1], &velX, &velY);
+        //calculateVelToGoal(currPos[0], currPos[1], checkPoints[currentWayPoint][0], checkPoints[currentWayPoint][1], &velX, &velY);
         setHoverSetpoint(&setpoint, velX, velY, HEIGHT, 0.0f, false);
         commanderSetSetpoint(&setpoint, 3);
 
@@ -130,3 +140,5 @@ void MoveMainDrone(State state, float currPos[2], float checkPoints[MAX_NUM_OF_W
         vTaskDelay(M2T(1000));
     }
 }
+
+

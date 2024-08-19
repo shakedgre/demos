@@ -60,6 +60,7 @@
 #define DIST(a,b) (sqrtf(POW2(a)+POW2(b)))
 #define SIGN(a) ((a<0)?(-1):(1))
 
+#define NULL_COMP_MSG 500
 
 #define ACCEPTABLE_RADIUS_FROM_WAYPOINT 0.1f
 #define MAX_TIME_BEFORE_OUT_OF_RANGE 1.5f
@@ -69,17 +70,30 @@
 static P2PPacket p_reply;
 static const uint16_t unlockLow = 100;
 static const uint16_t unlockHigh = 300;
-uint8_t currentWayPoint = 0;
-uint8_t currentRecievedWayPoint = 0;
-
+//uint8_t currentWayPoint = 0;
+//uint8_t currentRecievedWayPoint = 0;
+uint16_t STOP = false;
 bool HighRSSI = false;
 bool startedTheProg = false;
-bool lostContact = false;
+uint16_t lostContact = false;
 float timeOfLastMsg = 0.0f;
 
-float initialPos[3] = {0,0,0};
+//float initialPos[3] = {0,0,0};
 
-void setInitPos(float* initialPos){
+uint16_t my_up = 2000;
+
+float XEstimate = 0;
+float YEstimate = 0;
+
+float XOEstimate = 0;
+float YOEstimate = 0;
+
+float velYOther = NULL_COMP_MSG;
+float velXOther = NULL_COMP_MSG;
+
+uint16_t took_off = false;
+
+/*void setInitPos(float* initialPos){
     uint64_t address = configblockGetRadioAddress();
     uint8_t my_id =(uint8_t)((address) & 0x00000000ff);
     if(my_id == 0xE7){
@@ -99,11 +113,11 @@ float wayPoints[MAX_NUM_OF_WAY_POINTS][3] = {{0,0,HEIGHT},
                                         {2.0f,-1.0f,HEIGHT},
                                         {2.0f,-2.0f,HEIGHT},
                                         {2.0f,-2.5f,HEIGHT}};//global [x,y,z]
-
-float recievedWayPoints[3];
+*/
+//float recievedWayPoints[3];
 
 typedef enum {
-  ERROR,
+  ERRORMsg,
   starting,
   blank,
   sayingPos
@@ -136,13 +150,22 @@ void p2pcallbackHandler(P2PPacket *p)
       float x;
       float y;
       float Height;
+      uint16_t stop;
       memcpy(&x, &(p->data[2]), sizeof(float));
       memcpy(&y, &(p->data[6]), sizeof(float));
       memcpy(&Height, &(p->data[10]), sizeof(float));
+      memcpy(&velXOther, &(p->data[14]), sizeof(float));
+      memcpy(&velYOther, &(p->data[18]), sizeof(float));
+      memcpy(&stop, &(p->data[22]), sizeof(uint16_t));
+      if(stop){
+        STOP = true;
+      }
       //DEBUG_PRINT("X: %f, Y:%f, Z:%f\n",(double)x,(double)y,(double)Height);
-      recievedWayPoints[0] = x;
-      recievedWayPoints[1] = y;
-      recievedWayPoints[2] = Height;
+      //recievedWayPoints[0] = x;
+      //recievedWayPoints[1] = y;
+      //recievedWayPoints[2] = Height;
+      YOEstimate = y;
+      XOEstimate = x;
     }else if (data0 == (uint8_t)blank){
       //DEBUG_PRINT("a blank\n");
     }else{
@@ -152,18 +175,6 @@ void p2pcallbackHandler(P2PPacket *p)
   }
 
 }
-
-
-/*
-float calculateYaw(float goalX, float goalY, float currX, float currY){
-  float dy = goalY - currY;
-  float dx = goalX - currX;
-  float tanTheta = ABS(dy/dx);
-  float theta = atanf(tanTheta) * 180.0f/3.14159f;
-  return (SIGN(dy)*(theta + 90*(SIGN(dx)-1)))>0?(SIGN(dy)*(theta + 90*(SIGN(dx)-1))):(360-(SIGN(dy)*(theta + 90*(SIGN(dx)-1))));
-
-}
-*/
 
 
 void sendPacket(HighLevelMsg msg){
@@ -180,7 +191,7 @@ void sendPacket(HighLevelMsg msg){
 void sendLocPacket(float x, float y, float height){
     //DEBUG_PRINT("sending packet!, X:%f, Y:%f, Z:%f\n",(double)x, (double)y, (double)height);
     p_reply.port=0x00;
-    p_reply.size= 3*sizeof(float)+2*sizeof(uint8_t);
+    p_reply.size= 5*sizeof(float)+2*sizeof(uint8_t) + sizeof(uint16_t);
     uint64_t address = configblockGetRadioAddress();
     uint8_t my_id =(uint8_t)((address) & 0x00000000ff);
     uint8_t Notempty = (uint8_t)sayingPos;// if the msg is empty or not
@@ -189,6 +200,9 @@ void sendLocPacket(float x, float y, float height){
     memcpy(&(p_reply.data[2]), &x, sizeof(float));
     memcpy(&(p_reply.data[6]), &y, sizeof(float));
     memcpy(&(p_reply.data[10]), &height, sizeof(float));
+    memcpy(&(p_reply.data[14]), &velXOther, sizeof(float));
+    memcpy(&(p_reply.data[18]), &velYOther, sizeof(float));
+    memcpy(&(p_reply.data[22]), &STOP, sizeof(uint16_t));
     radiolinkSendP2PPacketBroadcast(&p_reply);
 }
 
@@ -201,7 +215,6 @@ void appMain()
   p2pRegisterCB(p2pcallbackHandler);
 
   vTaskDelay(M2T(1000));
-  setInitPos(initialPos);
 
   paramVarId_t idHighLevelComm = paramGetVarId("commander", "enHighLevel");
   logVarId_t idUp = logGetVarId("range", "up");
@@ -220,24 +233,29 @@ void appMain()
   
 
   DEBUG_PRINT("starting the project!\n");
-  float XEstimate = initialPos[0];
-  float YEstimate = initialPos[1];
+  XEstimate = 0;
+  YEstimate = 0;
 
   //float yaw = 0;
 
   while(1) {
-
-    
     vTaskDelay(M2T(200));
+
+    updateVel(velYOther, velXOther, NULL_COMP_MSG);
+
     uint8_t positioningInit = paramGetUint(idPositioningDeck);
     uint8_t multirangerInit = paramGetUint(idMultiranger);
-    uint16_t my_up = logGetUint(idUp);
+    my_up = logGetUint(idUp);
     uint16_t my_front = logGetUint(idFront);
     float timeNow = usecTimestamp() / 1e6;
     /*float YawEstimate = logGetFloat(idYaw);*/
-    XEstimate = logGetFloat(idX) + initialPos[0];
-    YEstimate = logGetFloat(idY) + initialPos[1];
+    XEstimate = logGetFloat(idX);
+    YEstimate = logGetFloat(idY);
     float currPos[] = {XEstimate, YEstimate};
+    if (STOP){
+      state = end;
+    }
+
 
     if(!positioningInit){
       DEBUG_PRINT("\nFlow deck not connected\n");
@@ -266,60 +284,97 @@ void appMain()
       }
 
     }else if (state == unlocked){
-      MoveMainDrone(state, currPos, wayPoints, currentWayPoint);
+      MoveMainDrone(state, currPos);
       //vTaskDelay(M2T(500));
       sendPacket(starting);
       DEBUG_PRINT("Hovering!, now moving to first waypoint\n");
+      took_off = true;
+      DEBUG_PRINT("took off is: %d\n", took_off);
       state = moving;
 
     }else if (state == unlockedFollower){
-      MoveFollowerDrone(state, currPos, recievedWayPoints,my_front);
+      MoveFollowerDrone(state, currPos, my_front);
       DEBUG_PRINT("Hovering!, now moving to first waypoint\n");
+      took_off = true;
       state = following;
 
     }else if(state == moving){
-      if (my_up <= unlockLow){
+      if (my_up <= unlockLow || STOP){
         DEBUG_PRINT("ending...\n");
+        STOP = true;
         state = end;
         continue;
       }
-      MoveMainDrone(state, currPos, wayPoints, currentWayPoint);
+      MoveMainDrone(state, currPos);
       sendLocPacket(XEstimate, YEstimate, HEIGHT);
-      //yaw = calculateYaw(wayPoints[currentWayPoint][0], wayPoints[currentWayPoint][1], XEstimate, YEstimate);
 
-      if (DIST((XEstimate-wayPoints[currentWayPoint][0]),(YEstimate-wayPoints[currentWayPoint][1])) < ACCEPTABLE_RADIUS_FROM_WAYPOINT){
+      /*if (DIST((XEstimate-wayPoints[currentWayPoint][0]),(YEstimate-wayPoints[currentWayPoint][1])) < ACCEPTABLE_RADIUS_FROM_WAYPOINT){
         currentWayPoint++;
         
       }
       if(currentWayPoint >= NUM_OF_WAYPOINTS){ // >= ?
         state = end;
+      }*/
+      if (STOP){
+        state = end;
       }
 
     }else if(state == end){
-      MoveMainDrone(state, currPos, wayPoints, currentWayPoint);
+      MoveMainDrone(state, currPos);
       sendLocPacket(XEstimate,YEstimate,0.0f);
       break;
 
     }else if(state == following){
-      if (my_up <= unlockLow){
+      if (my_up <= unlockLow || STOP){
         DEBUG_PRINT("ending...\n");
+        STOP = true;
         state = end;
         continue;
       }
-      MoveFollowerDrone(state, currPos, recievedWayPoints, my_front);
-
-      if (DIST((XEstimate-recievedWayPoints[0]),(YEstimate-recievedWayPoints[1])) > ACCEPTABLE_RADIUS_FROM_WAYPOINT){ continue;}
+      MoveFollowerDrone(state, currPos, my_front);
+    }
+      /*if (DIST((XEstimate-recievedWayPoints[0]),(YEstimate-recievedWayPoints[1])) > ACCEPTABLE_RADIUS_FROM_WAYPOINT){ continue;}
       state = hover;
       
 
     }else if(state == hover){
       DEBUG_PRINT("hovering\n");
       if (my_up <= unlockLow){
+        STOP = true;
         state = end;
       }
-      MoveFollowerDrone(state, currPos, recievedWayPoints, my_front);
-    }
+      MoveFollowerDrone(state, currPos, my_front);
+    }*/
 
   }
   DEBUG_PRINT("ending the program\n");
 }
+
+
+
+LOG_GROUP_START(my_cf)
+LOG_ADD_CORE(LOG_UINT16, up, &my_up)
+LOG_ADD_CORE(LOG_FLOAT, pos_y, &YEstimate)
+LOG_ADD_CORE(LOG_FLOAT, pos_x, &XEstimate)
+LOG_GROUP_STOP(my_cf)
+
+LOG_GROUP_START(other_cf)
+LOG_ADD_CORE(LOG_FLOAT, pos_y, &YOEstimate)
+LOG_ADD_CORE(LOG_FLOAT, pos_x, &XOEstimate)
+LOG_GROUP_STOP(other_cf)
+
+LOG_GROUP_START(prog_p)
+LOG_ADD_CORE(LOG_UINT16, tookOff, &took_off)
+LOG_ADD_CORE(LOG_UINT16, lost_contact, &lostContact)
+LOG_ADD_CORE(LOG_UINT16, stop, &STOP)
+LOG_GROUP_STOP(prog_p)
+
+PARAM_GROUP_START(p)
+PARAM_ADD_CORE(PARAM_FLOAT, vel_y_other, &velYOther)
+PARAM_ADD_CORE(PARAM_FLOAT, vel_x_other, &velXOther)
+
+PARAM_ADD_CORE(PARAM_FLOAT, vel_y_me, &velY_param)
+PARAM_ADD_CORE(PARAM_FLOAT, vel_x_me, &velX_param)
+PARAM_GROUP_STOP(P)
+
+
