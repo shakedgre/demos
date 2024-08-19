@@ -51,7 +51,7 @@
 #define DEBUG_MODULE "PUSH"
 
 #define BYTES_PER_PACKET 11
-#define BYTES_PER_SECOND 100
+#define BYTES_PER_SECOND 200
 #define DELAY_MS 1000*BYTES_PER_PACKET/BYTES_PER_SECOND
 
 
@@ -60,6 +60,8 @@ uint16_t other_right = (uint16_t)1000;
 uint16_t other_front = (uint16_t)1000;
 uint16_t other_back = (uint16_t)1000;
 uint16_t other_up = (uint16_t)1000;
+
+float temper;
 
 void p2pcallbackHandler(P2PPacket *p)
 {
@@ -153,7 +155,7 @@ void appMain()
 
   uint64_t address = configblockGetRadioAddress();
   uint8_t my_id =(uint8_t)((address) & 0x00000000ff);
-  if(my_id == 0xE7) sensorInit();
+  if(my_id == 0xE7) Sensorbegin();
 
   float factor = velMax/radius;
 
@@ -192,8 +194,7 @@ void appMain()
     radiolinkSendP2PPacketBroadcast(&p_reply);
 
     uint16_t up = (uint16_t)MIN(my_up,other_up);
-
-    if(my_id == 0xE7) readSensorData();
+    if(my_id == 0xE7) temper = getTemperature();
 
     if (state == unlocked) {
 
@@ -280,6 +281,6 @@ LOG_GROUP_START(other_cf)
 LOG_GROUP_STOP(other_cf)
 
 LOG_GROUP_START(sensors)
-  LOG_ADD(LOG_FLOAT, temp, &temperature)
+  LOG_ADD(LOG_FLOAT, temp, &temper)
   LOG_ADD(LOG_FLOAT, humid, &humidity)
 LOG_GROUP_STOP(sensors)
