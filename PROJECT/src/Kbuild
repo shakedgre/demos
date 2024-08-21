@@ -2,3 +2,4 @@ obj-y += project.o
 obj-y += wall_following.o
 obj-y += wallfollowing_multiranger_onboard.o
 obj-y += MovedecisionMaker.o
+obj-y += sensorReading.o

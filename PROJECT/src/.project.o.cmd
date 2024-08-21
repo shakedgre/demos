@@ -116,6 +116,7 @@ deps_/home/bitcraze/projects/crazyflie-firmware/examples/demos/demos/PROJECT/src
   /home/bitcraze/projects/crazyflie-firmware/src/modules/interface/param.h \
   /home/bitcraze/projects/crazyflie-firmware/src/modules/interface/param_logic.h \
   /home/bitcraze/projects/crazyflie-firmware/src/modules/interface/crtp.h \
+  /home/bitcraze/projects/crazyflie-firmware/examples/demos/demos/PROJECT/src/sensorReading.h \
 
 /home/bitcraze/projects/crazyflie-firmware/examples/demos/demos/PROJECT/src/project.o: $(deps_/home/bitcraze/projects/crazyflie-firmware/examples/demos/demos/PROJECT/src/project.o)
 

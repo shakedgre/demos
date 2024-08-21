@@ -51,6 +51,8 @@
 #include "log.h"
 #include "param.h"
 
+#include "sensorReading.h"
+
 #define DEBUG_MODULE "PUSH"
 
 #define MAX(a,b) ((a>b)?a:b)
@@ -74,11 +76,15 @@ static const uint16_t unlockHigh = 300;
 //uint8_t currentRecievedWayPoint = 0;
 uint16_t STOP = false;
 bool HighRSSI = false;
+uint16_t START_PROG = false;
 bool startedTheProg = false;
 uint16_t lostContact = false;
 float timeOfLastMsg = 0.0f;
 
 //float initialPos[3] = {0,0,0};
+bool HAVE_SENSOR = false;
+float temperature_celsius = 0;
+float humidity_pres = 0;
 
 uint16_t my_up = 2000;
 
@@ -150,6 +156,7 @@ void p2pcallbackHandler(P2PPacket *p)
       float x;
       float y;
       float Height;
+      float temp, hum;
       uint16_t stop;
       memcpy(&x, &(p->data[2]), sizeof(float));
       memcpy(&y, &(p->data[6]), sizeof(float));
@@ -157,6 +164,12 @@ void p2pcallbackHandler(P2PPacket *p)
       memcpy(&velXOther, &(p->data[14]), sizeof(float));
       memcpy(&velYOther, &(p->data[18]), sizeof(float));
       memcpy(&stop, &(p->data[22]), sizeof(uint16_t));
+      memcpy(&temp, &(p->data[24]), sizeof(float));
+      memcpy(&hum, &(p->data[28]), sizeof(float));
+      if(!HAVE_SENSOR){
+        temperature_celsius = temp;
+        humidity_pres = hum;
+      }
       if(stop){
         STOP = true;
       }
@@ -191,7 +204,7 @@ void sendPacket(HighLevelMsg msg){
 void sendLocPacket(float x, float y, float height){
     //DEBUG_PRINT("sending packet!, X:%f, Y:%f, Z:%f\n",(double)x, (double)y, (double)height);
     p_reply.port=0x00;
-    p_reply.size= 5*sizeof(float)+2*sizeof(uint8_t) + sizeof(uint16_t);
+    p_reply.size= 7*sizeof(float)+2*sizeof(uint8_t) + sizeof(uint16_t);
     uint64_t address = configblockGetRadioAddress();
     uint8_t my_id =(uint8_t)((address) & 0x00000000ff);
     uint8_t Notempty = (uint8_t)sayingPos;// if the msg is empty or not
@@ -203,6 +216,8 @@ void sendLocPacket(float x, float y, float height){
     memcpy(&(p_reply.data[14]), &velXOther, sizeof(float));
     memcpy(&(p_reply.data[18]), &velYOther, sizeof(float));
     memcpy(&(p_reply.data[22]), &STOP, sizeof(uint16_t));
+    memcpy(&(p_reply.data[24]), &temperature_celsius, sizeof(float));
+    memcpy(&(p_reply.data[28]), &humidity_pres, sizeof(float));
     radiolinkSendP2PPacketBroadcast(&p_reply);
 }
 
@@ -211,7 +226,7 @@ static State state = idle;
 
 void appMain()
 {
-
+  
   p2pRegisterCB(p2pcallbackHandler);
 
   vTaskDelay(M2T(1000));
@@ -231,7 +246,12 @@ void appMain()
   
   paramSetInt(idHighLevelComm, 1);
   
+  uint8_t multirangerInit = paramGetUint(idMultiranger);
+  if(!multirangerInit){
+    HAVE_SENSOR = true;
+    Sensorbegin();
 
+  }
   DEBUG_PRINT("starting the project!\n");
   XEstimate = 0;
   YEstimate = 0;
@@ -241,11 +261,12 @@ void appMain()
   while(1) {
     vTaskDelay(M2T(200));
 
+
     updateVel(velYOther, velXOther, NULL_COMP_MSG);
 
     uint8_t positioningInit = paramGetUint(idPositioningDeck);
-    uint8_t multirangerInit = paramGetUint(idMultiranger);
-    my_up = logGetUint(idUp);
+    
+
     uint16_t my_front = logGetUint(idFront);
     float timeNow = usecTimestamp() / 1e6;
     /*float YawEstimate = logGetFloat(idYaw);*/
@@ -262,12 +283,16 @@ void appMain()
       break;
     }
     if(!multirangerInit){
-      DEBUG_PRINT("\nmultiranger deck not connected\n");
-      break;
+      temperature_celsius = getTemperature();
+      humidity_pres = getHumidity();
+      DEBUG_PRINT("temp: %f, humid: %f\n", (double)temperature_celsius, (double)humidity_pres);
+
+    }else{
+      my_up = logGetUint(idUp);
     }
     //state machine
     if (state == idle){
-      if (my_up <= unlockLow){
+      if (my_up <= unlockLow || START_PROG){
         DEBUG_PRINT("unlocking...\n");
         state = lowUnlock;
 
@@ -278,7 +303,7 @@ void appMain()
       }
 
     }else if(state == lowUnlock){
-      if(my_up >= unlockHigh){
+      if(my_up >= unlockHigh || START_PROG){
         DEBUG_PRINT("starting to fly!\n");
         state = unlocked;
       }
@@ -361,6 +386,8 @@ LOG_GROUP_STOP(my_cf)
 LOG_GROUP_START(other_cf)
 LOG_ADD_CORE(LOG_FLOAT, pos_y, &YOEstimate)
 LOG_ADD_CORE(LOG_FLOAT, pos_x, &XOEstimate)
+LOG_ADD_CORE(LOG_FLOAT, temp, &temperature_celsius)
+LOG_ADD_CORE(LOG_FLOAT, humi, &humidity_pres)
 LOG_GROUP_STOP(other_cf)
 
 LOG_GROUP_START(prog_p)
@@ -370,6 +397,10 @@ LOG_ADD_CORE(LOG_UINT16, stop, &STOP)
 LOG_GROUP_STOP(prog_p)
 
 PARAM_GROUP_START(p)
+PARAM_ADD_CORE(PARAM_INT16, start_prog, &START_PROG)
+PARAM_ADD_CORE(PARAM_INT16, tookOff, &took_off)
+PARAM_ADD_CORE(PARAM_INT16, lost_contact, &lostContact)
+PARAM_ADD_CORE(PARAM_INT16, stop, &STOP)
 PARAM_ADD_CORE(PARAM_FLOAT, vel_y_other, &velYOther)
 PARAM_ADD_CORE(PARAM_FLOAT, vel_x_other, &velXOther)
 
