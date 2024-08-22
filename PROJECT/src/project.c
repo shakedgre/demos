@@ -84,6 +84,7 @@ float timeOfLastMsg = 0.0f;
 //float initialPos[3] = {0,0,0};
 bool HAVE_SENSOR = false;
 float temperature_celsius = 0;
+int16_t temperature_celsius_comp = 0, humidity_pres_comp = 0;
 float humidity_pres = 0;
 
 uint16_t my_up = 2000;
@@ -94,33 +95,12 @@ float YEstimate = 0;
 float XOEstimate = 0;
 float YOEstimate = 0;
 
+int16_t XEstimate_comp = 0, YEstimate_comp = 0, XOEstimate_comp = 0, YOEstimate_comp = 0;
+
 float velYOther = NULL_COMP_MSG;
 float velXOther = NULL_COMP_MSG;
 
 uint16_t took_off = false;
-
-/*void setInitPos(float* initialPos){
-    uint64_t address = configblockGetRadioAddress();
-    uint8_t my_id =(uint8_t)((address) & 0x00000000ff);
-    if(my_id == 0xE7){
-      initialPos[0] = 0.0f;
-      initialPos[1] = 0.0f;
-      initialPos[2] = 0.0f;
-    }else if(my_id == 0xE6){
-      initialPos[0] = 0.0f;
-      initialPos[1] = 0.2f;
-      initialPos[2] = 0.0f;
-    }
-}
-
-
-float wayPoints[MAX_NUM_OF_WAY_POINTS][3] = {{0,0,HEIGHT},
-                                        {2.0f,0.0f,HEIGHT},
-                                        {2.0f,-1.0f,HEIGHT},
-                                        {2.0f,-2.0f,HEIGHT},
-                                        {2.0f,-2.5f,HEIGHT}};//global [x,y,z]
-*/
-//float recievedWayPoints[3];
 
 typedef enum {
   ERRORMsg,
@@ -153,22 +133,23 @@ void p2pcallbackHandler(P2PPacket *p)
     else if(data0 == (uint8_t)sayingPos){
       startedTheProg = true;
       //DEBUG_PRINT("\nI got the pos!\n");
-      float x;
-      float y;
-      float Height;
-      float temp, hum;
+      int16_t x;
+      int16_t y;
+
+      int16_t temp, hum;
       uint16_t stop;
-      memcpy(&x, &(p->data[2]), sizeof(float));
-      memcpy(&y, &(p->data[6]), sizeof(float));
-      memcpy(&Height, &(p->data[10]), sizeof(float));
-      memcpy(&velXOther, &(p->data[14]), sizeof(float));
-      memcpy(&velYOther, &(p->data[18]), sizeof(float));
-      memcpy(&stop, &(p->data[22]), sizeof(uint16_t));
-      memcpy(&temp, &(p->data[24]), sizeof(float));
-      memcpy(&hum, &(p->data[28]), sizeof(float));
+      memcpy(&x, &(p->data[2]), sizeof(int16_t));
+      memcpy(&y, &(p->data[4]), sizeof(int16_t));
+      memcpy(&velXOther, &(p->data[6]), sizeof(float));
+      memcpy(&velYOther, &(p->data[10]), sizeof(float));
+      memcpy(&stop, &(p->data[14]), sizeof(uint16_t));
+      memcpy(&temp, &(p->data[16]), sizeof(int16_t));
+      memcpy(&hum, &(p->data[18]), sizeof(int16_t));
       if(!HAVE_SENSOR){
-        temperature_celsius = temp;
-        humidity_pres = hum;
+        temperature_celsius_comp = temp;
+        temperature_celsius = (float)temp /100;
+        humidity_pres_comp = hum;
+        humidity = (float)hum /100;
       }
       if(stop){
         STOP = true;
@@ -177,8 +158,10 @@ void p2pcallbackHandler(P2PPacket *p)
       //recievedWayPoints[0] = x;
       //recievedWayPoints[1] = y;
       //recievedWayPoints[2] = Height;
-      YOEstimate = y;
-      XOEstimate = x;
+      YOEstimate = (float)y / 100;
+      XOEstimate = (float)x / 100;
+      XOEstimate_comp = x;
+      YOEstimate_comp = y;
     }else if (data0 == (uint8_t)blank){
       //DEBUG_PRINT("a blank\n");
     }else{
@@ -186,7 +169,7 @@ void p2pcallbackHandler(P2PPacket *p)
     }
     timeOfLastMsg = timeNow;
   }
-
+  DEBUG_PRINT("x is: %d",(int)XOEstimate_comp);
 }
 
 
@@ -204,20 +187,22 @@ void sendPacket(HighLevelMsg msg){
 void sendLocPacket(float x, float y, float height){
     //DEBUG_PRINT("sending packet!, X:%f, Y:%f, Z:%f\n",(double)x, (double)y, (double)height);
     p_reply.port=0x00;
-    p_reply.size= 7*sizeof(float)+2*sizeof(uint8_t) + sizeof(uint16_t);
+    p_reply.size= 2*sizeof(float)+2*sizeof(uint8_t) + 5*sizeof(uint16_t);
+    int16_t x_comp = (int16_t)(x *100);
+    int16_t y_comp = (int16_t)(y *100);
     uint64_t address = configblockGetRadioAddress();
     uint8_t my_id =(uint8_t)((address) & 0x00000000ff);
     uint8_t Notempty = (uint8_t)sayingPos;// if the msg is empty or not
     memcpy(&(p_reply.data[0]), &my_id, sizeof(uint8_t));
     memcpy(&(p_reply.data[1]), &Notempty, sizeof(uint8_t));
-    memcpy(&(p_reply.data[2]), &x, sizeof(float));
-    memcpy(&(p_reply.data[6]), &y, sizeof(float));
-    memcpy(&(p_reply.data[10]), &height, sizeof(float));
-    memcpy(&(p_reply.data[14]), &velXOther, sizeof(float));
-    memcpy(&(p_reply.data[18]), &velYOther, sizeof(float));
-    memcpy(&(p_reply.data[22]), &STOP, sizeof(uint16_t));
-    memcpy(&(p_reply.data[24]), &temperature_celsius, sizeof(float));
-    memcpy(&(p_reply.data[28]), &humidity_pres, sizeof(float));
+    memcpy(&(p_reply.data[2]), &x_comp, sizeof(int16_t));
+    memcpy(&(p_reply.data[4]), &y_comp, sizeof(int16_t));
+    //memcpy(&(p_reply.data[10]), &height, sizeof(float));
+    memcpy(&(p_reply.data[6]), &velXOther, sizeof(float));
+    memcpy(&(p_reply.data[10]), &velYOther, sizeof(float));
+    memcpy(&(p_reply.data[14]), &STOP, sizeof(uint16_t));
+    memcpy(&(p_reply.data[16]), &temperature_celsius_comp, sizeof(int16_t));
+    memcpy(&(p_reply.data[18]), &humidity_pres_comp, sizeof(int16_t));
     radiolinkSendP2PPacketBroadcast(&p_reply);
 }
 
@@ -249,12 +234,15 @@ void appMain()
   uint8_t multirangerInit = paramGetUint(idMultiranger);
   if(!multirangerInit){
     HAVE_SENSOR = true;
+    DEBUG_PRINT("I have the sensor!\n");
     Sensorbegin();
 
   }
   DEBUG_PRINT("starting the project!\n");
   XEstimate = 0;
+  XEstimate_comp = 0;
   YEstimate = 0;
+  YEstimate_comp = 0;
 
   //float yaw = 0;
 
@@ -271,7 +259,9 @@ void appMain()
     float timeNow = usecTimestamp() / 1e6;
     /*float YawEstimate = logGetFloat(idYaw);*/
     XEstimate = logGetFloat(idX);
+    XEstimate_comp = (int)(XEstimate*100);
     YEstimate = logGetFloat(idY);
+    YEstimate_comp = (int)(YEstimate*100);
     float currPos[] = {XEstimate, YEstimate};
     if (STOP){
       state = end;
@@ -282,14 +272,20 @@ void appMain()
       DEBUG_PRINT("\nFlow deck not connected\n");
       break;
     }
-    if(!multirangerInit){
+    if(HAVE_SENSOR){
       temperature_celsius = getTemperature();
       humidity_pres = getHumidity();
+      temperature_celsius_comp = (int16_t)(temperature_celsius *100);
+      humidity_pres_comp = (int16_t)(humidity_pres * 100);
       DEBUG_PRINT("temp: %f, humid: %f\n", (double)temperature_celsius, (double)humidity_pres);
 
     }else{
       my_up = logGetUint(idUp);
     }
+
+
+    sendLocPacket(XEstimate, YEstimate, HEIGHT);
+
     //state machine
     if (state == idle){
       if (my_up <= unlockLow || START_PROG){
@@ -331,7 +327,7 @@ void appMain()
         continue;
       }
       MoveMainDrone(state, currPos);
-      sendLocPacket(XEstimate, YEstimate, HEIGHT);
+      
 
       /*if (DIST((XEstimate-wayPoints[currentWayPoint][0]),(YEstimate-wayPoints[currentWayPoint][1])) < ACCEPTABLE_RADIUS_FROM_WAYPOINT){
         currentWayPoint++;
@@ -346,7 +342,6 @@ void appMain()
 
     }else if(state == end){
       MoveMainDrone(state, currPos);
-      sendLocPacket(XEstimate,YEstimate,0.0f);
       break;
 
     }else if(state == following){
@@ -376,18 +371,16 @@ void appMain()
 }
 
 
-
 LOG_GROUP_START(my_cf)
-LOG_ADD_CORE(LOG_UINT16, up, &my_up)
-LOG_ADD_CORE(LOG_FLOAT, pos_y, &YEstimate)
-LOG_ADD_CORE(LOG_FLOAT, pos_x, &XEstimate)
+LOG_ADD_CORE(LOG_INT16, pos_y, &YEstimate_comp)
+LOG_ADD_CORE(LOG_INT16, pos_x, &XEstimate_comp)
 LOG_GROUP_STOP(my_cf)
 
 LOG_GROUP_START(other_cf)
-LOG_ADD_CORE(LOG_FLOAT, pos_y, &YOEstimate)
-LOG_ADD_CORE(LOG_FLOAT, pos_x, &XOEstimate)
-LOG_ADD_CORE(LOG_FLOAT, temp, &temperature_celsius)
-LOG_ADD_CORE(LOG_FLOAT, humi, &humidity_pres)
+LOG_ADD_CORE(LOG_INT16, pos_y, &YOEstimate_comp)
+LOG_ADD_CORE(LOG_INT16, pos_x, &XOEstimate_comp)
+LOG_ADD_CORE(LOG_INT16, temp, &temperature_celsius_comp)
+LOG_ADD_CORE(LOG_INT16, humi, &humidity_pres_comp)
 LOG_GROUP_STOP(other_cf)
 
 LOG_GROUP_START(prog_p)
