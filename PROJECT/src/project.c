@@ -89,6 +89,8 @@ float humidity_pres = 0;
 
 uint16_t my_up = 2000;
 
+float estimatorX_reset = 0, estimatorY_reset = 0;
+
 float XEstimate = 0;
 float YEstimate = 0;
 
@@ -259,9 +261,20 @@ void appMain()
     float timeNow = usecTimestamp() / 1e6;
     /*float YawEstimate = logGetFloat(idYaw);*/
     XEstimate = logGetFloat(idX);
-    XEstimate_comp = (int)(XEstimate*100);
+    XEstimate_comp = (int16_t)(XEstimate*100);
     YEstimate = logGetFloat(idY);
-    YEstimate_comp = (int)(YEstimate*100);
+    YEstimate_comp = (int16_t)(YEstimate*100);
+
+    if (state != moving && state != following && state != end){
+      estimatorX_reset = XEstimate;
+      estimatorY_reset = YEstimate;
+    }
+
+    XEstimate -= estimatorX_reset;
+    XEstimate_comp = (int16_t)(XEstimate*100);
+    YEstimate -= estimatorY_reset;
+    YEstimate_comp = (int16_t)(YEstimate*100);
+
     float currPos[] = {XEstimate, YEstimate};
     if (STOP){
       state = end;
@@ -283,8 +296,9 @@ void appMain()
       my_up = logGetUint(idUp);
     }
 
-
-    sendLocPacket(XEstimate, YEstimate, HEIGHT);
+    if (state == moving || state == following || state == end){
+      sendLocPacket(XEstimate, YEstimate, HEIGHT);
+    }
 
     //state machine
     if (state == idle){
@@ -295,6 +309,7 @@ void appMain()
       }
       if((HighRSSI || timeNow-timeOfLastMsg > 2.0f )&& startedTheProg){
         state = unlockedFollower;
+        DEBUG_PRINT("High rssi: %d, deltaT is: %f", (int)HighRSSI, (double)(timeNow-timeOfLastMsg));
         lostContact = true;
       }
 
@@ -353,18 +368,7 @@ void appMain()
       }
       MoveFollowerDrone(state, currPos, my_front);
     }
-      /*if (DIST((XEstimate-recievedWayPoints[0]),(YEstimate-recievedWayPoints[1])) > ACCEPTABLE_RADIUS_FROM_WAYPOINT){ continue;}
-      state = hover;
-      
 
-    }else if(state == hover){
-      DEBUG_PRINT("hovering\n");
-      if (my_up <= unlockLow){
-        STOP = true;
-        state = end;
-      }
-      MoveFollowerDrone(state, currPos, my_front);
-    }*/
 
   }
   DEBUG_PRINT("ending the program\n");
