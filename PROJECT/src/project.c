@@ -79,7 +79,6 @@ bool HighRSSI = false;
 uint16_t START_PROG = false;
 bool startedTheProg = false;
 uint16_t lostContact = false;
-float timeOfLastMsg = 0.0f;
 
 //float initialPos[3] = {0,0,0};
 bool HAVE_SENSOR = false;
@@ -99,6 +98,13 @@ float YOEstimate = 0;
 
 int16_t XEstimate_comp = 0, YEstimate_comp = 0, XOEstimate_comp = 0, YOEstimate_comp = 0;
 
+float velX_param, velY_param;
+float targetX_other = NULL_COMP_MSG, targetY_other = NULL_COMP_MSG;
+float targetX = 0.0;
+float targetY = 0.0;
+int16_t targetX_other_comp = (int16_t)(NULL_COMP_MSG/10), targetY_other_comp = (int16_t)(NULL_COMP_MSG/10);
+int16_t targetX_comp = 0.0;
+int16_t targetY_comp = 0.0;
 float velYOther = NULL_COMP_MSG;
 float velXOther = NULL_COMP_MSG;
 
@@ -120,7 +126,6 @@ void p2pcallbackHandler(P2PPacket *p)
   uint8_t rssi = p->rssi;
   //uint8_t port = p->port;
   uint8_t data0 = p->data[1];
-  float timeNow = usecTimestamp() / 1e6;
   DEBUG_PRINT("\nrssi: %d\n", rssi);
   if(lostContact == false){
     if(rssi > MAXRSSI){
@@ -140,13 +145,14 @@ void p2pcallbackHandler(P2PPacket *p)
 
       int16_t temp, hum;
       uint16_t stop;
+      float targetX_comp_temp, targetY_comp_temp;
       memcpy(&x, &(p->data[2]), sizeof(int16_t));
       memcpy(&y, &(p->data[4]), sizeof(int16_t));
-      memcpy(&velXOther, &(p->data[6]), sizeof(float));
-      memcpy(&velYOther, &(p->data[10]), sizeof(float));
-      memcpy(&stop, &(p->data[14]), sizeof(uint16_t));
-      memcpy(&temp, &(p->data[16]), sizeof(int16_t));
-      memcpy(&hum, &(p->data[18]), sizeof(int16_t));
+      memcpy(&targetX_comp_temp, &(p->data[6]), sizeof(int16_t));
+      memcpy(&targetY_comp_temp, &(p->data[8]), sizeof(int16_t));
+      memcpy(&stop, &(p->data[10]), sizeof(uint16_t));
+      memcpy(&temp, &(p->data[12]), sizeof(int16_t));
+      memcpy(&hum, &(p->data[14]), sizeof(int16_t));
       if(!HAVE_SENSOR){
         temperature_celsius_comp = temp;
         temperature_celsius = (float)temp /100;
@@ -155,6 +161,12 @@ void p2pcallbackHandler(P2PPacket *p)
       }
       if(stop){
         STOP = true;
+      }
+      if(targetX_comp_temp != (int16_t)(NULL_COMP_MSG/10)){
+        targetX_comp = targetX_comp_temp;
+      }
+      if(targetY_comp_temp != (int16_t)(NULL_COMP_MSG/10)){
+        targetY_comp = targetY_comp_temp;
       }
       //DEBUG_PRINT("X: %f, Y:%f, Z:%f\n",(double)x,(double)y,(double)Height);
       //recievedWayPoints[0] = x;
@@ -165,11 +177,10 @@ void p2pcallbackHandler(P2PPacket *p)
       XOEstimate_comp = x;
       YOEstimate_comp = y;
     }else if (data0 == (uint8_t)blank){
-      //DEBUG_PRINT("a blank\n");
+      DEBUG_PRINT("a blank\n");
     }else{
       //DEBUG_PRINT("non recognized packet!\n");
     }
-    timeOfLastMsg = timeNow;
   }
   DEBUG_PRINT("x is: %d",(int)XOEstimate_comp);
 }
@@ -189,7 +200,7 @@ void sendPacket(HighLevelMsg msg){
 void sendLocPacket(float x, float y, float height){
     //DEBUG_PRINT("sending packet!, X:%f, Y:%f, Z:%f\n",(double)x, (double)y, (double)height);
     p_reply.port=0x00;
-    p_reply.size= 2*sizeof(float)+2*sizeof(uint8_t) + 5*sizeof(uint16_t);
+    p_reply.size= 2*sizeof(uint8_t) + 7*sizeof(uint16_t);
     int16_t x_comp = (int16_t)(x *100);
     int16_t y_comp = (int16_t)(y *100);
     uint64_t address = configblockGetRadioAddress();
@@ -200,11 +211,11 @@ void sendLocPacket(float x, float y, float height){
     memcpy(&(p_reply.data[2]), &x_comp, sizeof(int16_t));
     memcpy(&(p_reply.data[4]), &y_comp, sizeof(int16_t));
     //memcpy(&(p_reply.data[10]), &height, sizeof(float));
-    memcpy(&(p_reply.data[6]), &velXOther, sizeof(float));
-    memcpy(&(p_reply.data[10]), &velYOther, sizeof(float));
-    memcpy(&(p_reply.data[14]), &STOP, sizeof(uint16_t));
-    memcpy(&(p_reply.data[16]), &temperature_celsius_comp, sizeof(int16_t));
-    memcpy(&(p_reply.data[18]), &humidity_pres_comp, sizeof(int16_t));
+    memcpy(&(p_reply.data[6]), &targetX_other_comp, sizeof(int16_t));
+    memcpy(&(p_reply.data[8]), &targetY_other_comp, sizeof(int16_t));
+    memcpy(&(p_reply.data[10]), &STOP, sizeof(uint16_t));
+    memcpy(&(p_reply.data[12]), &temperature_celsius_comp, sizeof(int16_t));
+    memcpy(&(p_reply.data[14]), &humidity_pres_comp, sizeof(int16_t));
     radiolinkSendP2PPacketBroadcast(&p_reply);
 }
 
@@ -222,7 +233,7 @@ void appMain()
   logVarId_t idUp = logGetVarId("range", "up");
   //logVarId_t idLeft = logGetVarId("range", "left");
   //logVarId_t idRight = logGetVarId("range", "right");
-  logVarId_t idFront = logGetVarId("range", "front");
+  //logVarId_t idFront = logGetVarId("range", "front");
   //logVarId_t idBack = logGetVarId("range", "back");
   logVarId_t idX = logGetVarId("stateEstimate", "x");
   logVarId_t idY = logGetVarId("stateEstimate", "y");
@@ -246,19 +257,18 @@ void appMain()
   YEstimate = 0;
   YEstimate_comp = 0;
 
+
+
   //float yaw = 0;
 
   while(1) {
     vTaskDelay(M2T(200));
 
-
-    updateVel(velYOther, velXOther, NULL_COMP_MSG);
+    initCommander();
+    //updateVel(velY_param, velX_param, velYOther, velXOther, NULL_COMP_MSG);
 
     uint8_t positioningInit = paramGetUint(idPositioningDeck);
     
-
-    uint16_t my_front = logGetUint(idFront);
-    float timeNow = usecTimestamp() / 1e6;
     /*float YawEstimate = logGetFloat(idYaw);*/
     XEstimate = logGetFloat(idX);
     XEstimate_comp = (int16_t)(XEstimate*100);
@@ -275,7 +285,11 @@ void appMain()
     YEstimate -= estimatorY_reset;
     YEstimate_comp = (int16_t)(YEstimate*100);
 
-    float currPos[] = {XEstimate, YEstimate};
+    targetX_other = (float)(targetX_other_comp)/10, targetY_other = (float)(targetY_other_comp)/10;
+    targetX = (float)(targetX_comp)/10;
+    targetY = (float)(targetY_comp)/10;
+
+
     if (STOP){
       state = end;
     }
@@ -302,16 +316,19 @@ void appMain()
 
     //state machine
     if (state == idle){
-      if (my_up <= unlockLow || START_PROG){
+      if (START_PROG){
+        state = unlocked;
+      }
+      if (my_up <= unlockLow){
         DEBUG_PRINT("unlocking...\n");
         state = lowUnlock;
 
       }
-      if((HighRSSI || timeNow-timeOfLastMsg > 2.0f )&& startedTheProg){
+      /*if((HighRSSI || timeNow-timeOfLastMsg > 2.0f )&& startedTheProg){
         state = unlockedFollower;
         DEBUG_PRINT("High rssi: %d, deltaT is: %f", (int)HighRSSI, (double)(timeNow-timeOfLastMsg));
         lostContact = true;
-      }
+      }*/
 
     }else if(state == lowUnlock){
       if(my_up >= unlockHigh || START_PROG){
@@ -320,28 +337,29 @@ void appMain()
       }
 
     }else if (state == unlocked){
-      MoveMainDrone(state, currPos);
+      MoveMainDrone(state, targetX, targetY);
       //vTaskDelay(M2T(500));
       sendPacket(starting);
       DEBUG_PRINT("Hovering!, now moving to first waypoint\n");
       took_off = true;
-      DEBUG_PRINT("took off is: %d\n", took_off);
       state = moving;
 
-    }else if (state == unlockedFollower){
-      MoveFollowerDrone(state, currPos, my_front);
+    }/*else if (state == unlockedFollower){
+      MoveFollowerDrone(state, targetX, targetY, my_front);
       DEBUG_PRINT("Hovering!, now moving to first waypoint\n");
       took_off = true;
       state = following;
 
-    }else if(state == moving){
+    }*/else if(state == moving){
       if (my_up <= unlockLow || STOP){
         DEBUG_PRINT("ending...\n");
         STOP = true;
         state = end;
         continue;
       }
-      MoveMainDrone(state, currPos);
+      MoveMainDrone(state, targetX, targetY);
+
+
       
 
       /*if (DIST((XEstimate-wayPoints[currentWayPoint][0]),(YEstimate-wayPoints[currentWayPoint][1])) < ACCEPTABLE_RADIUS_FROM_WAYPOINT){
@@ -356,18 +374,18 @@ void appMain()
       }
 
     }else if(state == end){
-      MoveMainDrone(state, currPos);
+      MoveMainDrone(state, targetX, targetY);
       break;
 
-    }else if(state == following){
+    }/*else if(state == following){
       if (my_up <= unlockLow || STOP){
         DEBUG_PRINT("ending...\n");
         STOP = true;
         state = end;
         continue;
       }
-      MoveFollowerDrone(state, currPos, my_front);
-    }
+      MoveFollowerDrone(state, targetX, targetY, my_front);
+    }*/
 
 
   }
@@ -398,11 +416,18 @@ PARAM_ADD_CORE(PARAM_INT16, start_prog, &START_PROG)
 PARAM_ADD_CORE(PARAM_INT16, tookOff, &took_off)
 PARAM_ADD_CORE(PARAM_INT16, lost_contact, &lostContact)
 PARAM_ADD_CORE(PARAM_INT16, stop, &STOP)
+
+PARAM_ADD_CORE(PARAM_INT16, target_x, &targetX_comp)
+PARAM_ADD_CORE(PARAM_INT16, target_y, &targetY_comp)
+PARAM_ADD_CORE(PARAM_INT16, target_x_other, &targetX_other_comp)
+PARAM_ADD_CORE(PARAM_INT16, target_y_other, &targetY_other_comp)
+PARAM_GROUP_STOP(P)
+/*
 PARAM_ADD_CORE(PARAM_FLOAT, vel_y_other, &velYOther)
 PARAM_ADD_CORE(PARAM_FLOAT, vel_x_other, &velXOther)
 
 PARAM_ADD_CORE(PARAM_FLOAT, vel_y_me, &velY_param)
 PARAM_ADD_CORE(PARAM_FLOAT, vel_x_me, &velX_param)
 PARAM_GROUP_STOP(P)
-
+*/
 

@@ -1,2 +1,3 @@
 obj-y += test.o
+obj-y += MovedecisionMakerTest.o
 obj-y += sensorReading.o

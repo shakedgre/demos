@@ -4,12 +4,12 @@
 
 typedef signed short int16_t;
 
-float velX_param, velY_param;
+//void updateVel(float velY_param, float velX_param ,float velYother, float velXother, int NULL_MSG);
 
-void updateVel(float velYother, float velXother, int NULL_MSG);
+void initCommander();
 
-void MoveFollowerDrone(State state, float currPos[2], int16_t frontDist);
+void MoveFollowerDrone(State state, float targetX, float targetY, int16_t frontDist);
 
-void MoveMainDrone(State state, float currPos[2]);
+void MoveMainDrone(State state, float targetX, float targetY);
 
 #endif

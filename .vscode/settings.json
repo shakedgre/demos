@@ -11,7 +11,9 @@
         "sensorreading.h": "c",
         "kbuild": "cpp",
         "stdint.h": "c",
-        "freertos.h": "c"
+        "freertos.h": "c",
+        "movedecisionmaker.h": "c",
+        "crtp_commander_high_level.h": "c"
     },
     "ros.distro": "galactic"
 }
