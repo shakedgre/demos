@@ -121,6 +121,8 @@ deps_/home/bitcraze/projects/crazyflie-firmware/examples/demos/demos/PROJECT/src
   /home/bitcraze/projects/crazyflie-firmware/src/modules/interface/estimator.h \
     $(wildcard include/config/estimator/kalman/enable.h) \
     $(wildcard include/config/estimator/oot.h) \
+  /home/bitcraze/projects/crazyflie-firmware/src/modules/interface/estimator_kalman.h \
+  /home/bitcraze/projects/crazyflie-firmware/src/modules/interface/stabilizer_types.h \
   /home/bitcraze/projects/crazyflie-firmware/src/modules/interface/controller.h \
 
 /home/bitcraze/projects/crazyflie-firmware/examples/demos/demos/PROJECT/src/MovedecisionMaker.o: $(deps_/home/bitcraze/projects/crazyflie-firmware/examples/demos/demos/PROJECT/src/MovedecisionMaker.o)

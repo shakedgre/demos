@@ -62,7 +62,7 @@
 #define DIST(a,b) (sqrtf(POW2(a)+POW2(b)))
 #define SIGN(a) ((a<0)?(-1):(1))
 
-#define NULL_COMP_MSG 500
+#define NULL_COMP_MSG 500.0
 
 #define ACCEPTABLE_RADIUS_FROM_WAYPOINT 0.1f
 #define MAX_TIME_BEFORE_OUT_OF_RANGE 1.5f
@@ -77,7 +77,6 @@ static const uint16_t unlockHigh = 300;
 uint16_t STOP = false;
 bool HighRSSI = false;
 uint16_t START_PROG = false;
-bool startedTheProg = false;
 uint16_t lostContact = false;
 
 //float initialPos[3] = {0,0,0};
@@ -103,8 +102,8 @@ float targetX_other = NULL_COMP_MSG, targetY_other = NULL_COMP_MSG;
 float targetX = 0.0;
 float targetY = 0.0;
 int16_t targetX_other_comp = (int16_t)(NULL_COMP_MSG/10), targetY_other_comp = (int16_t)(NULL_COMP_MSG/10);
-int16_t targetX_comp = 0.0;
-int16_t targetY_comp = 0.0;
+int16_t targetX_comp = 0;
+int16_t targetY_comp = 0;
 float velYOther = NULL_COMP_MSG;
 float velXOther = NULL_COMP_MSG;
 
@@ -134,18 +133,16 @@ void p2pcallbackHandler(P2PPacket *p)
 
     if(data0 == (uint8_t)starting){
       DEBUG_PRINT("Other Drone Started Flying\n");
-      startedTheProg = true;
     }
 
     else if(data0 == (uint8_t)sayingPos){
-      startedTheProg = true;
       //DEBUG_PRINT("\nI got the pos!\n");
       int16_t x;
       int16_t y;
 
       int16_t temp, hum;
       uint16_t stop;
-      float targetX_comp_temp, targetY_comp_temp;
+      int16_t targetX_comp_temp, targetY_comp_temp;
       memcpy(&x, &(p->data[2]), sizeof(int16_t));
       memcpy(&y, &(p->data[4]), sizeof(int16_t));
       memcpy(&targetX_comp_temp, &(p->data[6]), sizeof(int16_t));
@@ -162,10 +159,10 @@ void p2pcallbackHandler(P2PPacket *p)
       if(stop){
         STOP = true;
       }
-      if(targetX_comp_temp != (int16_t)(NULL_COMP_MSG/10)){
+      if(targetX_comp_temp != (int16_t)(NULL_COMP_MSG*10)){
         targetX_comp = targetX_comp_temp;
       }
-      if(targetY_comp_temp != (int16_t)(NULL_COMP_MSG/10)){
+      if(targetY_comp_temp != (int16_t)(NULL_COMP_MSG*10)){
         targetY_comp = targetY_comp_temp;
       }
       //DEBUG_PRINT("X: %f, Y:%f, Z:%f\n",(double)x,(double)y,(double)Height);
@@ -337,7 +334,7 @@ void appMain()
       }
 
     }else if (state == unlocked){
-      MoveMainDrone(state, targetX, targetY);
+      MoveMainDrone(state, targetX + estimatorX_reset, targetY + estimatorY_reset);
       //vTaskDelay(M2T(500));
       sendPacket(starting);
       DEBUG_PRINT("Hovering!, now moving to first waypoint\n");
@@ -357,7 +354,7 @@ void appMain()
         state = end;
         continue;
       }
-      MoveMainDrone(state, targetX, targetY);
+      MoveMainDrone(state, targetX + estimatorX_reset, targetY + estimatorY_reset);
 
 
       
@@ -374,7 +371,7 @@ void appMain()
       }
 
     }else if(state == end){
-      MoveMainDrone(state, targetX, targetY);
+      MoveMainDrone(state, targetX + estimatorX_reset, targetY + estimatorY_reset);
       break;
 
     }/*else if(state == following){

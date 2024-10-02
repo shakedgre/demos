@@ -24,8 +24,8 @@
 #include "param.h"
 
 #include "stabilizer.h"
-
-
+#include "estimator_kalman.h"
+#include "stabilizer_types.h"
 
 
 
@@ -113,12 +113,13 @@ void MoveFollowerDrone(State state, float targetX, float targetY, int16_t frontD
 
 void MoveMainDrone(State state, float targetX, float targetY){
     if(state == unlocked){
+
         crtpCommanderHighLevelTakeoff(HEIGHT, 1.0);
         vTaskDelay(M2T(1000));
         //DEBUG_PRINT("Hovering!, now moving to first waypoint\n");
     }else if(state == moving){
         //calculateVelToGoal(currPos[0], currPos[1], checkPoints[currentWayPoint][0], checkPoints[currentWayPoint][1], &velX, &velY);
-        crtpCommanderHighLevelGoTo(targetX, targetY, HEIGHT, 0.0, 3, false);
+        crtpCommanderHighLevelGoTo(targetX, targetY, HEIGHT, 0.0, 2, false);
 
     }else if(state == end){
         DEBUG_PRINT("landing\n");
