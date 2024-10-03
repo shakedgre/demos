@@ -85,10 +85,10 @@ void initCommander() {
   isInit = true;
 }
 
-void MoveFollowerDrone(State state, float targetX, float targetY, int16_t frontDist){
+/*void MoveFollowerDrone(State state, float targetX, float targetY, int16_t frontDist){
     if(state == unlockedFollower){
-        crtpCommanderHighLevelTakeoff(HEIGHT, 1.0);
-        vTaskDelay(M2T(1000));
+        crtpCommanderHighLevelTakeoff(HEIGHT, 0.7);
+        vTaskDelay(M2T(700));
         //DEBUG_PRINT("Hovering!, now moving to first waypoint\n");
     }
     else if(state == following){
@@ -109,17 +109,17 @@ void MoveFollowerDrone(State state, float targetX, float targetY, int16_t frontD
         crtpCommanderHighLevelStop();
         vTaskDelay(M2T(1000));
     }
-}
+}*/
 
 void MoveMainDrone(State state, float targetX, float targetY){
     if(state == unlocked){
 
-        crtpCommanderHighLevelTakeoff(HEIGHT, 1.0);
-        vTaskDelay(M2T(1000));
+        crtpCommanderHighLevelTakeoff(HEIGHT, 0.7);
+        vTaskDelay(M2T(700));
         //DEBUG_PRINT("Hovering!, now moving to first waypoint\n");
     }else if(state == moving){
         //calculateVelToGoal(currPos[0], currPos[1], checkPoints[currentWayPoint][0], checkPoints[currentWayPoint][1], &velX, &velY);
-        crtpCommanderHighLevelGoTo(targetX, targetY, HEIGHT, 0.0, 2, false);
+        crtpCommanderHighLevelGoTo(targetX, targetY, HEIGHT, 0.0, 1.5, false);
 
     }else if(state == end){
         DEBUG_PRINT("landing\n");

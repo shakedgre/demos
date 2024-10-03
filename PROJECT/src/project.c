@@ -307,7 +307,7 @@ void appMain()
       my_up = logGetUint(idUp);
     }
 
-    if (state == moving || state == following || state == end){
+    if (state == moving || state == unlocked || state == end){
       sendLocPacket(XEstimate, YEstimate, HEIGHT);
     }
 
@@ -336,7 +336,6 @@ void appMain()
     }else if (state == unlocked){
       MoveMainDrone(state, targetX + estimatorX_reset, targetY + estimatorY_reset);
       //vTaskDelay(M2T(500));
-      sendPacket(starting);
       DEBUG_PRINT("Hovering!, now moving to first waypoint\n");
       took_off = true;
       state = moving;
