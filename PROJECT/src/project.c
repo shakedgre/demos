@@ -132,7 +132,6 @@ void p2pcallbackHandler(P2PPacket *p)
     }
 
     else if(data0 == (uint8_t)sayingPos){
-      //DEBUG_PRINT("\nI got the pos!\n");
       int16_t x;
       int16_t y;
 
@@ -169,12 +168,11 @@ void p2pcallbackHandler(P2PPacket *p)
     }else if (data0 == (uint8_t)blank){
       DEBUG_PRINT("a blank\n");
     }else{
-      //DEBUG_PRINT("non recognized packet!\n");
+      DEBUG_PRINT("non recognized packet!\n");
     }
   }
   DEBUG_PRINT("x is: %d",(int)XOEstimate_comp);
 }
-
 
 void sendPacket(HighLevelMsg msg){
     //DEBUG_PRINT("sending packet!, %c",(char)msg);
@@ -187,6 +185,7 @@ void sendPacket(HighLevelMsg msg){
     memcpy(&(p_reply.data[1]), &msg_temp, sizeof(uint8_t));
     radiolinkSendP2PPacketBroadcast(&p_reply);
 }
+
 void sendLocPacket(float x, float y, float height){
     //DEBUG_PRINT("sending packet!, X:%f, Y:%f, Z:%f\n",(double)x, (double)y, (double)height);
     p_reply.port=0x00;
@@ -221,13 +220,9 @@ void appMain()
 
   paramVarId_t idHighLevelComm = paramGetVarId("commander", "enHighLevel");
   logVarId_t idUp = logGetVarId("range", "up");
-  //logVarId_t idLeft = logGetVarId("range", "left");
-  //logVarId_t idRight = logGetVarId("range", "right");
-  //logVarId_t idFront = logGetVarId("range", "front");
-  //logVarId_t idBack = logGetVarId("range", "back");
+
   logVarId_t idX = logGetVarId("stateEstimate", "x");
   logVarId_t idY = logGetVarId("stateEstimate", "y");
-  /*logVarId_t idYaw = logGetVarId("stabilizer", "yaw");*/
 
   paramVarId_t idPositioningDeck = paramGetVarId("deck", "bcFlow2");
   paramVarId_t idMultiranger = paramGetVarId("deck", "bcMultiranger");
@@ -313,20 +308,17 @@ void appMain()
         state = lowUnlock;
 
       }
-
     }else if(state == lowUnlock){
       if(my_up >= unlockHigh || START_PROG){
         DEBUG_PRINT("starting to fly!\n");
         state = unlocked;
       }
-
     }else if (state == unlocked){
       MoveMainDrone(state, targetX + estimatorX_reset, targetY + estimatorY_reset);
-      //vTaskDelay(M2T(500));
+
       DEBUG_PRINT("Hovering!, now moving to first waypoint\n");
       took_off = true;
       state = moving;
-
     }else if(state == moving){
       if (my_up <= unlockLow || STOP){
         DEBUG_PRINT("ending...\n");
@@ -339,11 +331,9 @@ void appMain()
       if (STOP){
         state = end;
       }
-
     }else if(state == end){
       MoveMainDrone(state, targetX + estimatorX_reset, targetY + estimatorY_reset);
       break;
-
     }
 
   }

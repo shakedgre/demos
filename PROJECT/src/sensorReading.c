@@ -32,15 +32,6 @@ bool WRequestFrom8(uint8_t deviceAddr, uint16_t size,uint8_t* data) {
     return (status == true);
 }
 
-/*bool WRequestFrom64(uint8_t deviceAddr, uint16_t size,uint64_t* data) {
-    // Initialize I2C device
-    bool status;
-
-    // Read from the I2C device
-    status = i2cdevRead(I2C1_DEV, deviceAddr, size, data);
-
-    return (status == true);
-}*/
 
 bool Sensorbegin(){
     if(isConnected() == false) return false;
@@ -95,11 +86,7 @@ bool isBusy(){
 }
 
 bool initialize(){
-    /*i2cdevWriteByte(I2C1_DEV, (uint8_t)AHT20I2CAddr_def, I2CDEV_NO_MEM_ADDR, ((uint8_t)initCommand));
-    i2cdevWriteByte(I2C1_DEV, (uint8_t)AHT20I2CAddr_def, I2CDEV_NO_MEM_ADDR, ((uint8_t)0x08));
-    i2cdevWriteByte(I2C1_DEV, (uint8_t)AHT20I2CAddr_def, I2CDEV_NO_MEM_ADDR, ((uint8_t)0x00));
-    if (i2cdevWriteBit(I2C1_DEV,(uint8_t)AHT20I2CAddr_def,I2CDEV_NO_MEM_ADDR,1,true)) return true;
-    return false;*/
+
     uint8_t txBuffer[3] = {initCommand, 0x08, 0x00};
 
     // Perform a write operation to the device
@@ -108,11 +95,7 @@ bool initialize(){
 }
 
 bool triggerMeasurement(){
-    /*i2cdevWriteByte(I2C1_DEV, (uint8_t)AHT20I2CAddr_def, I2CDEV_NO_MEM_ADDR, ((uint8_t)measCommand));
-    i2cdevWriteByte(I2C1_DEV, (uint8_t)AHT20I2CAddr_def, I2CDEV_NO_MEM_ADDR, ((uint8_t)0x33));
-    i2cdevWriteByte(I2C1_DEV, (uint8_t)AHT20I2CAddr_def, I2CDEV_NO_MEM_ADDR, ((uint8_t)0x00));
-    if (i2cdevWriteBit(I2C1_DEV,(uint8_t)AHT20I2CAddr_def,I2CDEV_NO_MEM_ADDR,1,true)) return true;
-    return false;*/
+
     uint8_t txBuffer[3] = {measCommand, 0x33, 0x00};
 
     // Perform a write operation to the device

@@ -90,9 +90,8 @@ void MoveMainDrone(State state, float targetX, float targetY){
 
         crtpCommanderHighLevelTakeoff(HEIGHT, 0.7);
         vTaskDelay(M2T(700));
-        //DEBUG_PRINT("Hovering!, now moving to first waypoint\n");
+
     }else if(state == moving){
-        //calculateVelToGoal(currPos[0], currPos[1], checkPoints[currentWayPoint][0], checkPoints[currentWayPoint][1], &velX, &velY);
         crtpCommanderHighLevelGoTo(targetX, targetY, HEIGHT, 0.0, 1.5, false);
 
     }else if(state == end){
