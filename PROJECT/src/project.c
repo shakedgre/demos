@@ -72,14 +72,12 @@
 static P2PPacket p_reply;
 static const uint16_t unlockLow = 100;
 static const uint16_t unlockHigh = 300;
-//uint8_t currentWayPoint = 0;
-//uint8_t currentRecievedWayPoint = 0;
+
 uint16_t STOP = false;
 bool HighRSSI = false;
 uint16_t START_PROG = false;
 uint16_t lostContact = false;
 
-//float initialPos[3] = {0,0,0};
 bool HAVE_SENSOR = false;
 float temperature_celsius = 0;
 int16_t temperature_celsius_comp = 0, humidity_pres_comp = 0;
@@ -121,9 +119,7 @@ typedef enum {
 
 void p2pcallbackHandler(P2PPacket *p)
 {
-  //uint8_t id = p->data[0];
   uint8_t rssi = p->rssi;
-  //uint8_t port = p->port;
   uint8_t data0 = p->data[1];
   DEBUG_PRINT("\nrssi: %d\n", rssi);
   if(lostContact == false){
@@ -165,10 +161,7 @@ void p2pcallbackHandler(P2PPacket *p)
       if(targetY_comp_temp != (int16_t)(NULL_COMP_MSG*10)){
         targetY_comp = targetY_comp_temp;
       }
-      //DEBUG_PRINT("X: %f, Y:%f, Z:%f\n",(double)x,(double)y,(double)Height);
-      //recievedWayPoints[0] = x;
-      //recievedWayPoints[1] = y;
-      //recievedWayPoints[2] = Height;
+
       YOEstimate = (float)y / 100;
       XOEstimate = (float)x / 100;
       XOEstimate_comp = x;
@@ -244,7 +237,7 @@ void appMain()
   uint8_t multirangerInit = paramGetUint(idMultiranger);
   if(!multirangerInit){
     HAVE_SENSOR = true;
-    DEBUG_PRINT("I have the sensor!\n");
+    DEBUG_PRINT("I have the AHT25 A2 sensor!\n");
     Sensorbegin();
 
   }
@@ -262,17 +255,16 @@ void appMain()
     vTaskDelay(M2T(200));
 
     initCommander();
-    //updateVel(velY_param, velX_param, velYOther, velXOther, NULL_COMP_MSG);
+
 
     uint8_t positioningInit = paramGetUint(idPositioningDeck);
     
-    /*float YawEstimate = logGetFloat(idYaw);*/
     XEstimate = logGetFloat(idX);
     XEstimate_comp = (int16_t)(XEstimate*100);
     YEstimate = logGetFloat(idY);
     YEstimate_comp = (int16_t)(YEstimate*100);
 
-    if (state != moving && state != following && state != end){
+    if (state != moving && state != end){
       estimatorX_reset = XEstimate;
       estimatorY_reset = YEstimate;
     }
@@ -321,11 +313,6 @@ void appMain()
         state = lowUnlock;
 
       }
-      /*if((HighRSSI || timeNow-timeOfLastMsg > 2.0f )&& startedTheProg){
-        state = unlockedFollower;
-        DEBUG_PRINT("High rssi: %d, deltaT is: %f", (int)HighRSSI, (double)(timeNow-timeOfLastMsg));
-        lostContact = true;
-      }*/
 
     }else if(state == lowUnlock){
       if(my_up >= unlockHigh || START_PROG){
@@ -340,13 +327,7 @@ void appMain()
       took_off = true;
       state = moving;
 
-    }/*else if (state == unlockedFollower){
-      MoveFollowerDrone(state, targetX, targetY, my_front);
-      DEBUG_PRINT("Hovering!, now moving to first waypoint\n");
-      took_off = true;
-      state = following;
-
-    }*/else if(state == moving){
+    }else if(state == moving){
       if (my_up <= unlockLow || STOP){
         DEBUG_PRINT("ending...\n");
         STOP = true;
@@ -355,16 +336,6 @@ void appMain()
       }
       MoveMainDrone(state, targetX + estimatorX_reset, targetY + estimatorY_reset);
 
-
-      
-
-      /*if (DIST((XEstimate-wayPoints[currentWayPoint][0]),(YEstimate-wayPoints[currentWayPoint][1])) < ACCEPTABLE_RADIUS_FROM_WAYPOINT){
-        currentWayPoint++;
-        
-      }
-      if(currentWayPoint >= NUM_OF_WAYPOINTS){ // >= ?
-        state = end;
-      }*/
       if (STOP){
         state = end;
       }
@@ -373,16 +344,7 @@ void appMain()
       MoveMainDrone(state, targetX + estimatorX_reset, targetY + estimatorY_reset);
       break;
 
-    }/*else if(state == following){
-      if (my_up <= unlockLow || STOP){
-        DEBUG_PRINT("ending...\n");
-        STOP = true;
-        state = end;
-        continue;
-      }
-      MoveFollowerDrone(state, targetX, targetY, my_front);
-    }*/
-
+    }
 
   }
   DEBUG_PRINT("ending the program\n");
@@ -418,12 +380,3 @@ PARAM_ADD_CORE(PARAM_INT16, target_y, &targetY_comp)
 PARAM_ADD_CORE(PARAM_INT16, target_x_other, &targetX_other_comp)
 PARAM_ADD_CORE(PARAM_INT16, target_y_other, &targetY_other_comp)
 PARAM_GROUP_STOP(P)
-/*
-PARAM_ADD_CORE(PARAM_FLOAT, vel_y_other, &velYOther)
-PARAM_ADD_CORE(PARAM_FLOAT, vel_x_other, &velXOther)
-
-PARAM_ADD_CORE(PARAM_FLOAT, vel_y_me, &velY_param)
-PARAM_ADD_CORE(PARAM_FLOAT, vel_x_me, &velX_param)
-PARAM_GROUP_STOP(P)
-*/
-

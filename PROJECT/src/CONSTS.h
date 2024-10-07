@@ -6,13 +6,9 @@
 typedef enum {
     idle,
     lowUnlock,
-    lowUnlockFollower,
     unlocked,
-    unlockedFollower,
     moving,
-    following,
-    hover,
-    end,
+    end
 } State;
 
 #endif
